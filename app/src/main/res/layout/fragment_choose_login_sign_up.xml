@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.auth.ChooseLoginSignUpFragment">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="BuzzTalk"
+        android:gravity="center_horizontal"
+        android:textSize="65sp"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/nunitosans_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_below="@id/title"
+        android:id="@+id/signUp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:cornerRadius="20dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="25dp"
+        android:fontFamily="@font/nunitosans_extrabold"
+        android:textSize="30sp"
+        android:text="Sign Up" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_centerInParent="true"
+        android:id="@+id/login"
+        android:layout_below="@id/signUp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:cornerRadius="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="30sp"
+        android:fontFamily="@font/nunitosans_extrabold"
+        android:text="Login" />
+
+</RelativeLayout>
