@@ -3,14 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.auth.SignUpFragment">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:fontFamily="@font/nunitosans_extrabold"
+        android:id="@+id/title"
+        android:text="Choose One"
+        android:gravity="center_horizontal"
+        android:textSize="65sp"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/nunitosans_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/university"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:cornerRadius="20dp"
         android:layout_centerInParent="true"
-        android:text="SignUp Screen" />
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="@font/nunitosans_extrabold"
+        android:textSize="30sp"
+        android:text="University" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/university"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/nunitosans_extrabold"
+        android:text="COMPANY / STARTUP"
+        android:textSize="30sp"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_centerInParent="true"
+        android:id="@+id/user"
+        android:layout_below="@id/company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cornerRadius="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="30sp"
+        android:fontFamily="@font/nunitosans_extrabold"
+        android:text="ENTREPRENEUR / USER" />
+
 
 </RelativeLayout>
