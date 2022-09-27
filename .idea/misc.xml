@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1385" />
         <entry key="app/src/main/res/drawable/btnlogin_back.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/btnsign_back.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/login_background.xml" value="0.171" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2564814814814815" />
+        <entry key="app/src/main/res/layout/alert_dialog.xml" value="0.2395742797851563" />
+        <entry key="app/src/main/res/layout/fragment_add_email.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_add_first_last_name.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_add_password.xml" value="0.2615020751953125" />
         <entry key="app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.27783355712890623" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2759259259259259" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18703703703703703" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.24338045473451966" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.25" />

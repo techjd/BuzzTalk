@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.auth.SignUpFragment">
+    tools:context=".ui.fragments.auth.common.SignUpFragment">
 
     <include
-        android:id="@+id/topAppBar"
+        android:id="@+id/signUpToolBar"
         layout="@layout/toolbar" />
 
     <LinearLayout
-        android:layout_below="@id/topAppBar"
+        android:layout_below="@id/signUpToolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -34,24 +34,24 @@
                 android:textSize="40dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="3dp"
                 android:layout_below="@id/txt_wel"
                 android:layout_marginTop="28dp"
                 android:background="@drawable/btnlogin_back"
                 android:fontFamily="@font/nunitosans_bold"
+                android:padding="3dp"
                 android:text="USER"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSignUp"
+                android:id="@+id/btnUniversity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btnLogin"
+                android:layout_below="@id/btnUser"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btnlogin_back"
                 android:fontFamily="@font/nunitosans_bold"
@@ -61,10 +61,10 @@
                 android:textSize="18sp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnNormalUser"
+                android:id="@+id/btnCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btnSignUp"
+                android:layout_below="@id/btnUniversity"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btnlogin_back"
                 android:fontFamily="@font/nunitosans_bold"

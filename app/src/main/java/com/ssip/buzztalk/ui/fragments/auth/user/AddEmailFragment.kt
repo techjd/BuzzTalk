@@ -1,60 +1,80 @@
 package com.ssip.buzztalk.ui.fragments.auth.user
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
+import com.ssip.buzztalk.databinding.FragmentAddEmailBinding
+import com.ssip.buzztalk.databinding.FragmentAddFirstLastNameBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddEmailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddEmailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding: FragmentAddEmailBinding? = null
+    private val binding get() = _binding!!
+    val userSignUpViewModel: UserSignUpViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_email, container, false)
+        _binding = FragmentAddEmailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddEmailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddEmailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        userSignUpViewModel.email.observe(viewLifecycleOwner) {
+            binding.emailAddress.setText(it)
+        }
+
+        binding.next.setOnClickListener {
+            val email = binding.emailAddress.text.toString().trim()
+
+            if (validateText(email)) {
+                if (validateEmail(email)) {
+                    userSignUpViewModel.saveEmail(email)
+                    findNavController().navigate(R.id.action_addEmailFragment_to_addPasswordFragment)
+                } else {
+                    Toast.makeText(context, "Not a Valid Email Address", Toast.LENGTH_LONG).show()
                 }
+            } else {
+                Toast.makeText(context, "Please Fill Email Address", Toast.LENGTH_LONG).show()
             }
+        }
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_addEmailFragment_to_addFirstLastNameFragment)
+            }
+        })
     }
+
+    private fun validateText(inputEmail: String): Boolean {
+        if (inputEmail.isNotEmpty()) {
+            return true
+        }
+        return false
+    }
+
+    private fun validateEmail(email: String): Boolean {
+        if (android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return true
+        }
+        return false
+    }
+
 }

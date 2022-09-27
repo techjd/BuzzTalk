@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/login_background"
-    tools:context=".ui.fragments.auth.LoginFragment">
+    tools:context=".ui.fragments.auth.common.LoginFragment">
 
     <include layout="@layout/toolbar" />
 
@@ -43,7 +42,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userName"
+                    android:id="@+id/emailAddress"
                     android:background="@drawable/login_background"
                     android:layout_width="match_parent"
                     android:fontFamily="@font/nunitosans_regular"
@@ -68,7 +67,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passWord"
+                    android:id="@+id/password"
                     android:inputType="textPassword"
                     android:background="@drawable/login_background"
                     android:layout_width="match_parent"
@@ -112,6 +111,7 @@
             android:textSize="25sp" />
 
         <ProgressBar
+            android:layout_marginTop="20dp"
             android:visibility="gone"
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"

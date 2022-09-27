@@ -20,4 +20,9 @@
         <item name="android:textSize">40dp</item>
         <item name="fontFamily">@font/nunitosans_bold</item>
     </style>
+
+    <style name="btn" parent="Widget.Material3.Button">
+        <item name="colorPrimary">@color/light_blue</item>
+        <item name="cornerRadius">1000dp</item>
+    </style>
 </resources>
