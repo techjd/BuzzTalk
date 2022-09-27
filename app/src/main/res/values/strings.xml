@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">BuzzTalk</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="short_Desc">Billions of Developers, Students, and higher authorities are waiting to for you at BuzzTalk.</string>
+    <string name="short_Desc">Millions of Developers, Students, and higher authorities are waiting to for you at BuzzTalk.</string>
+    <string-array name="U_type">
+        <item>Student</item>
+        <item>Faculty</item>
+        <item>Higher authority</item>
+        <item>College</item>
+        <item>University</item>
+    </string-array>
+
+    <style name="Spinner" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/opensans_light</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

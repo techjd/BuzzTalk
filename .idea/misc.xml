@@ -5,6 +5,11 @@
       <map>
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/btnlogin_back.xml" value="0.1885" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/btnsign_back.xml" value="0.1885" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/email_edt.xml" value="0.1885" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/hide_pw.xml" value="0.1885" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/show_password_selector.xml" value="0.1885" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/signup_edt.xml" value="0.1885" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/view_pw.xml" value="0.1885" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/font/font.xml" value="0.3046875" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.22826086956521738" />

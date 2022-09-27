@@ -41,7 +41,7 @@
                 android:textSize="13dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btna_login"
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_wel"
@@ -54,10 +54,10 @@
                 android:textSize="18sp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btna_signup"
+                android:id="@+id/btn_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btna_login"
+                android:layout_below="@id/btn_login"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/btnsign_back"
                 android:fontFamily="@font/opensans_light"
