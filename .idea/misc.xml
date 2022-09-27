@@ -3,19 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/btnlogin_back.xml" value="0.1885" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/btnsign_back.xml" value="0.1885" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/font/font.xml" value="0.3046875" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_login.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_sign_up.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_splash.xml" value="0.22826086956521738" />
+        <entry key="app/src/main/res/drawable/btnlogin_back.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/btnsign_back.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/login_background.xml" value="0.171" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2564814814814815" />
-        <entry key="app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.27783355712890623" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2759259259259259" />
-        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.2759259259259259" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.25" />
       </map>
     </option>
   </component>

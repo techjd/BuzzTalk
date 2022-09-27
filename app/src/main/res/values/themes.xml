@@ -15,4 +15,9 @@
 <!--        <item name="fontFamily">@font/nunitosans_regular</item>-->
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Toolbar.TitleText" parent="Widget.Material3.Toolbar">
+        <item name="android:textSize">40dp</item>
+        <item name="fontFamily">@font/nunitosans_bold</item>
+    </style>
 </resources>

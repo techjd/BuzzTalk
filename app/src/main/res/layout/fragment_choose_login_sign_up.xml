@@ -36,34 +36,35 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
+                android:fontFamily="@font/nunitosans_regular"
                 android:gravity="center"
                 android:text="@string/short_Desc"
                 android:textSize="13dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btna_login"
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_wel"
                 android:layout_marginTop="28dp"
                 android:background="@drawable/btnlogin_back"
-                android:fontFamily="@font/opensans_regular"
+                android:fontFamily="@font/nunitosans_bold"
                 android:text="Login"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btna_signup"
+                android:id="@+id/btnSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btna_login"
+                android:layout_below="@id/btnLogin"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/btnsign_back"
-                android:fontFamily="@font/opensans_light"
+                android:fontFamily="@font/nunitosans_bold"
                 android:text="Sign up"
                 android:textAllCaps="false"
-                android:textColor="@color/blue"
+                android:textColor="@color/light_blue"
                 android:textSize="18sp" />
 
         </RelativeLayout>
