@@ -121,4 +121,34 @@
         android:name="com.ssip.buzztalk.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.post.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.notifications.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/jobsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.jobs.JobsFragment"
+        android:label="fragment_jobs"
+        tools:layout="@layout/fragment_jobs" />
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.chat.ChatsFragment"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

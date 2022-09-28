@@ -3,12 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.home.HomeFragment">
+    tools:context=".ui.fragments.chat.ChatsFragment">
 
-    <include
-        android:id="@+id/homeToolBar"
-        layout="@layout/home_toolbar"
-        />
 
     <TextView
         android:layout_centerInParent="true"
@@ -16,6 +12,6 @@
         android:textSize="20dp"
         android:fontFamily="@font/nunitosans_bold"
         android:layout_height="wrap_content"
-        android:text="Home Fragment" />
+        android:text="Chats Fragment" />
 
 </RelativeLayout>
