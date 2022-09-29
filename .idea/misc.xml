@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1385" />
         <entry key="app/src/main/res/drawable/btnlogin_back.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/btnsign_back.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/edt_background.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.169" />
         <entry key="app/src/main/res/drawable/login_background.xml" value="0.171" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2564814814814815" />
@@ -20,15 +21,17 @@
         <entry key="app/src/main/res/layout/fragment_jobs.xml" value="0.3067708333333333" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.24338045473451966" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.3067708333333333" />
-        <entry key="app/src/main/res/layout/fragment_post.xml" value="0.3067708333333333" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3067708333333333" />
+        <entry key="app/src/main/res/layout/fragment_post.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.3067708333333333" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/home_toolbar.xml" value="0.2694051106770834" />
+        <entry key="app/src/main/res/layout/post_toolbar.xml" value="0.25" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.22685185185185186" />
         <entry key="app/src/main/res/menu/home_toolbar.xml" value="0.3067708333333333" />
+        <entry key="app/src/main/res/menu/post_toolbar.xml" value="0.2777777777777778" />
       </map>
     </option>
   </component>

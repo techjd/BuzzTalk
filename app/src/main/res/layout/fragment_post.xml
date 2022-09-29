@@ -1,16 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:contentDescription="@string/post_content"
     tools:context=".ui.fragments.post.PostFragment">
 
-    <TextView
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:textSize="20dp"
-        android:fontFamily="@font/nunitosans_bold"
-        android:layout_height="wrap_content"
-        android:text="Posts Fragment" />
 
-</RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/postToolBar"
+            layout="@layout/post_toolbar" />
+
+        <TextView
+            android:id="@+id/staticPost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:text="Post"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/postToolBar"
+            app:layout_constraintStart_toStartOf="@+id/postToolBar"
+            app:layout_constraintTop_toBottomOf="@+id/postToolBar" />
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/edt_background"
+            android:ems="10"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:gravity="start|top"
+            android:hint="Start Writing Your Thoughts..."
+            android:inputType="textMultiLine"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="@id/staticPost"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/staticPost"
+            app:layout_constraintTop_toBottomOf="@+id/staticPost" />
+
+        <TextView
+            android:id="@+id/staticHashtags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HashTags"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextMultiLine"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextMultiLine"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+
+            />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/hastag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/edt_background"
+            android:ems="10"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:gravity="start|top"
+            android:hint="Start Writing Hashtags"
+            android:inputType="textMultiLine"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/staticHashtags"
+            app:layout_constraintStart_toStartOf="@+id/staticHashtags"
+            app:layout_constraintTop_toBottomOf="@+id/staticHashtags" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -58,6 +58,24 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> {
                     showBottomNavigation()
                 }
+                R.id.profileFragment -> {
+                    hideBottomNavigationView()
+                }
+                R.id.chatsFragment -> {
+                    hideBottomNavigationView()
+                }
+                R.id.postFragment -> {
+                    hideBottomNavigationView()
+                }
+                R.id.searchFragment -> {
+                    showBottomNavigation()
+                }
+                R.id.notificationsFragment -> {
+                    showBottomNavigation()
+                }
+                R.id.jobsFragment -> {
+                    showBottomNavigation()
+                }
             }
         }
     }

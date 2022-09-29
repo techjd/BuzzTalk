@@ -88,4 +88,8 @@ dependencies {
     // Reaction Library
     def reaction_version = "1.6"
     implementation "com.github.pgreze:android-reactions:$reaction_version"
+
+    // Circular Image View
+    def image_version = "3.1.0"
+    implementation "de.hdodenhof:circleimageview:$image_version"
 }

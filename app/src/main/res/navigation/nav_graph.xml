@@ -12,11 +12,13 @@
         <action
             android:id="@+id/action_splashFragment_to_chooseLoginSignUpFragment"
             app:destination="@id/chooseLoginSignUpFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -28,11 +30,14 @@
         <action
             android:id="@+id/action_chooseLoginSignUpFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/chooseLoginSignUpFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_chooseLoginSignUpFragment_to_signUpFragment"
             app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
             app:popUpTo="@id/chooseLoginSignUpFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -44,11 +49,13 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_loginFragment_to_chooseLoginSignUpFragment2"
             app:destination="@id/chooseLoginSignUpFragment"
+            app:exitAnim="@anim/fade_out"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -60,11 +67,13 @@
         <action
             android:id="@+id/action_signUpFragment_to_addFirstLastNameFragment"
             app:destination="@id/addFirstLastNameFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/signUpFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_signUpFragment_to_chooseLoginSignUpFragment2"
             app:destination="@id/chooseLoginSignUpFragment"
+            app:exitAnim="@anim/fade_out"
             app:popUpTo="@id/signUpFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -76,11 +85,13 @@
         <action
             android:id="@+id/action_addFirstLastNameFragment_to_addEmailFragment"
             app:destination="@id/addEmailFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/addFirstLastNameFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_addFirstLastNameFragment_to_signUpFragment"
             app:destination="@id/signUpFragment"
+            app:exitAnim="@anim/fade_out"
             app:popUpTo="@id/addFirstLastNameFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -92,11 +103,13 @@
         <action
             android:id="@+id/action_addEmailFragment_to_addPasswordFragment"
             app:destination="@id/addPasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/addEmailFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_addEmailFragment_to_addFirstLastNameFragment"
             app:destination="@id/addFirstLastNameFragment"
+            app:exitAnim="@anim/fade_out"
             app:popUpTo="@id/addEmailFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -108,11 +121,13 @@
         <action
             android:id="@+id/action_addPasswordFragment_to_addEmailFragment"
             app:destination="@id/addEmailFragment"
+            app:exitAnim="@anim/fade_out"
             app:popUpTo="@id/addPasswordFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_addPasswordFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/addPasswordFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -120,7 +135,17 @@
         android:id="@+id/homeFragment"
         android:name="com.ssip.buzztalk.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_left" />
+        <action
+            android:id="@+id/action_homeFragment_to_chatsFragment"
+            app:destination="@id/chatsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/postFragment"
         android:name="com.ssip.buzztalk.ui.fragments.post.PostFragment"
