@@ -108,7 +108,7 @@
         <action
             android:id="@+id/action_addPasswordFragment_to_addEmailFragment"
             app:destination="@id/addEmailFragment"
-            app:popUpTo="@id/addEmailFragment"
+            app:popUpTo="@id/addPasswordFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_addPasswordFragment_to_homeFragment"
