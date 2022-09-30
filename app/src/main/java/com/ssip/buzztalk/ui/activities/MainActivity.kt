@@ -76,15 +76,18 @@ class MainActivity : AppCompatActivity() {
                 R.id.jobsFragment -> {
                     showBottomNavigation()
                 }
+                R.id.userDetailProfileFragment -> {
+                    hideBottomNavigationView()
+                }
             }
         }
     }
 
-    fun showBottomNavigation() {
+    private fun showBottomNavigation() {
         binding.bottomNavigation.visibility = View.VISIBLE
     }
 
-    fun hideBottomNavigationView() {
+    private fun hideBottomNavigationView() {
         binding.bottomNavigation.visibility = View.GONE
     }
 }

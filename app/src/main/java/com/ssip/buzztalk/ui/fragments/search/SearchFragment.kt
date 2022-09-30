@@ -5,56 +5,76 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.ssip.buzztalk.R
+import com.ssip.buzztalk.databinding.FragmentProfileBinding
+import com.ssip.buzztalk.databinding.FragmentSearchBinding
+import com.ssip.buzztalk.models.searchusers.response.User
+import com.ssip.buzztalk.ui.fragments.search.adapter.SearchAdapter
+import com.ssip.buzztalk.ui.fragments.search.viewmodel.SearchViewModel
+import com.ssip.buzztalk.utils.DialogClass
+import com.ssip.buzztalk.utils.Status
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
+    private val searchViewModel: SearchViewModel by viewModels()
+    private lateinit var searchAdapter: SearchAdapter
+
+    @Inject
+    lateinit var glide: RequestManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        searchViewModel.getAllSearchUsers()
+        binding.personsRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.personsRecyclerView.setHasFixedSize(true)
+
+        searchViewModel.getAllSearchUsers()
+
+        searchViewModel.allSearchUsers.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    searchAdapter = SearchAdapter(glide, navigate = { userID ->
+                        navigate(userID)
+                    })
+                    binding.personsRecyclerView.adapter = searchAdapter
+                    searchAdapter.users = response.data!!.data.users as MutableList<User>
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
                 }
             }
+        }
+    }
+
+    private fun navigate(userId: String) {
+        findNavController().navigate(R.id.action_searchFragment_to_userDetailProfileFragment)
     }
 }

@@ -8,6 +8,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.api.AuthAPI
+import com.ssip.buzztalk.api.UserAPI
+import com.ssip.buzztalk.models.user.response.User
 import com.ssip.buzztalk.utils.Constants.DEVELOPMENT_BASE_URL
 import com.ssip.buzztalk.utils.NetworkManager
 import dagger.Module
@@ -33,8 +35,14 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesUserAPI(retrofit: Retrofit): AuthAPI {
+    fun providesAuthAPI(retrofit: Retrofit): AuthAPI {
         return retrofit.create(AuthAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesUserAPI(retrofit: Retrofit): UserAPI {
+        return retrofit.create(UserAPI::class.java)
     }
 
     @Provides

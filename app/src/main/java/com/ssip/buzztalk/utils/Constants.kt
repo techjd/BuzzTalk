@@ -7,4 +7,6 @@ object Constants {
     const val USER_TOKEN = "USER_TOKEN"
     const val REGISTER_ENDPOINT = "auth/register"
     const val LOGIN_ENDPOINT = "auth/login"
+    const val GET_USER_INFO_ENDPOINT = "user/userInfo"
+    const val GET_SEARCH_USERS = "user/getAllUsers"
 }

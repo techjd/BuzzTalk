@@ -1,11 +1,11 @@
-package com.ssip.buzztalk.ui.fragments.profile
+package com.ssip.buzztalk.ui.fragments.search.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ssip.buzztalk.models.user.response.UserInfo
+import com.ssip.buzztalk.models.searchusers.response.SearchUsers
 import com.ssip.buzztalk.repository.UserRepository
 import com.ssip.buzztalk.utils.ErrorResponse
 import com.ssip.buzztalk.utils.NetworkManager
@@ -15,37 +15,34 @@ import kotlinx.coroutines.launch
 import okio.IOException
 import javax.inject.Inject
 
-
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
+class SearchViewModel @Inject constructor(
     private val networkManager: NetworkManager,
     private val userRepository: UserRepository,
     private val errorResponse: ErrorResponse
-    ): ViewModel() {
-    private val _userInfo: MutableLiveData<NetworkResult<UserInfo>> = MutableLiveData()
-    val userInfo: LiveData<NetworkResult<UserInfo>> = _userInfo
+): ViewModel() {
+    private val _allSearchUsers: MutableLiveData<NetworkResult<SearchUsers>> = MutableLiveData()
+    val allSearchUsers: LiveData<NetworkResult<SearchUsers>> = _allSearchUsers
 
-
-    fun getUserInfo(token: String) {
+    fun getAllSearchUsers() {
         viewModelScope.launch {
-            _userInfo.postValue(NetworkResult.Loading())
             try {
                 if (networkManager.hasInternetConnection()) {
-                    val data = userRepository.getUserInfo(token)
+                    val data = userRepository.getAllSearchUsers()
                     if (data.isSuccessful) {
-                        _userInfo.postValue(NetworkResult.Success(data.body()!!))
+                        _allSearchUsers.postValue(NetworkResult.Success(data.body()!!))
                     } else {
                         Log.d("ERROR", "getUserInfo: Some Error Occurred")
                         val error = errorResponse.giveErrorResult(data.errorBody()!!)
-                        _userInfo.postValue(NetworkResult.Error(error.message))
+                        _allSearchUsers.postValue(NetworkResult.Error(error.message))
                     }
                 } else {
-                    _userInfo.postValue(NetworkResult.Error("No Internet Connection"))
+                    _allSearchUsers.postValue(NetworkResult.Error("No Internet Connection"))
                 }
             } catch (t: Throwable) {
                 when (t) {
-                    is IOException -> _userInfo.postValue(NetworkResult.Error("Network Failure"))
-                    else -> _userInfo.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
+                    is IOException -> _allSearchUsers.postValue(NetworkResult.Error("Network Failure"))
+                    else -> _allSearchUsers.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
                 }
             }
         }

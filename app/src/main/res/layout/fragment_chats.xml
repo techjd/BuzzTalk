@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.chat.ChatsFragment">
 
+    <include
+        android:id="@+id/messagesTopAppBar"
+        layout="@layout/messages_toolbar"
+        />
 
     <TextView
         android:layout_centerInParent="true"

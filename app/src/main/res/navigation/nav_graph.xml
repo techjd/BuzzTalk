@@ -155,7 +155,13 @@
         android:id="@+id/searchFragment"
         android:name="com.ssip.buzztalk.ui.fragments.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_userDetailProfileFragment"
+            app:destination="@id/userDetailProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/notificationsFragment"
         android:name="com.ssip.buzztalk.ui.fragments.notifications.NotificationsFragment"
@@ -176,4 +182,9 @@
         android:name="com.ssip.buzztalk.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/userDetailProfileFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.search.userdetailprofile.UserDetailProfileFragment"
+        android:label="fragment_user_detail_profile"
+        tools:layout="@layout/fragment_user_detail_profile" />
 </navigation>

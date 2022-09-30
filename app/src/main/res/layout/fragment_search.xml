@@ -5,12 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.search.SearchFragment">
 
-    <TextView
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:textSize="20dp"
-        android:fontFamily="@font/nunitosans_bold"
-        android:layout_height="wrap_content"
-        android:text="Search Fragment" />
+    <include
+        android:id="@+id/topSearchBar"
+        layout="@layout/search_toolbar"
+        />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/topSearchBar"
+        android:id="@+id/personsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
