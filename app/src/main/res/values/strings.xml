@@ -2,7 +2,7 @@
     <string name="app_name">BuzzTalk</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="short_Desc">Billions of Entrepreneurs, Students, and Higher Authorities are waiting to for you at BuzzTalk.</string>
+    <string name="short_Desc">Millions of Entrepreneurs, Students, and Higher Authorities are waiting to for you at BuzzTalk.</string>
     <string name="choose_sign_up_text">Choose One Of The Following</string>
     <string name="post_content">Post Content</string>
 </resources>
