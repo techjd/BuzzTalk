@@ -75,6 +75,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun navigate(userId: String) {
-        findNavController().navigate(R.id.action_searchFragment_to_userDetailProfileFragment)
+        val action = SearchFragmentDirections.actionSearchFragmentToUserDetailProfileFragment(userId)
+        findNavController().navigate(action)
     }
 }

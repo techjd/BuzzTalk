@@ -8,5 +8,15 @@ object Constants {
     const val REGISTER_ENDPOINT = "auth/register"
     const val LOGIN_ENDPOINT = "auth/login"
     const val GET_USER_INFO_ENDPOINT = "user/userInfo"
+    const val GET_USER_INFO_OF_OTHER_USERS_ENDPOINT = "user/getOthersInfo"
     const val GET_SEARCH_USERS = "user/getAllUsers"
+    const val FOLLOW_USER = "user/follow"
+    const val UNFOLLOW_USER  = "user/unfollow"
+    const val GET_ALL_FOLLOWERS_AND_FOLLOWING = "user/getAllFollowersAndFollowing"
+    const val CHECK_IF_USER_FOLLOWED_OR_NOT = "checkIfUserFollowedOrNot"
+
+    // Constants Defined in the backend to cross verify in frontend
+    const val SUCCESS = "SUCCESS"
+    const val FAILURE = "FAILURE"
+    const val USER_ALREADY_FOLLOWED = "USER ALREADY FOLLOWED"
 }

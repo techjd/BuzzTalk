@@ -184,7 +184,11 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/userDetailProfileFragment"
-        android:name="com.ssip.buzztalk.ui.fragments.search.userdetailprofile.UserDetailProfileFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.userdetailprofile.UserDetailProfileFragment"
         android:label="fragment_user_detail_profile"
-        tools:layout="@layout/fragment_user_detail_profile" />
+        tools:layout="@layout/fragment_user_detail_profile" >
+        <argument
+            android:name="userId"
+            app:argType="string"/>
+    </fragment>
 </navigation>

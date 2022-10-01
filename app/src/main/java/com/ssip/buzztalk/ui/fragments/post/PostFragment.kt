@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
-import com.ssip.buzztalk.databinding.FragmentHomeBinding
 import com.ssip.buzztalk.databinding.FragmentPostBinding
 
 
