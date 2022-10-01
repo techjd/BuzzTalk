@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentAddEmailBinding
 import com.ssip.buzztalk.databinding.FragmentProfileBinding
+import com.ssip.buzztalk.models.totalCount.request.UserID
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
 import com.ssip.buzztalk.utils.TokenManager
@@ -42,6 +43,23 @@ class ProfileFragment : Fragment() {
             when(response.status) {
                 Status.SUCCESS -> {
                     binding.fullName.text = response.data!!.data.user.firstName + " " +response.data.data.user.lastName
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+
+        profileViewModel.getFollowersFollowingCount(tokenManager.getTokenWithBearer()!!, UserID(tokenManager.getUserId()!!))
+
+        profileViewModel.totalFollowersFollowingCount.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    binding.followers.text = response.data!!.data.followers.size.toString()
+                    binding.following.text = response.data.data.following.size.toString()
                 }
                 Status.LOADING -> {
 

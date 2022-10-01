@@ -3,6 +3,7 @@ package com.ssip.buzztalk.repository
 import com.ssip.buzztalk.api.UserAPI
 import com.ssip.buzztalk.models.followUnfollow.request.Followee
 import com.ssip.buzztalk.models.searchusers.request.OtherUserInfoRequest
+import com.ssip.buzztalk.models.totalCount.request.UserID
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(private val userAPI: UserAPI) {
@@ -16,5 +17,9 @@ class UserRepository @Inject constructor(private val userAPI: UserAPI) {
 
     suspend fun followUser(token: String, followee: Followee) = userAPI.followUser(token, followee)
 
-    suspend fun unFollowUser(token: String) = userAPI.unfollowUser(token)
+    suspend fun unFollowUser(token: String, followee: Followee) = userAPI.unfollowUser(token, followee)
+
+    suspend fun checkIfUserIsFollowedOrNot(token: String, followee: Followee) = userAPI.checkIfUserFollowedOrNot(token, followee)
+
+    suspend fun getTotalFollowersFollowing(token: String, userID: UserID) = userAPI.getAllFollowersAndFollowing(token, userID)
 }

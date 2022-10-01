@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.ssip.buzztalk.models.followUnfollow.request.Followee
 import com.ssip.buzztalk.models.followUnfollow.response.FollowUnfollow
 import com.ssip.buzztalk.models.searchusers.request.OtherUserInfoRequest
+import com.ssip.buzztalk.models.totalCount.request.UserID
+import com.ssip.buzztalk.models.totalCount.response.FollowersFollowingCount
 import com.ssip.buzztalk.models.user.response.UserInfo
 import com.ssip.buzztalk.repository.UserRepository
 import com.ssip.buzztalk.utils.ErrorResponse
@@ -33,6 +35,12 @@ class UserDetailProfileViewModel @Inject constructor(
 
     private val _unFollowUser: MutableLiveData<NetworkResult<FollowUnfollow>> = MutableLiveData()
     val unFollowUser: LiveData<NetworkResult<FollowUnfollow>> = _unFollowUser
+
+    private val _userFollowedOrNot: MutableLiveData<NetworkResult<FollowUnfollow>> = MutableLiveData()
+    val userFollowedOrNot: LiveData<NetworkResult<FollowUnfollow>> = _userFollowedOrNot
+
+    private val _totalFollowersFollowing: MutableLiveData<NetworkResult<FollowersFollowingCount>> = MutableLiveData()
+    val totalFollowersFollowingCount: LiveData<NetworkResult<FollowersFollowingCount>> = _totalFollowersFollowing
 
     fun getInfo(token: String, otherUserInfoRequest: OtherUserInfoRequest) {
         viewModelScope.launch {
@@ -61,6 +69,7 @@ class UserDetailProfileViewModel @Inject constructor(
 
     fun followUser(token: String, followee: Followee) {
         viewModelScope.launch {
+            _followUser.postValue(NetworkResult.Loading())
             try {
                 if (networkManager.hasInternetConnection()) {
                     val data = userRepository.followUser(token, followee)
@@ -83,11 +92,12 @@ class UserDetailProfileViewModel @Inject constructor(
         }
     }
 
-    fun unFollowUser(token: String) {
+    fun unFollowUser(token: String, followee: Followee) {
         viewModelScope.launch {
+            _unFollowUser.postValue(NetworkResult.Loading())
             try {
                 if (networkManager.hasInternetConnection()) {
-                    val data = userRepository.unFollowUser(token)
+                    val data = userRepository.unFollowUser(token, followee)
                     if (data.isSuccessful) {
                         _unFollowUser.postValue(NetworkResult.Success(data.body()!!))
                     } else {
@@ -102,6 +112,58 @@ class UserDetailProfileViewModel @Inject constructor(
                 when (t) {
                     is IOException -> _unFollowUser.postValue(NetworkResult.Error("Network Failure"))
                     else -> _unFollowUser.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
+                }
+            }
+        }
+    }
+
+    fun checkIfUserIsFollowedOrNot(token: String, followee: Followee) {
+        viewModelScope.launch {
+            _userFollowedOrNot.postValue(NetworkResult.Loading())
+            try {
+                if (networkManager.hasInternetConnection()) {
+                    val data = userRepository.checkIfUserIsFollowedOrNot(token, followee)
+                    Log.d("DATA ", "checkIfUserIsFollowedOrNot: ${data.body()}")
+                    if (data.isSuccessful) {
+                        _userFollowedOrNot.postValue(NetworkResult.Success(data.body()!!))
+                        Log.d("RESPONSE ", "checkIfUserIsFollowedOrNot: ${data.body()}")
+                    } else {
+                        Log.d("ERROR", "getUserInfo: Some Error Occurred ${data}")
+                        val error = errorResponse.giveErrorResult(data.errorBody()!!)
+                        _userFollowedOrNot.postValue(NetworkResult.Error(error.message))
+                    }
+                } else {
+                    _userFollowedOrNot.postValue(NetworkResult.Error("No Internet Connection"))
+                }
+            } catch (t: Throwable) {
+                when (t) {
+                    is IOException -> _userFollowedOrNot.postValue(NetworkResult.Error("Network Failure"))
+                    else -> _userFollowedOrNot.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
+                }
+            }
+        }
+    }
+
+    fun getFollowersFollowingCount(token: String, userID: UserID) {
+        viewModelScope.launch {
+            _totalFollowersFollowing.postValue(NetworkResult.Loading())
+            try {
+                if (networkManager.hasInternetConnection()) {
+                    val data = userRepository.getTotalFollowersFollowing(token, userID)
+                    if (data.isSuccessful) {
+                        _totalFollowersFollowing.postValue(NetworkResult.Success(data.body()!!))
+                    } else {
+                        Log.d("ERROR", "getUserInfo: Some Error Occurred ${data.errorBody()}")
+                        val error = errorResponse.giveErrorResult(data.errorBody()!!)
+                        _totalFollowersFollowing.postValue(NetworkResult.Error(error.message))
+                    }
+                } else {
+                    _totalFollowersFollowing.postValue(NetworkResult.Error("No Internet Connection"))
+                }
+            } catch (t: Throwable) {
+                when (t) {
+                    is IOException -> _totalFollowersFollowing.postValue(NetworkResult.Error("Network Failure"))
+                    else -> _totalFollowersFollowing.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
                 }
             }
         }

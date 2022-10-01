@@ -1,6 +1,7 @@
 package com.ssip.buzztalk.ui.fragments.userdetailprofile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentUserDetailProfileBinding
 import com.ssip.buzztalk.models.followUnfollow.request.Followee
 import com.ssip.buzztalk.models.searchusers.request.OtherUserInfoRequest
+import com.ssip.buzztalk.models.totalCount.request.UserID
 import com.ssip.buzztalk.utils.Constants
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
@@ -46,9 +48,10 @@ class UserDetailProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Toast.makeText(context, args.userId, Toast.LENGTH_LONG).show()
+//        Toast.makeText(context, args.userId, Toast.LENGTH_LONG).show()
 
         userDetailProfileViewModel.getInfo(tokenManager.getTokenWithBearer()!!, OtherUserInfoRequest(args.userId))
+
 
         userDetailProfileViewModel.otherUserInfo.observe(viewLifecycleOwner) { response ->
             when(response.status) {
@@ -64,22 +67,81 @@ class UserDetailProfileFragment : Fragment() {
             }
         }
 
-        binding.follow.setOnClickListener {
-            userDetailProfileViewModel.followUser(tokenManager.getTokenWithBearer()!!, Followee(args.userId))
+        binding.followUnfollow.setOnClickListener {
+            if (binding.followUnfollow.text.toString().toLowerCase().trim() == "follow") {
+                userDetailProfileViewModel.followUser(tokenManager.getTokenWithBearer()!!, Followee(args.userId))
+            } else {
+                userDetailProfileViewModel.unFollowUser(tokenManager.getTokenWithBearer()!!, Followee(args.userId))
+            }
+        }
+
+        userDetailProfileViewModel.checkIfUserIsFollowedOrNot(tokenManager.getTokenWithBearer()!!, Followee(args.userId))
+
+        userDetailProfileViewModel.userFollowedOrNot.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    Log.d("MESSAGE", "onViewCreated: ${response.data!!.message}")
+                    if (response.data.message == Constants.USER_FOLLOWED) {
+                        binding.followUnfollow.setBackgroundResource(R.drawable.btnsign_back)
+                        binding.followUnfollow.text = "Unfollow"
+                        binding.followUnfollow.setTextColor(resources.getColor(R.color.black))
+                    }
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.data!!.message)
+                }
+            }
         }
 
         userDetailProfileViewModel.followUser.observe(viewLifecycleOwner) { response ->
             when(response.status) {
                 Status.SUCCESS -> {
-                    binding.follow.setBackgroundResource(R.drawable.btnsign_back)
-                    binding.follow.text = "Unfollow"
-                    binding.follow.setTextColor(resources.getColor(R.color.white))
+                    binding.followUnfollow.setBackgroundResource(R.drawable.btnsign_back)
+                    binding.followUnfollow.text = "Unfollow"
+                    binding.followUnfollow.setTextColor(resources.getColor(R.color.black))
                 }
                 Status.LOADING -> {
-                    binding.follow.isEnabled = false
+                    binding.followUnfollow.isEnabled = false
                 }
                 Status.ERROR -> {
-                    binding.follow.isEnabled = true
+                    binding.followUnfollow.isEnabled = true
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+
+        userDetailProfileViewModel.unFollowUser.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    binding.followUnfollow.setBackgroundResource(R.drawable.btnlogin_back)
+                    binding.followUnfollow.text = "Follow"
+                    binding.followUnfollow.setTextColor(resources.getColor(R.color.white))
+                }
+                Status.LOADING -> {
+                    binding.followUnfollow.isEnabled = false
+                }
+                Status.ERROR -> {
+                    binding.followUnfollow.isEnabled = true
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+
+        userDetailProfileViewModel.getFollowersFollowingCount(tokenManager.getTokenWithBearer()!!, UserID(args.userId))
+
+        userDetailProfileViewModel.totalFollowersFollowingCount.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    binding.followers.text = response.data!!.data.followers.size.toString()
+                    binding.following.text = response.data.data.following.size.toString()
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
                     DialogClass(view).showDialog(response.message!!)
                 }
             }

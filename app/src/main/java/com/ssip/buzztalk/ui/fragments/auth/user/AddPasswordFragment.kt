@@ -60,6 +60,7 @@ class AddPasswordFragment : Fragment() {
                 Status.SUCCESS -> {
                     hideProgressBar()
                     tokenManager.saveToken(response.data!!.data.token)
+                    tokenManager.saveUserId(response.data!!.data.user._id)
                     findNavController().navigate(R.id.action_addPasswordFragment_to_homeFragment)
                 }
                 Status.ERROR -> {
