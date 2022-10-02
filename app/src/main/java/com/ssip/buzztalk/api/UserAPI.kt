@@ -40,8 +40,8 @@ interface UserAPI {
     @POST(Constants.GET_ALL_FOLLOWERS_AND_FOLLOWING)
     suspend fun getAllFollowersAndFollowing(@Header("Authorization") token: String, @Body userID: UserID): Response<FollowersFollowingCount>
 
-    @GET(Constants.GET_ALL_CONNECTIONS)
-    suspend fun getAllConnections(@Header("Authorization") token: String): Response<AllConnections>
+    @POST(Constants.GET_ALL_CONNECTIONS)
+    suspend fun getAllConnections(@Header("Authorization") token: String, @Body userID: UserID): Response<AllConnections>
 
     @POST(Constants.CHECK_IF_USER_FOLLOWED_OR_NOT)
     suspend fun checkIfUserFollowedOrNot(@Header("Authorization") token: String, @Body followee: Followee): Response<FollowUnfollow>

@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentSplashBinding
+import com.ssip.buzztalk.ui.activities.MainActivity
 import com.ssip.buzztalk.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -43,6 +44,7 @@ class SplashFragment : Fragment() {
             if (tokenManager.getToken() != null) {
                 delay(2000L)
                 findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                (activity as MainActivity).setStartDestinationAsHomeFragment()
             } else {
                 delay(2000L)
                 findNavController().navigate(R.id.action_splashFragment_to_chooseLoginSignUpFragment)

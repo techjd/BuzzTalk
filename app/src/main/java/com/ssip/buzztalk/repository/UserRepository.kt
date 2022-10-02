@@ -34,5 +34,5 @@ class UserRepository @Inject constructor(private val userAPI: UserAPI) {
 
     suspend fun acceptRequest(token: String, requestId: RequestId) = userAPI.acceptRequest(token, requestId)
 
-    suspend fun getAllConnections(token: String) = userAPI.getAllConnections(token)
+    suspend fun getAllConnections(token: String, userID: UserID) = userAPI.getAllConnections(token, userID)
 }

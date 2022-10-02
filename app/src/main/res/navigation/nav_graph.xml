@@ -187,7 +187,13 @@
         android:id="@+id/profileFragment"
         android:name="com.ssip.buzztalk.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_detailedRelationFragment"
+            app:destination="@id/detailedRelationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/userDetailProfileFragment"
         android:name="com.ssip.buzztalk.ui.fragments.userdetailprofile.UserDetailProfileFragment"
@@ -196,10 +202,30 @@
         <argument
             android:name="userId"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_userDetailProfileFragment_to_detailedRelationFragment"
+            app:destination="@id/detailedRelationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/connectionRequestsFragment"
         android:name="com.ssip.buzztalk.ui.fragments.connections.ConnectionRequestsFragment"
         android:label="fragment_connection_requests"
         tools:layout="@layout/fragment_connection_requests" />
+    <fragment
+        android:id="@+id/detailedRelationFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.detailedrelation.DetailedRelationFragment"
+        android:label="fragment_detailed_relation"
+        tools:layout="@layout/fragment_detailed_relation" >
+        <argument
+            android:name="type"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailedRelationFragment_to_userDetailProfileFragment"
+            app:destination="@id/userDetailProfileFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
+    </fragment>
 </navigation>

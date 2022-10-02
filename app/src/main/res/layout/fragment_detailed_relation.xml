@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.detailedrelation.DetailedRelationFragment">
+
+    <include
+        android:id="@+id/detailedRelationToolBar"
+        layout="@layout/deatiled_relation_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/relationsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailedRelationToolBar" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/noRelation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No followers"
+        android:fontFamily="@font/nunitosans_semibold"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/relationsRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/relationsRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/detailedRelationToolBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

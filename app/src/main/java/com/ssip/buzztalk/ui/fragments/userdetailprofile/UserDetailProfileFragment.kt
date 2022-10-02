@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentUserDetailProfileBinding
@@ -15,6 +16,7 @@ import com.ssip.buzztalk.models.connections.request.ToId
 import com.ssip.buzztalk.models.followUnfollow.request.Followee
 import com.ssip.buzztalk.models.searchusers.request.OtherUserInfoRequest
 import com.ssip.buzztalk.models.totalCount.request.UserID
+import com.ssip.buzztalk.ui.fragments.profile.ProfileFragmentDirections
 import com.ssip.buzztalk.utils.Constants
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
@@ -198,6 +200,38 @@ class UserDetailProfileFragment : Fragment() {
                     DialogClass(view).showDialog(response.message!!)
                 }
             }
+        }
+
+        userDetailProfileViewModel.getAllConnections(tokenManager.getTokenWithBearer()!!, UserID(args.userId))
+
+        userDetailProfileViewModel.allConnections.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    binding.connections.text = response.data!!.data.connections.size.toString()
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+
+        }
+
+        binding.followersBlock.setOnClickListener {
+            val action = UserDetailProfileFragmentDirections.actionUserDetailProfileFragmentToDetailedRelationFragment(0, args.userId)
+            findNavController().navigate(action)
+        }
+
+        binding.followingBlock.setOnClickListener {
+            val action = UserDetailProfileFragmentDirections.actionUserDetailProfileFragmentToDetailedRelationFragment(1, args.userId)
+            findNavController().navigate(action)
+        }
+
+        binding.connectionsBlock.setOnClickListener {
+            val action = UserDetailProfileFragmentDirections.actionUserDetailProfileFragmentToDetailedRelationFragment(2, args.userId)
+            findNavController().navigate(action)
         }
     }
 }

@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentAddEmailBinding
 import com.ssip.buzztalk.databinding.FragmentProfileBinding
 import com.ssip.buzztalk.models.totalCount.request.UserID
+import com.ssip.buzztalk.ui.fragments.detailedrelation.DetailedRelationFragmentArgs
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
 import com.ssip.buzztalk.utils.TokenManager
@@ -70,7 +72,7 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        profileViewModel.getAllConnections(tokenManager.getTokenWithBearer()!!)
+        profileViewModel.getAllConnections(tokenManager.getTokenWithBearer()!!, UserID(tokenManager.getUserId()!!))
 
         profileViewModel.allConnections.observe(viewLifecycleOwner) { response ->
             when(response.status) {
@@ -85,6 +87,21 @@ class ProfileFragment : Fragment() {
                 }
             }
 
+        }
+
+        binding.followersBlock.setOnClickListener {
+            val action = ProfileFragmentDirections.actionProfileFragmentToDetailedRelationFragment(0, tokenManager.getUserId()!!)
+            findNavController().navigate(action)
+        }
+
+        binding.followingBlock.setOnClickListener {
+            val action = ProfileFragmentDirections.actionProfileFragmentToDetailedRelationFragment(1, tokenManager.getUserId()!!)
+            findNavController().navigate(action)
+        }
+
+        binding.connectionsBlock.setOnClickListener {
+            val action = ProfileFragmentDirections.actionProfileFragmentToDetailedRelationFragment(2, tokenManager.getUserId()!!)
+            findNavController().navigate(action)
         }
     }
 }

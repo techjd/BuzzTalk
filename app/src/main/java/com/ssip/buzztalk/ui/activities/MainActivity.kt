@@ -2,6 +2,7 @@ package com.ssip.buzztalk.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
@@ -27,10 +28,12 @@ class MainActivity : AppCompatActivity() {
 
 
         navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
         navController = navHostFragment.navController
 
         binding.bottomNavigation.setupWithNavController(navController)
+        navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when(destination.id) {
@@ -92,5 +95,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideBottomNavigationView() {
         binding.bottomNavigation.visibility = View.GONE
+    }
+
+    fun setStartDestinationAsHomeFragment() {
+        navGraph.setStartDestination(R.id.homeFragment)
+        navController.graph = navGraph
+    }
+
+    fun setStartDestinationAsSplashFragment() {
+        navGraph.setStartDestination(R.id.splashFragment)
+        navController.graph = navGraph
     }
 }

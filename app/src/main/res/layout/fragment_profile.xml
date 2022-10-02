@@ -107,11 +107,15 @@
 
 
             <LinearLayout
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:focusable="true"
                 android:id="@+id/followersBlock"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
                 <TextView
                     android:id="@+id/followers"
@@ -134,6 +138,9 @@
             </LinearLayout>
 
             <LinearLayout
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:focusable="true"
                 android:id="@+id/followingBlock"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -161,6 +168,9 @@
             </LinearLayout>
 
             <LinearLayout
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:focusable="true"
                 android:id="@+id/connectionsBlock"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
