@@ -79,6 +79,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.userDetailProfileFragment -> {
                     hideBottomNavigationView()
                 }
+                R.id.connectionRequestsFragment -> {
+                    hideBottomNavigationView()
+                }
             }
         }
     }

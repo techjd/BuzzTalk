@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ssip.buzztalk.models.connections.request.ToId
+import com.ssip.buzztalk.models.connections.response.Connections
 import com.ssip.buzztalk.models.followUnfollow.request.Followee
 import com.ssip.buzztalk.models.followUnfollow.response.FollowUnfollow
 import com.ssip.buzztalk.models.searchusers.request.OtherUserInfoRequest
@@ -41,6 +43,12 @@ class UserDetailProfileViewModel @Inject constructor(
 
     private val _totalFollowersFollowing: MutableLiveData<NetworkResult<FollowersFollowingCount>> = MutableLiveData()
     val totalFollowersFollowingCount: LiveData<NetworkResult<FollowersFollowingCount>> = _totalFollowersFollowing
+
+    private val _sendRequest: MutableLiveData<NetworkResult<Connections>> = MutableLiveData()
+    val sendRequest: LiveData<NetworkResult<Connections>> = _sendRequest
+
+    private val _connectionSentOrNot: MutableLiveData<NetworkResult<Connections>> = MutableLiveData()
+    val connectionSentOrNot: LiveData<NetworkResult<Connections>> = _connectionSentOrNot
 
     fun getInfo(token: String, otherUserInfoRequest: OtherUserInfoRequest) {
         viewModelScope.launch {
@@ -164,6 +172,56 @@ class UserDetailProfileViewModel @Inject constructor(
                 when (t) {
                     is IOException -> _totalFollowersFollowing.postValue(NetworkResult.Error("Network Failure"))
                     else -> _totalFollowersFollowing.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
+                }
+            }
+        }
+    }
+
+    fun sendRequest(token: String, toId: ToId) {
+        viewModelScope.launch {
+            _sendRequest.postValue(NetworkResult.Loading())
+            try {
+                if (networkManager.hasInternetConnection()) {
+                    val data = userRepository.sendRequest(token, toId)
+                    if (data.isSuccessful) {
+                        _sendRequest.postValue(NetworkResult.Success(data.body()!!))
+                    } else {
+                        Log.d("ERROR", "getUserInfo: Some Error Occurred ${data.errorBody()}")
+                        val error = errorResponse.giveErrorResult(data.errorBody()!!)
+                        _sendRequest.postValue(NetworkResult.Error(error.message))
+                    }
+                } else {
+                    _sendRequest.postValue(NetworkResult.Error("No Internet Connection"))
+                }
+            } catch (t: Throwable) {
+                when (t) {
+                    is IOException -> _sendRequest.postValue(NetworkResult.Error("Network Failure"))
+                    else -> _sendRequest.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
+                }
+            }
+        }
+    }
+
+    fun checkIfUserIsConnectedOrNot(token: String, toId: ToId) {
+        viewModelScope.launch {
+            _connectionSentOrNot.postValue(NetworkResult.Loading())
+            try {
+                if (networkManager.hasInternetConnection()) {
+                    val data = userRepository.checkIfRequestSentOrNot(token, toId)
+                    if (data.isSuccessful) {
+                        _connectionSentOrNot.postValue(NetworkResult.Success(data.body()!!))
+                    } else {
+                        Log.d("ERROR", "getUserInfo: Some Error Occurred ${data.errorBody()}")
+                        val error = errorResponse.giveErrorResult(data.errorBody()!!)
+                        _connectionSentOrNot.postValue(NetworkResult.Error(error.message))
+                    }
+                } else {
+                    _connectionSentOrNot.postValue(NetworkResult.Error("No Internet Connection"))
+                }
+            } catch (t: Throwable) {
+                when (t) {
+                    is IOException -> _connectionSentOrNot.postValue(NetworkResult.Error("Network Failure"))
+                    else -> _connectionSentOrNot.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later ${t.toString()}"))
                 }
             }
         }

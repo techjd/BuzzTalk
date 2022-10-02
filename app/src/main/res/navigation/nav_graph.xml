@@ -166,7 +166,13 @@
         android:id="@+id/notificationsFragment"
         android:name="com.ssip.buzztalk.ui.fragments.notifications.NotificationsFragment"
         android:label="fragment_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_notificationsFragment_to_connectionRequestsFragment"
+            app:destination="@id/connectionRequestsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/jobsFragment"
         android:name="com.ssip.buzztalk.ui.fragments.jobs.JobsFragment"
@@ -191,4 +197,9 @@
             android:name="userId"
             app:argType="string"/>
     </fragment>
+    <fragment
+        android:id="@+id/connectionRequestsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.connections.ConnectionRequestsFragment"
+        android:label="fragment_connection_requests"
+        tools:layout="@layout/fragment_connection_requests" />
 </navigation>

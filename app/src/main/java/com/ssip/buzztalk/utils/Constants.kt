@@ -15,9 +15,21 @@ object Constants {
     const val UNFOLLOW_USER  = "user/unfollow"
     const val GET_ALL_FOLLOWERS_AND_FOLLOWING = "user/getAllFollowersAndFollowing"
     const val CHECK_IF_USER_FOLLOWED_OR_NOT = "user/checkIfUserFollowedOrNot"
+    const val SEND_REQUEST = "user/connect"
+    const val CHECK_IF_REQUEST_SENT_OR_NOT = "user/checkIfRequestSentOrNot"
+    const val GET_ALL_CONNECTIONS_REQUESTS = "user/getAllConnectionsRequest"
+    const val ACCEPT_REQUEST = "user/acceptRequest"
+    const val GET_ALL_CONNECTIONS = "user/getAllConnections"
 
     // Constants Defined in the backend to cross verify in frontend
     const val SUCCESS = "SUCCESS"
     const val FAILURE = "FAILURE"
     const val USER_FOLLOWED = "USER FOLLOWED"
+
+    const val USER_NOT_CONNECTED = "USER NOT CONNECTED"
+    const val REQUEST_SENT = "REQUEST SENT"
+    const val UNSEND_REQUEST = "REQUEST UNSEND"
+    const val REQUEST_ACCEPTED = "REQUEST ACCEPTED"
+    const val REQUEST_REJECTED  = "REQUEST REJECTED"
+    const val ALL_CONNECTIONS = "ALL CONNECTIONS"
 }

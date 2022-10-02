@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentChatsBinding
 import com.ssip.buzztalk.databinding.FragmentNotificationsBinding
@@ -24,5 +25,13 @@ class NotificationsFragment : Fragment() {
     ): View? {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.cardView.setOnClickListener {
+            findNavController().navigate(R.id.action_notificationsFragment_to_connectionRequestsFragment)
+        }
     }
 }

@@ -69,5 +69,22 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
+
+        profileViewModel.getAllConnections(tokenManager.getTokenWithBearer()!!)
+
+        profileViewModel.allConnections.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    binding.connections.text = response.data!!.data.connections.size.toString()
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+
+        }
     }
 }

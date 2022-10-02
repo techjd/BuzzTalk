@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentUserDetailProfileBinding
+import com.ssip.buzztalk.models.connections.request.ToId
 import com.ssip.buzztalk.models.followUnfollow.request.Followee
 import com.ssip.buzztalk.models.searchusers.request.OtherUserInfoRequest
 import com.ssip.buzztalk.models.totalCount.request.UserID
@@ -137,6 +138,58 @@ class UserDetailProfileFragment : Fragment() {
                 Status.SUCCESS -> {
                     binding.followers.text = response.data!!.data.followers.size.toString()
                     binding.following.text = response.data.data.following.size.toString()
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+
+        binding.connect.setOnClickListener {
+            if (binding.connect.text.toString().toLowerCase().trim() == "connect") {
+                userDetailProfileViewModel.sendRequest(tokenManager.getTokenWithBearer()!!, ToId(args.userId))
+            } else if (binding.connect.text.toString().toLowerCase().trim() == "cancel"){
+//                userDetailProfileViewModel.unFollowUser(tokenManager.getTokenWithBearer()!!, Followee(args.userId))
+            } else if(binding.connect.text.toString().toLowerCase().trim() == "disconnect") {
+                   // Implement Later
+                Toast.makeText(context, "Implementation Left", Toast.LENGTH_SHORT).show()
+            }
+//            userDetailProfileViewModel.sendRequest(tokenManager.getTokenWithBearer()!!, ToId(args.userId))
+        }
+
+        userDetailProfileViewModel.sendRequest.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    binding.connect.setBackgroundResource(R.drawable.btnsign_back)
+                    binding.connect.text = "Cancel Request"
+                    binding.connect.setTextColor(resources.getColor(R.color.black))
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+//
+        userDetailProfileViewModel.checkIfUserIsConnectedOrNot(tokenManager.getTokenWithBearer()!!, ToId(args.userId))
+
+        userDetailProfileViewModel.connectionSentOrNot.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    if (response.data!!.message == Constants.REQUEST_ACCEPTED) {
+                        binding.connect.setBackgroundResource(R.drawable.btnsign_back)
+                        binding.connect.text = "Disconnect"
+                        binding.connect.setTextColor(resources.getColor(R.color.black))
+                    } else if(response.data.message == Constants.REQUEST_SENT) {
+                        binding.connect.setBackgroundResource(R.drawable.btnsign_back)
+                        binding.connect.text = "Cancel Request"
+                        binding.connect.setTextColor(resources.getColor(R.color.black))
+                    }
                 }
                 Status.LOADING -> {
 
