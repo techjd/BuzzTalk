@@ -8,6 +8,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.api.AuthAPI
+import com.ssip.buzztalk.api.AuthInterceptor
+import com.ssip.buzztalk.api.ChatAPI
 import com.ssip.buzztalk.api.UserAPI
 import com.ssip.buzztalk.models.user.response.User
 import com.ssip.buzztalk.utils.Constants.DEVELOPMENT_BASE_URL
@@ -17,8 +19,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -26,23 +30,34 @@ import javax.inject.Singleton
 class NetworkModule {
     @Provides
     @Singleton
-    fun providesRetrofit(): Retrofit {
+    fun providesRetrofit(): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(DEVELOPMENT_BASE_URL)
-            .build()
     }
 
     @Provides
     @Singleton
-    fun providesAuthAPI(retrofit: Retrofit): AuthAPI {
-        return retrofit.create(AuthAPI::class.java)
+    fun providesOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
+        return OkHttpClient.Builder().addInterceptor(authInterceptor).build()
     }
 
     @Provides
     @Singleton
-    fun providesUserAPI(retrofit: Retrofit): UserAPI {
-        return retrofit.create(UserAPI::class.java)
+    fun providesAuthAPI(retrofitBuilder: Retrofit.Builder): AuthAPI {
+        return retrofitBuilder.build().create(AuthAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesUserAPI(retrofitBuilder: Retrofit.Builder): UserAPI {
+        return retrofitBuilder.build().create(UserAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesChatAPI(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): ChatAPI {
+        return retrofitBuilder.client(okHttpClient).build().create(ChatAPI::class.java)
     }
 
     @Provides

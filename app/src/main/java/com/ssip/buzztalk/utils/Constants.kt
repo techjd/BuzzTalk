@@ -20,6 +20,11 @@ object Constants {
     const val GET_ALL_CONNECTIONS_REQUESTS = "user/getAllConnectionsRequest"
     const val ACCEPT_REQUEST = "user/acceptRequest"
     const val GET_ALL_CONNECTIONS = "user/getAllConnections"
+    const val MAKE_ME_ONLINE = "chat/makeMeOnline"
+    const val REMOVE_ME_ONLINE = "chat/removeMeOnline"
+    const val SEND_MESSAGE = "chat/sendMessage"
+    const val GET_ALL_MESSAGES = "chat/getAllMessages"
+    const val GET_ALL_CONVERSATIONS = "chat/getAllConversations"
 
     // Constants Defined in the backend to cross verify in frontend
     const val SUCCESS = "SUCCESS"
