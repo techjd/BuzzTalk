@@ -4,9 +4,9 @@
     <item
         android:id="@+id/messages"
         android:enabled="true"
-        android:icon="@drawable/ic_message"
-        android:title="Message"
-        android:contentDescription="Message"
+        android:icon="@drawable/ic_video_call"
+        android:title="Video Call"
+        android:contentDescription="VideoCall"
         app:showAsAction="ifRoom"
         />
 </menu>

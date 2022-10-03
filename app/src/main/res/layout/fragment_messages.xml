@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#F4F5F4"
+    tools:context=".ui.fragments.chat.messages.MessagingFragment">
+
+<include
+    android:id="@+id/onlineMessageToolBar"
+    layout="@layout/messaging_toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="3dp"
+        android:id="@+id/messageRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/onlineMessageToolBar"
+        tools:listitem="@layout/item_chat_message_myself">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/messageListProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
+<LinearLayout
+    android:layout_marginBottom="10dp"
+    android:id="@+id/footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:orientation="horizontal">
+
+    <EditText
+        android:layout_marginLeft="5dp"
+        android:id="@+id/editTextChatMessage"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:padding="10dp"
+        android:fontFamily="@font/nunitosans_semibold"
+        android:hint="Start Typing Message"
+        android:textColor="@color/black"
+        android:textColorHint="#626161"
+        android:inputType="textPersonName"
+        android:background="@drawable/edt_background"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btnlogin_back"
+        android:fontFamily="@font/nunitosans_semibold"
+        android:text="Send"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:textSize="20dp" />
+</LinearLayout>
+
+
+</RelativeLayout>

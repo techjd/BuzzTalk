@@ -16,4 +16,13 @@
         <!--        <item name="fontFamily">@font/nunitosans_regular</item>-->
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <!--        <item name="elevation">100dp</item>-->
+        <item name="backgroundTint">#F4F3F3</item>
+        <item name="elevation">10dp</item>
+        <item name="minHeight">50dp</item>
+
+        <!--        <item name="itemRippleColor">#FFFFFF</item>-->
+    </style>
 </resources>

@@ -3,19 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.chat.ChatsFragment">
+    tools:context=".ui.fragments.chat.conversations.ConversationsFragment">
 
     <include
-        android:id="@+id/messagesTopAppBar"
-        layout="@layout/messages_toolbar"
+        android:id="@+id/conversationTopAppBar"
+        layout="@layout/conversation_toolbar"
         />
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/conversationTopAppBar"
+        android:id="@+id/conversationRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
         android:layout_centerInParent="true"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
-        android:textSize="20dp"
-        android:fontFamily="@font/nunitosans_bold"
-        android:layout_height="wrap_content"
-        android:text="Chats Fragment" />
+        android:layout_height="wrap_content" />
+
 
 </RelativeLayout>

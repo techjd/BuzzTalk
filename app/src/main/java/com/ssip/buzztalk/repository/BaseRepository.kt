@@ -1,5 +1,6 @@
 package com.ssip.buzztalk.repository
 
+import android.util.Log
 import com.google.gson.Gson
 import com.ssip.buzztalk.models.failure.Failure
 import com.ssip.buzztalk.utils.ErrorResponse
@@ -35,7 +36,6 @@ abstract class BaseRepository {
                 } else {
                     NetworkResult.Error("No Internet Connection")
                 }
-                NetworkResult.Loading()
             } catch (t: Throwable) {
                 when(t) {
                     is IOException -> NetworkResult.Error("Network Failure")

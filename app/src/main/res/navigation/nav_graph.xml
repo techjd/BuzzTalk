@@ -180,9 +180,15 @@
         tools:layout="@layout/fragment_jobs" />
     <fragment
         android:id="@+id/chatsFragment"
-        android:name="com.ssip.buzztalk.ui.fragments.chat.ChatsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.chat.conversations.ConversationsFragment"
         android:label="fragment_chats"
-        tools:layout="@layout/fragment_chats" />
+        tools:layout="@layout/fragment_chats" >
+        <action
+            android:id="@+id/action_chatsFragment_to_messagingFragment"
+            app:destination="@id/messagingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.ssip.buzztalk.ui.fragments.profile.ProfileFragment"
@@ -226,6 +232,15 @@
             app:destination="@id/userDetailProfileFragment" />
         <argument
             android:name="userId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/messagingFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.chat.messages.MessagingFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" >
+        <argument
+            android:name="toId"
             app:argType="string" />
     </fragment>
 </navigation>
