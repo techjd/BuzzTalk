@@ -31,7 +31,13 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnUser.setOnClickListener {
+        binding.StudentCard.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
+        }
+        binding.UniversityCard.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
+        }
+        binding.companyCard.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
         }
 

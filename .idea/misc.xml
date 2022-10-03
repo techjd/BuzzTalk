@@ -3,17 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/btnlogin_back.xml" value="0.1885" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/login_background.xml" value="0.1885" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/activity_main.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/alert_dialog.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_add_email.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_add_first_last_name.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_add_password.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_home.xml" value="0.14990942028985507" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_login.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_sign_up.xml" value="0.14990942028985507" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_login.xml" value="0.264" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_profile.xml" value="0.14990942028985507" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_splash.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/search_toolbar.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/toolbar.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/menu/home_toolbar.xml" value="0.1265625" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1385" />
         <entry key="app/src/main/res/drawable/btnlogin_back.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/btnsign_back.xml" value="0.171" />
@@ -25,20 +30,18 @@
         <entry key="app/src/main/res/layout/alert_dialog.xml" value="0.2395742797851563" />
         <entry key="app/src/main/res/layout/bottom_navigation_menu.xml" value="0.2997957099080695" />
         <entry key="app/src/main/res/layout/connections_request_toolbar.xml" value="0.2601851851851852" />
-        <entry key="app/src/main/res/layout/deatiled_relation_toolbar.xml" value="0.30572916666666666" />
         <entry key="app/src/main/res/layout/fragment_add_email.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_add_first_last_name.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_add_password.xml" value="0.2615020751953125" />
         <entry key="app/src/main/res/layout/fragment_chats.xml" value="0.3067708333333333" />
         <entry key="app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.27783355712890623" />
         <entry key="app/src/main/res/layout/fragment_connection_requests.xml" value="0.2601851851851852" />
-        <entry key="app/src/main/res/layout/fragment_detailed_relation.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_jobs.xml" value="0.3067708333333333" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.24338045473451966" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.3067708333333333" />
         <entry key="app/src/main/res/layout/fragment_post.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.25" />

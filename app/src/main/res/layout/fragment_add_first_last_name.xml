@@ -10,22 +10,22 @@
     <include layout="@layout/toolbar" />
 
     <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:textColor="#000000"
-        android:textSize="40dp"
-        android:fontFamily="@font/nunitosans_bold"
         android:id="@+id/textView3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Your Name" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/nunitosans_bold"
+        android:text="Add Your Name"
+        android:textColor="@color/light_blue"
+        android:textSize="40sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="20dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -38,16 +38,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter First Name"
-                app:boxStrokeColor="#000000"
-                >
+                app:boxStrokeColor="#000000">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/firstName"
-                    android:inputType="text"
-                    android:background="@drawable/login_background"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_background"
                     android:fontFamily="@font/nunitosans_regular"
-                    android:layout_height="wrap_content" />
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -69,18 +68,17 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/secondName"
-                    android:inputType="text"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/login_background"
                     android:fontFamily="@font/nunitosans_regular"
-                    android:layout_height="wrap_content" />
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
 
         <com.google.android.material.button.MaterialButton
-            android:theme="@style/btn"
             android:id="@+id/next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,11 +86,12 @@
             android:background="@drawable/btnlogin_back"
             android:fontFamily="@font/nunitosans_bold"
             android:text="Continue"
-            app:icon="@drawable/ic_navigate_next"
-            app:iconGravity="textEnd"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:theme="@style/btn"
+            app:icon="@drawable/ic_navigate_next"
+            app:iconGravity="textEnd" />
 
     </LinearLayout>
 

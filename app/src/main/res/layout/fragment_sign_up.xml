@@ -1,79 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.fragments.auth.common.SignUpFragment">
 
-    <include
-        android:id="@+id/signUpToolBar"
-        layout="@layout/toolbar" />
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:id="@+id/txt_wel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/nunitosans_extrabold"
+        android:text="@string/choose_sign_up_text"
+        android:textColor="@color/light_blue"
+        android:textSize="40dp" />
 
     <LinearLayout
-        android:layout_below="@id/signUpToolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Student_card"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/adpink"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_wel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/nunitosans_regular"
-                android:gravity="center"
-                android:text="@string/choose_sign_up_text"
-                android:textSize="40dp" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnUser"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_wel"
-                android:layout_marginTop="28dp"
-                android:background="@drawable/btnlogin_back"
-                android:fontFamily="@font/nunitosans_bold"
-                android:padding="3dp"
-                android:text="USER"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnUniversity"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunitosans_bold"
+                    android:text="Student or\nHigher authority"
+                    android:gravity="center" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/University_card"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/sbyellow"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btnUser"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/btnlogin_back"
-                android:fontFamily="@font/nunitosans_bold"
-                android:text="UNIVERSITY"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnCompany"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunitosans_bold"
+                    android:text="College or\nUniversity"
+                    android:gravity="center" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/company_card"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/legreen"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btnUniversity"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/btnlogin_back"
-                android:fontFamily="@font/nunitosans_bold"
-                android:text="COMPANY / \n STARTUP"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:padding="5dp"
-                android:textSize="18sp" />
+                android:layout_height="match_parent">
 
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunitosans_bold"
+                    android:text="Company or\nStart-Up"
+                    android:gravity="center" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

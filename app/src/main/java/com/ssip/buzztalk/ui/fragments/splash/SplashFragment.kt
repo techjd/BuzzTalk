@@ -42,11 +42,11 @@ class SplashFragment : Fragment() {
 
         lifecycleScope.launch {
             if (tokenManager.getToken() != null) {
-                delay(2000L)
+                delay(1500L)
                 findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
                 (activity as MainActivity).setStartDestinationAsHomeFragment()
             } else {
-                delay(2000L)
+                delay(1500L)
                 findNavController().navigate(R.id.action_splashFragment_to_chooseLoginSignUpFragment)
             }
         }
