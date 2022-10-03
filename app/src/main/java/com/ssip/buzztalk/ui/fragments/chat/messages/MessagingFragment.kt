@@ -79,6 +79,8 @@ class MessagingFragment : Fragment() {
 
         messageViewModel.getAllMessages(To(args.toId))
 
+        messageAdapter = MessageAdapter(tokenManager.getUserId()!!)
+
         binding.onlineMessageToolBar.topOnlineMessageBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
@@ -106,20 +108,21 @@ class MessagingFragment : Fragment() {
         messageViewModel.allMessages.observe(viewLifecycleOwner) { response ->
             when(response.status) {
                 Status.SUCCESS -> {
-                    if (response.data?.data?.messages?.get(0)?.from == args.toId) {
-                        binding.onlineMessageToolBar.nameOfUser.text = "${response.data?.data?.messages?.get(0)?.fromObj?.get(0)?.firstName} ${response.data?.data?.messages?.get(0)?.fromObj?.get(0)?.lastName}"
-                    } else {
-                        binding.onlineMessageToolBar.nameOfUser.text = "${response.data?.data?.messages?.get(0)?.toObj?.get(0)?.firstName} ${response.data?.data?.messages?.get(0)?.toObj?.get(0)?.lastName}"
-                    }
-                    val messages = response.data?.data?.messages?.map { message ->
-                        MessageModel(message.from, message.body)
-                    }
-                    messageAdapter = MessageAdapter(tokenManager.getUserId()!!)
+                    if(response.data!!.data.messages.isNotEmpty()){
+                        if (response.data?.data?.messages?.get(0)?.from == args.toId) {
+                            binding.onlineMessageToolBar.nameOfUser.text = "${response.data?.data?.messages?.get(0)?.fromObj?.get(0)?.firstName} ${response.data?.data?.messages?.get(0)?.fromObj?.get(0)?.lastName}"
+                        } else {
+                            binding.onlineMessageToolBar.nameOfUser.text = "${response.data?.data?.messages?.get(0)?.toObj?.get(0)?.firstName} ${response.data?.data?.messages?.get(0)?.toObj?.get(0)?.lastName}"
+                        }
+                        val messages = response.data?.data?.messages?.map { message ->
+                            MessageModel(message.from, message.body)
+                        }
 //                    messageAdapter.messages = response.data?.data?.messages as MutableList<Message>
-                    messageAdapter.messages = messages as MutableList<MessageModel>
-                    binding.messageRecyclerView.adapter = messageAdapter
-                    binding.messageRecyclerView.scrollToPosition(messageAdapter.messages.size - 1)
-                    binding.messageListProgressBar.visibility = View.GONE
+                        messageAdapter.messages = messages as MutableList<MessageModel>
+                        binding.messageRecyclerView.adapter = messageAdapter
+                        binding.messageRecyclerView.scrollToPosition(messageAdapter.messages.size - 1)
+                        binding.messageListProgressBar.visibility = View.GONE
+                    }
                 }
                 Status.LOADING -> {
                     binding.messageListProgressBar.visibility = View.VISIBLE
