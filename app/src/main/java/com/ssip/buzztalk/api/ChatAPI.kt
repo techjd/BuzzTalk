@@ -28,4 +28,7 @@ interface ChatAPI {
 
     @GET(Constants.GET_ALL_CONVERSATIONS)
     suspend fun getAllConversation(): Response<Conversations>
+
+    @POST(Constants.GET_USER_STATUS)
+    suspend fun getUserStatus(@Body to: To): Response<ChatAPIResponse>
 }

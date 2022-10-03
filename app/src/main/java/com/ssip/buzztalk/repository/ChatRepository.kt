@@ -28,4 +28,8 @@ class ChatRepository @Inject constructor(private val chatAPI: ChatAPI): BaseRepo
     suspend fun getAllConversation() = safeApiCall {
         chatAPI.getAllConversation()
     }
+
+    suspend fun getUserStatus(to: To) = safeApiCall {
+        chatAPI.getUserStatus(to)
+    }
 }

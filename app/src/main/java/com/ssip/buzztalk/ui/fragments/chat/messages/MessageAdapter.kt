@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ssip.buzztalk.databinding.ItemChatMessageMyselfBinding
 import com.ssip.buzztalk.databinding.ItemChatMessageOtherBinding
+import com.ssip.buzztalk.models.chat.MessageModel
 import com.ssip.buzztalk.models.chat.response.messages.Message
 
 
 class MessageAdapter(val myUserId: String) : RecyclerView.Adapter<MessageRecyclerViewHolder>() {
 
-    var messages: MutableList<Message> = mutableListOf()
+    var messages: MutableList<MessageModel> = mutableListOf()
 
     companion object {
         const val VIEW_TYPE_ONE = 1
@@ -50,6 +51,10 @@ class MessageAdapter(val myUserId: String) : RecyclerView.Adapter<MessageRecycle
         return messages.size
     }
 
+    fun addNewMessage(messageModel: MessageModel) {
+        messages.add(messageModel)
+        notifyItemInserted(messages.size - 1)
+    }
 //    fun addItem(messagesItem: MessagesItem) {
 //        messages.add(messagesItem)
 //        Log.d("LAST ITEM", "Last Item ${messages[messages.size - 1]}")

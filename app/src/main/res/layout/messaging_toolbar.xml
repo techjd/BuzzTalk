@@ -1,7 +1,8 @@
 <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topOnlineMessageBar"
@@ -12,18 +13,35 @@
         app:menu="@menu/messaging_toolbar"
         >
 
-        <TextView
-            android:id="@+id/nameOfUser"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Name of User"
-            android:textSize="25dp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:fontFamily="@font/nunitosans_semibold"
-            android:textColor="@color/black"
-            />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/nameOfUser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Name of User"
+                android:textSize="25dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/status"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offline"
+                />
+
+        </LinearLayout>
 
 
     </com.google.android.material.appbar.MaterialToolbar>

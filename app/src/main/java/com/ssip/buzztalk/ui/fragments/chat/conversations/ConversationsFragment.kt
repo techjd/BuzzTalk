@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.RequestManager
+import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentChatsBinding
 import com.ssip.buzztalk.models.chat.response.conversations.Conversation
 import com.ssip.buzztalk.utils.DialogClass
@@ -52,6 +53,10 @@ class ConversationsFragment : Fragment() {
         binding.conversationRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.conversationRecyclerView.setHasFixedSize(true)
         conversationViewModel.getAllConversations()
+
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_chatsFragment_to_startNewConversationFragment)
+        }
 
         conversationViewModel.allConversations.observe(viewLifecycleOwner) { response ->
             when(response.status) {

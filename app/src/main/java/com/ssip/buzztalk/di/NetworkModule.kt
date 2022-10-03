@@ -12,6 +12,7 @@ import com.ssip.buzztalk.api.AuthInterceptor
 import com.ssip.buzztalk.api.ChatAPI
 import com.ssip.buzztalk.api.UserAPI
 import com.ssip.buzztalk.models.user.response.User
+import com.ssip.buzztalk.utils.Constants.CHAT_SERVER_URL
 import com.ssip.buzztalk.utils.Constants.DEVELOPMENT_BASE_URL
 import com.ssip.buzztalk.utils.NetworkManager
 import dagger.Module
@@ -19,6 +20,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import io.socket.client.IO
+import io.socket.client.Socket
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,6 +37,12 @@ class NetworkModule {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(DEVELOPMENT_BASE_URL)
+    }
+
+    @Provides
+    @Singleton
+    fun providesSocket(): Socket {
+        return IO.socket(CHAT_SERVER_URL).connect()
     }
 
     @Provides

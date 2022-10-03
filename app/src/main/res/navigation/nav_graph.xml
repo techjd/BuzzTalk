@@ -188,6 +188,11 @@
             app:destination="@id/messagingFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_chatsFragment_to_startNewConversationFragment"
+            app:destination="@id/startNewConversationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -242,5 +247,14 @@
         <argument
             android:name="toId"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/startNewConversationFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.chat.findusers.StartNewConversationFragment"
+        android:label="fragment_start_new_conversation"
+        tools:layout="@layout/fragment_start_new_conversation" >
+        <action
+            android:id="@+id/action_startNewConversationFragment_to_messagingFragment"
+            app:destination="@id/messagingFragment" />
     </fragment>
 </navigation>

@@ -3,6 +3,7 @@ package com.ssip.buzztalk.utils
 object Constants {
     const val DEVELOPMENT_BASE_URL = "http://192.168.2.4:5500/api/"
     const val PRODUCTION_BASE_URL = "" // Enter Deployed Server URL
+    const val CHAT_SERVER_URL = "http://192.168.2.4:5500/"
     const val PREFS_TOKEN_FILE = "PREFS_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"
     const val USER_ID = "USER_ID"
@@ -25,6 +26,7 @@ object Constants {
     const val SEND_MESSAGE = "chat/sendMessage"
     const val GET_ALL_MESSAGES = "chat/getAllMessages"
     const val GET_ALL_CONVERSATIONS = "chat/getAllConversations"
+    const val GET_USER_STATUS = "chat/getUserStatus"
 
     // Constants Defined in the backend to cross verify in frontend
     const val SUCCESS = "SUCCESS"
@@ -37,4 +39,7 @@ object Constants {
     const val REQUEST_ACCEPTED = "REQUEST ACCEPTED"
     const val REQUEST_REJECTED  = "REQUEST REJECTED"
     const val ALL_CONNECTIONS = "ALL CONNECTIONS"
+    const val NEW_MESSAGE = "NEW MESSAGE"
+    const val USER_OFFLINE = "USER OFFLINE"
+    const val USER_ONLINE = "USER ONLINE"
 }

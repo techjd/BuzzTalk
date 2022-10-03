@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.ActivityMainBinding
+import com.ssip.buzztalk.ui.fragments.chat.ChatViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -19,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var navHostFragment: NavHostFragment
     lateinit var navController: NavController
     lateinit var navGraph: NavGraph
+
+    private val chatViewModel: ChatViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,5 +111,14 @@ class MainActivity : AppCompatActivity() {
     fun setStartDestinationAsSplashFragment() {
         navGraph.setStartDestination(R.id.splashFragment)
         navController.graph = navGraph
+    }
+
+    override fun onBackPressed() {
+        if (navController.currentDestination?.id == R.id.homeFragment) {
+            super.onBackPressed()
+            chatViewModel.removeMeOnline()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

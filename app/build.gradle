@@ -92,4 +92,8 @@ dependencies {
     // Circular Image View
     def image_version = "3.1.0"
     implementation "de.hdodenhof:circleimageview:$image_version"
+
+    // Socket IO
+    implementation 'io.socket:socket.io-client:2.0.0'
+
 }
