@@ -48,6 +48,7 @@ class SplashFragment : Fragment() {
             } else {
                 delay(1500L)
                 findNavController().navigate(R.id.action_splashFragment_to_chooseLoginSignUpFragment)
+                (activity as MainActivity).setStartDestinationAsSplashFragment()
             }
         }
     }

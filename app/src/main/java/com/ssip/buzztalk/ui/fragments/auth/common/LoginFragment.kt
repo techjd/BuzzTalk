@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentLoginBinding
 import com.ssip.buzztalk.models.auth.user.login.request.UserRequestLogin
+import com.ssip.buzztalk.ui.activities.MainActivity
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
 import com.ssip.buzztalk.utils.TokenManager
@@ -67,6 +68,7 @@ class LoginFragment : Fragment() {
                     tokenManager.saveToken(response.data!!.data.token)
                     tokenManager.saveUserId(response.data!!.data.user._id)
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    (activity as MainActivity).setStartDestinationAsHomeFragment()
                 }
                 Status.LOADING -> {
                     showProgressBar()
