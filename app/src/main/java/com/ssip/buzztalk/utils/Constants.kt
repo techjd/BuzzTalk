@@ -21,6 +21,8 @@ object Constants {
     const val GET_ALL_CONNECTIONS_REQUESTS = "user/getAllConnectionsRequest"
     const val ACCEPT_REQUEST = "user/acceptRequest"
     const val GET_ALL_CONNECTIONS = "user/getAllConnections"
+    const val GET_ALL_FOLLOWERS = "user/getAllFollowers"
+    const val GET_ALL_FOLLOWING = "user/getAllFollowing"
     const val MAKE_ME_ONLINE = "chat/makeMeOnline"
     const val REMOVE_ME_ONLINE = "chat/removeMeOnline"
     const val SEND_MESSAGE = "chat/sendMessage"

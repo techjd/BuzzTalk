@@ -43,6 +43,9 @@ interface UserAPI {
     @POST(Constants.GET_ALL_CONNECTIONS)
     suspend fun getAllConnections(@Header("Authorization") token: String, @Body userID: UserID): Response<AllConnections>
 
+    @POST(Constants.GET_ALL_FOLLOWERS)
+    suspend fun getAllFollowers(@Header("Authorization") token: String, )
+
     @POST(Constants.CHECK_IF_USER_FOLLOWED_OR_NOT)
     suspend fun checkIfUserFollowedOrNot(@Header("Authorization") token: String, @Body followee: Followee): Response<FollowUnfollow>
 

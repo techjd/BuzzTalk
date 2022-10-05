@@ -7,8 +7,7 @@
 
     <include
         android:id="@+id/homeToolBar"
-        layout="@layout/home_toolbar"
-        />
+        layout="@layout/home_toolbar" />
 
     <TextView
         android:layout_centerInParent="true"

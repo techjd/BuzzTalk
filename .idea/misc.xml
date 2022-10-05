@@ -20,6 +20,7 @@
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/toolbar.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/menu/home_toolbar.xml" value="0.1265625" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1385" />
+        <entry key="app/src/main/res/drawable/bottom_nav_foreground.xml" value="0.2015" />
         <entry key="app/src/main/res/drawable/btnlogin_back.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/btnsign_back.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/chat_background_other.xml" value="0.174" />
@@ -31,7 +32,7 @@
         <entry key="app/src/main/res/drawable/login_background.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/message_edit_text_background.xml" value="0.195" />
         <entry key="app/src/main/res/drawable/send_message.xml" value="0.1575" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2564814814814815" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/alert_dialog.xml" value="0.2395742797851563" />
         <entry key="app/src/main/res/layout/bottom_navigation_menu.xml" value="0.2997957099080695" />
         <entry key="app/src/main/res/layout/connections_request_toolbar.xml" value="0.2601851851851852" />
@@ -55,7 +56,7 @@
         <entry key="app/src/main/res/layout/fragment_user_detail_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/home_toolbar.xml" value="0.2694051106770834" />
         <entry key="app/src/main/res/layout/item_chat_message.xml" value="0.30081716036772216" />
-        <entry key="app/src/main/res/layout/item_chat_message_myself.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_chat_message_myself.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_chat_message_other.xml" value="0.55" />
         <entry key="app/src/main/res/layout/item_connection_request.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_conversation.xml" value="0.25" />
