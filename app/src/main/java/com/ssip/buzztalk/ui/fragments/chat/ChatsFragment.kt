@@ -1,4 +1,4 @@
-package com.ssip.buzztalk.ui.fragments.auth
+package com.ssip.buzztalk.ui.fragments.chat
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ssip.buzztalk.R
-import com.ssip.buzztalk.databinding.FragmentLoginBinding
+import com.ssip.buzztalk.databinding.FragmentChatsBinding
+import com.ssip.buzztalk.databinding.FragmentHomeBinding
+import com.ssip.buzztalk.databinding.FragmentPostBinding
 
-class LoginFragment : Fragment() {
+class ChatsFragment : Fragment() {
 
-    private var _binding: FragmentLoginBinding? = null
+    private var _binding: FragmentChatsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +23,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentChatsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -30,4 +32,5 @@ class LoginFragment : Fragment() {
 
 
     }
+
 }

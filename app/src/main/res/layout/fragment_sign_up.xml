@@ -1,60 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.auth.SignUpFragment">
+    android:orientation="vertical"
+    tools:context=".ui.fragments.auth.common.SignUpFragment">
+
+    <include layout="@layout/toolbar" />
 
     <TextView
-        android:id="@+id/title"
-        android:text="Choose One"
-        android:gravity="center_horizontal"
-        android:textSize="65sp"
-        android:layout_marginTop="200dp"
-        android:fontFamily="@font/nunitosans_bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/university"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:cornerRadius="20dp"
-        android:layout_centerInParent="true"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginBottom="25dp"
+        android:id="@+id/txt_wel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/nunitosans_extrabold"
-        android:textSize="30sp"
-        android:text="University" />
+        android:text="@string/choose_sign_up_text"
+        android:textColor="@color/light_blue"
+        android:textSize="40dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/company"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/university"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:fontFamily="@font/nunitosans_extrabold"
-        android:text="COMPANY / STARTUP"
-        android:textSize="30sp"
-        app:cornerRadius="20dp" />
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_centerInParent="true"
-        android:id="@+id/user"
-        android:layout_below="@id/company"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cornerRadius="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="30sp"
-        android:fontFamily="@font/nunitosans_extrabold"
-        android:text="ENTREPRENEUR / USER" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Student_card"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/adpink"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-</RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunitosans_bold"
+                    android:text="Student or\nHigher authority"
+                    android:gravity="center" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/University_card"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/sbyellow"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunitosans_bold"
+                    android:text="College or\nUniversity"
+                    android:gravity="center" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/company_card"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/legreen"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunitosans_bold"
+                    android:text="Company or\nStart-Up"
+                    android:gravity="center" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</LinearLayout>
