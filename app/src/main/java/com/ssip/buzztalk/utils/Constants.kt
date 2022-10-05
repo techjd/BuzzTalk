@@ -1,12 +1,14 @@
 package com.ssip.buzztalk.utils
 
 object Constants {
-    const val DEVELOPMENT_BASE_URL = "http://192.168.2.4:5500/api/"
+    const val DEVELOPMENT_BASE_URL = "http://192.168.2.6:5500/api/"
     const val PRODUCTION_BASE_URL = "" // Enter Deployed Server URL
-    const val CHAT_SERVER_URL = "http://192.168.2.4:5500/"
+    const val CHAT_SERVER_URL = "http://192.168.2.6:5500/"
     const val PREFS_TOKEN_FILE = "PREFS_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"
     const val USER_ID = "USER_ID"
+    const val CONVERSATION_ID = "conversationId" // Key for Video Call
+    const val USER_MEDIA = "userMedia" // Key When we are sending user media
     const val REGISTER_ENDPOINT = "auth/register"
     const val LOGIN_ENDPOINT = "auth/login"
     const val GET_USER_INFO_ENDPOINT = "user/userInfo"

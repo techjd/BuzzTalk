@@ -64,8 +64,8 @@ class ConversationsFragment : Fragment() {
                     conversationsAdapter = ConversationsAdapter(
                         glide,
                         tokenManager.getUserId()!!,
-                        navigate = { toId ->
-                            navigate(toId)
+                        navigate = { toId, conversationId ->
+                            navigate(toId, conversationId)
                         }
                     )
                     conversationsAdapter.conversations = response.data?.data?.conversations as MutableList<Conversation>
@@ -85,8 +85,8 @@ class ConversationsFragment : Fragment() {
 
     }
 
-    private fun navigate(toId: String) {
-        val action = ConversationsFragmentDirections.actionChatsFragmentToMessagingFragment(toId)
+    private fun navigate(toId: String, conversationId: String) {
+        val action = ConversationsFragmentDirections.actionChatsFragmentToMessagingFragment(toId, conversationId)
         findNavController().navigate(action)
     }
 }

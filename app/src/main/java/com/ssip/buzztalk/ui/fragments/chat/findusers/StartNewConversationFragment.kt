@@ -82,7 +82,8 @@ class StartNewConversationFragment : Fragment() {
     }
 
     private fun navigate(userId: String) {
-        val action = StartNewConversationFragmentDirections.actionStartNewConversationFragmentToMessagingFragment(userId)
+        // @TODO - TAKE ACTION ON THIS IMMEDIATELY
+        val action = StartNewConversationFragmentDirections.actionStartNewConversationFragmentToMessagingFragment(userId, "noConvoId")
         findNavController().navigate(action)
     }
 }

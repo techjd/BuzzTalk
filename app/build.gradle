@@ -96,4 +96,7 @@ dependencies {
     // Socket IO
     implementation 'io.socket:socket.io-client:2.0.0'
 
+    // WebRTC
+    implementation fileTree(dir: "libs", include: ["*.jar", ".libjingle_peerconnection_so.so"])
+
 }

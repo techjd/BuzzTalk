@@ -83,6 +83,25 @@ class MessagingFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        binding.onlineMessageToolBar.topOnlineMessageBar.setOnMenuItemClickListener { menuItem ->
+            when(menuItem.itemId) {
+                R.id.videocall -> {
+                    if (args.conversationId == "noConvoId") {
+                        Toast.makeText(context, "You cant call without exchanging few messages", Toast.LENGTH_SHORT).show()
+                    } else {
+                        if (binding.onlineMessageToolBar.status.text == "Online") {
+//                            socket.emit("create or join", args.conversationId)
+                            val action = MessagingFragmentDirections.actionMessagingFragmentToVideoCallActivity(args.conversationId)
+                            findNavController().navigate(action)
+                        }
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
+
+
         chatViewModel.getUserStatus(To(args.toId))
 
         chatViewModel.userStatus.observe(viewLifecycleOwner) { response ->

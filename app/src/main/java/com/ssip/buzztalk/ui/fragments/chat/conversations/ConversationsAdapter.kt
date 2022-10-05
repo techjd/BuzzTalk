@@ -15,7 +15,7 @@ import com.ssip.buzztalk.ui.fragments.search.adapter.SearchAdapter
 class ConversationsAdapter(
     private val glide: RequestManager,
     private val myUserId: String,
-    private val navigate : (toId: String) -> Unit
+    private val navigate : (toId: String, conversationId: String) -> Unit
 ) :
     RecyclerView.Adapter<ConversationsAdapter.ConversationsViewHolder>() {
 
@@ -48,7 +48,7 @@ class ConversationsAdapter(
                 itemBinding.userFullName.text = userName
                 itemBinding.lastMessage.text = lastMessage
                 itemBinding.mainLayout.setOnClickListener {
-                    navigate(idToSend!!)
+                    navigate(idToSend!!, conversation._id)
                 }
             }
         }

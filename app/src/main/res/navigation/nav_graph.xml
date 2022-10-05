@@ -247,6 +247,15 @@
         <argument
             android:name="toId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_messagingFragment_to_videoCallFragment"
+            app:destination="@id/videoCallFragment" />
+        <argument
+            android:name="conversationId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_messagingFragment_to_videoCallActivity"
+            app:destination="@id/videoCallActivity" />
     </fragment>
     <fragment
         android:id="@+id/startNewConversationFragment"
@@ -257,4 +266,22 @@
             android:id="@+id/action_startNewConversationFragment_to_messagingFragment"
             app:destination="@id/messagingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/videoCallFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.videocall.VideoCallFragment"
+        android:label="fragment_video_call"
+        tools:layout="@layout/fragment_video_call" >
+        <argument
+            android:name="conversationId"
+            app:argType="string" />
+    </fragment>
+    <activity
+        android:id="@+id/videoCallActivity"
+        android:name="com.ssip.buzztalk.ui.fragments.videocall.VideoCallActivity"
+        android:label="activity_video_call"
+        tools:layout="@layout/activity_video_call" >
+        <argument
+            android:name="conversationId"
+            app:argType="string" />
+    </activity>
 </navigation>
