@@ -4,23 +4,35 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="#F4F5F4"
+android:background="@drawable/chat_background"
     tools:context=".ui.fragments.chat.messages.MessagingFragment">
 
 <include
     android:id="@+id/onlineMessageToolBar"
     layout="@layout/messaging_toolbar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="3dp"
-        android:id="@+id/messageRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/backgroundLayout"
+
         android:layout_above="@id/footer"
         android:layout_below="@id/onlineMessageToolBar"
-        tools:listitem="@layout/item_chat_message_myself">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/chat_background"
+        >
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messageRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:background="@android:color/transparent"
+            tools:listitem="@layout/item_chat_message_myself">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
         android:id="@+id/messageListProgressBar"
@@ -32,6 +44,7 @@ android:background="#F4F5F4"
         tools:visibility="visible" />
 
 <LinearLayout
+    android:background="@android:color/transparent"
     android:layout_marginBottom="10dp"
     android:id="@+id/footer"
     android:layout_width="match_parent"
