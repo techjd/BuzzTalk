@@ -34,6 +34,9 @@ class SignUpFragment : Fragment() {
         binding.btnUser.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
         }
+        binding.btnCompany.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpFragment_to_addCompanyName)
+        }
 
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

@@ -151,6 +151,9 @@
             app:destination="@id/chatsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_company_profile"
+            app:destination="@id/company_profile" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -302,4 +305,9 @@
             android:id="@+id/action_addCompanyCity_Bio_to_addCompanyLinks2"
             app:destination="@id/addCompanyLinks" />
     </fragment>
+    <fragment
+        android:id="@+id/company_profile"
+        android:name="com.ssip.buzztalk.Company_profile"
+        android:label="fragment_company_profile"
+        tools:layout="@layout/fragment_company_profile" />
 </navigation>

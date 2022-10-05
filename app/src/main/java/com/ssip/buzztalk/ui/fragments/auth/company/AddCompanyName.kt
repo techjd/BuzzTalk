@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.ssip.buzztalk.R
+import com.ssip.buzztalk.databinding.FragmentAddCompanyNameBinding
 
 class AddCompanyName : Fragment() {
+
+    private var _binding: FragmentAddCompanyNameBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +21,11 @@ class AddCompanyName : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_add_company_name, container, false)
+        _binding = FragmentAddCompanyNameBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 }

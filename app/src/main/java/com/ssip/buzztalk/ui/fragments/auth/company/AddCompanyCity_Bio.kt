@@ -6,8 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ssip.buzztalk.R
+import com.ssip.buzztalk.databinding.FragmentAddCompanyCityBioBinding
+import com.ssip.buzztalk.databinding.FragmentAddCompanyLinksBinding
 
 class AddCompanyCity_Bio : Fragment() {
+
+    private var _binding: FragmentAddCompanyCityBioBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +23,10 @@ class AddCompanyCity_Bio : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_add_company_city__bio, container, false)
+        _binding = FragmentAddCompanyCityBioBinding.inflate(inflater, container, false)
+        return binding.root
     }
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 }
