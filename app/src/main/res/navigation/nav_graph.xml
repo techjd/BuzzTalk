@@ -76,6 +76,9 @@
             app:exitAnim="@anim/fade_out"
             app:popUpTo="@id/signUpFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_signUpFragment_to_addCompanyName"
+            app:destination="@id/addCompanyName" />
     </fragment>
     <fragment
         android:id="@+id/addFirstLastNameFragment"
@@ -130,6 +133,9 @@
             app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/addPasswordFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addPasswordFragment_to_addCompanyCity_Bio"
+            app:destination="@id/addCompanyCity_Bio" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -256,5 +262,44 @@
         <action
             android:id="@+id/action_startNewConversationFragment_to_messagingFragment"
             app:destination="@id/messagingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCompanyName"
+        android:name="com.ssip.buzztalk.AddCompanyName"
+        android:label="fragment_add_company_name"
+        tools:layout="@layout/fragment_add_company_name" >
+        <action
+            android:id="@+id/action_addCompanyName_to_addCompanyLinks"
+            app:destination="@id/addCompanyLinks" />
+        <action
+            android:id="@+id/action_addCompanyName_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCompanyLinks"
+        android:name="com.ssip.buzztalk.AddCompanyLinks"
+        android:label="fragment_add_company_links"
+        tools:layout="@layout/fragment_add_company_links" >
+        <action
+            android:id="@+id/action_addCompanyLinks_to_addCompanyName"
+            app:destination="@id/addCompanyName" />
+        <action
+            android:id="@+id/action_addCompanyLinks_to_addCompanyCity_Bio"
+            app:destination="@id/addCompanyCity_Bio" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCompanyCity_Bio"
+        android:name="com.ssip.buzztalk.AddCompanyCity_Bio"
+        android:label="fragment_add_company_city__bio"
+        tools:layout="@layout/fragment_add_company_city__bio" >
+        <action
+            android:id="@+id/action_addCompanyCity_Bio_to_addCompanyLinks"
+            app:destination="@id/addCompanyLinks" />
+        <action
+            android:id="@+id/action_addCompanyCity_Bio_to_addPasswordFragment"
+            app:destination="@id/addPasswordFragment" />
+        <action
+            android:id="@+id/action_addCompanyCity_Bio_to_addCompanyLinks2"
+            app:destination="@id/addCompanyLinks" />
     </fragment>
 </navigation>
