@@ -6,15 +6,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.linkedin.android.spyglass.mentions.MentionSpan
+import com.linkedin.android.spyglass.mentions.MentionsEditable
+import com.linkedin.android.spyglass.suggestions.SuggestionsResult
+import com.linkedin.android.spyglass.tokenization.QueryToken
+import com.linkedin.android.spyglass.tokenization.impl.WordTokenizer
+import com.linkedin.android.spyglass.tokenization.impl.WordTokenizerConfig
+import com.linkedin.android.spyglass.tokenization.interfaces.QueryTokenReceiver
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentPostBinding
+import com.ssip.buzztalk.models.post.request.PostBody
+import com.ssip.buzztalk.models.usernames.UserNameForSearch
+import com.ssip.buzztalk.utils.DialogClass
+import com.ssip.buzztalk.utils.Status
+import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
-
-class PostFragment : Fragment() {
+@AndroidEntryPoint
+class PostFragment : Fragment(), QueryTokenReceiver {
 
     private var _binding: FragmentPostBinding? = null
     private val binding get() = _binding!!
+    private val postViewModel: PostViewModel by viewModels()
+
+    var users = listOf<UserNameForSearch>()
+
+    private val BUCKET = "users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +58,117 @@ class PostFragment : Fragment() {
         binding.postToolBar.topPostAppBar.setOnMenuItemClickListener { menuItem ->
             when(menuItem.itemId) {
                 R.id.postMenu -> {
-                    Toast.makeText(context, "Post the content", Toast.LENGTH_LONG).show()
+                    postContent()
 //                    findNavController().navigate(R.id.action_homeFragment_to_chatsFragment)
                     true
                 }
                 else -> false
             }
         }
+
+        postViewModel.getUserNames()
+
+        postViewModel.usernames.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    val userNames = response.data?.data?.usernames?.map { user ->
+                        UserNameForSearch(user.userName)
+                    }
+                    users = userNames!!
+                }
+                Status.LOADING -> {
+                    // @TODO - ADD PROGRESS BAR HERE
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+
+        binding.editTextTextMultiLine.displayTextCounter(false)
+        binding.editTextTextMultiLine.setQueryTokenReceiver(this)
+        binding.editTextTextMultiLine.setHint("Start Writing Thoughts")
+//        cities = CityLoader(resources)
+
+        val config = WordTokenizerConfig.Builder()
+        config.setExplicitChars("@")
+        config.setMaxNumKeywords(2)
+        config.setWordBreakChars(" ")
+        binding.editTextTextMultiLine.setTokenizer(WordTokenizer(config.build()))
+
+        postViewModel.addPost.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    Toast.makeText(context, "Content Posted", Toast.LENGTH_LONG).show()
+                    findNavController().popBackStack()
+                }
+                Status.LOADING -> {
+                    // @TODO - ADD Loading Bar
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+    }
+
+    private fun postContent() {
+        val text = MentionsEditable(binding.editTextTextMultiLine.text)
+        val mentionSpans: List<MentionSpan> = text.mentionSpans
+        var taggedUsers = mutableListOf<String>()
+        for (span in mentionSpans) {
+            val start: Int = text.getSpanStart(span)
+            val end: Int = text.getSpanEnd(span)
+            val currentText: String = text.subSequence(start, end).toString()
+            taggedUsers.add(currentText)
+            text.replace(
+                start,
+                end,
+                "@$currentText "
+            )
+        }
+
+        val hashTags = binding.hastag.text.toString().trim().splitToSequence("#").toList()
+
+        val finalContent = "$text \n \n \n${binding.hastag.text.toString().trim()}"
+//        Toast.makeText(context, finalContent, Toast.LENGTH_LONG).show()
+
+        val tags = mutableListOf<String>()
+
+        for(tag in hashTags) {
+            if (tag.isNotEmpty() && tag.isNotBlank()) {
+                tags.add(tag.trim())
+            }
+        }
+
+        postViewModel.addPost(PostBody(
+            finalContent,
+            taggedUsers,
+            tags
+        ))
+
+    }
+
+    override fun onQueryReceived(queryToken: QueryToken): List<String> {
+        val buckets: List<String> = Collections.singletonList(BUCKET)
+        val suggestions: List<UserNameForSearch> =  getSuggestions(queryToken)
+        val result = SuggestionsResult(queryToken, suggestions)
+        binding.editTextTextMultiLine.onReceiveSuggestionsResult(result, BUCKET)
+        return buckets
+    }
+
+    fun getSuggestions(queryToken: QueryToken): List<UserNameForSearch> {
+        val prefix = queryToken.keywords.lowercase(Locale.getDefault())
+        val suggestions: MutableList<UserNameForSearch> = ArrayList<UserNameForSearch>()
+        if (users != null) {
+            for (suggestion in users) {
+                val name: String =
+                    suggestion.suggestiblePrimaryText.lowercase(Locale.getDefault())
+                if (name.startsWith(prefix)) {
+                    suggestions.add(suggestion)
+                }
+            }
+        }
+        return suggestions
     }
 }

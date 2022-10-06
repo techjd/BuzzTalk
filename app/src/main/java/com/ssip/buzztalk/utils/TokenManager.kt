@@ -21,12 +21,42 @@ class TokenManager @Inject constructor(@ApplicationContext context: Context) {
         editor.apply()
     }
 
+    fun saveNotificationTokenOnCreate(notificationToken: String) {
+        val editor = prefs.edit()
+        editor.putString(Constants.NOTIFICATION_ON_CREATE, notificationToken)
+        editor.apply()
+    }
+
+    fun saveUserFirstTime(isUserFirstTime: Boolean) {
+        val editor = prefs.edit()
+        editor.putBoolean(Constants.IS_USER_FIRST_TIME, isUserFirstTime)
+        editor.apply()
+    }
+
+    fun saveNotificationTokenOnNewToken(notificationToken: String) {
+        val editor = prefs.edit()
+        editor.putString(Constants.NOTIFICATION_ON_TOKEN, notificationToken)
+        editor.apply()
+    }
+
     fun getUserId(): String? {
         return prefs.getString(Constants.USER_ID, null)
     }
 
     fun getToken(): String? {
         return prefs.getString(Constants.USER_TOKEN, null)
+    }
+
+    fun getUserFirstTime(): Boolean {
+        return prefs.getBoolean(Constants.IS_USER_FIRST_TIME, true)
+    }
+
+    fun getNotificationTokenOnCreate(): String? {
+        return prefs.getString(Constants.NOTIFICATION_ON_CREATE, null)
+    }
+
+    fun getNotificationTokenOnNewToken(): String? {
+        return prefs.getString(Constants.NOTIFICATION_ON_TOKEN, null)
     }
 
     fun getTokenWithBearer(): String? {

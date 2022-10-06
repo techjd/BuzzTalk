@@ -6,7 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssip.buzztalk.models.connections.response.allConnections.AllConnections
-import com.ssip.buzztalk.models.connections.response.connectionrequests.ConnectionRequests
+import com.ssip.buzztalk.models.followers.request.FolloweeId
+import com.ssip.buzztalk.models.followers.response.Followers
+import com.ssip.buzztalk.models.following.request.FollowerId
+import com.ssip.buzztalk.models.following.response.Followings
 import com.ssip.buzztalk.models.totalCount.request.UserID
 import com.ssip.buzztalk.models.totalCount.response.FollowersFollowingCount
 import com.ssip.buzztalk.repository.UserRepository
@@ -30,6 +33,12 @@ class DetailedRelationViewModel @Inject constructor(
 
     private val _allConnections: MutableLiveData<NetworkResult<AllConnections>> = MutableLiveData()
     val allConnections: LiveData<NetworkResult<AllConnections>> = _allConnections
+
+    private val _allFollowers: MutableLiveData<NetworkResult<Followers>> = MutableLiveData()
+    val allFollowers: LiveData<NetworkResult<Followers>> = _allFollowers
+
+    private val _allFollowing: MutableLiveData<NetworkResult<Followings>> = MutableLiveData()
+    val allFollowing: LiveData<NetworkResult<Followings>> = _allFollowing
 
     fun getFollowersFollowingCount(token: String, userID: UserID) {
         viewModelScope.launch {
@@ -77,6 +86,58 @@ class DetailedRelationViewModel @Inject constructor(
                 when (t) {
                     is IOException -> _allConnections.postValue(NetworkResult.Error("Network Failure"))
                     else -> _allConnections.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
+                }
+            }
+        }
+    }
+
+    fun getAllFollowers(token: String, followeeId: FolloweeId) {
+        viewModelScope.launch {
+                _allFollowers.postValue(NetworkResult.Loading())
+                try {
+                    if (networkManager.hasInternetConnection()) {
+                        val data = userRepository.getAllFollowers(token, followeeId)
+                        if (data.isSuccessful) {
+                            _allFollowers.postValue(NetworkResult.Success(data.body()!!))
+                            Log.d("CONNECTIONS ", "getAllConnections: ${data.body()!!.data.followers}")
+                        } else {
+                            Log.d("ERROR", "getUserInfo: Some Error Occurred ${data.errorBody()}")
+                            val error = errorResponse.giveErrorResult(data.errorBody()!!)
+                            _allFollowers.postValue(NetworkResult.Error(error.message))
+                        }
+                    } else {
+                        _allFollowers.postValue(NetworkResult.Error("No Internet Connection"))
+                    }
+                } catch (t: Throwable) {
+                    when (t) {
+                        is IOException -> _allFollowers.postValue(NetworkResult.Error("Network Failure"))
+                        else -> _allFollowers.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
+                    }
+                }
+        }
+    }
+
+    fun getAllFollowing(token: String, followerId: FollowerId) {
+        viewModelScope.launch {
+            _allFollowing.postValue(NetworkResult.Loading())
+            try {
+                if (networkManager.hasInternetConnection()) {
+                    val data = userRepository.getAllFollowing(token, followerId)
+                    if (data.isSuccessful) {
+                        _allFollowing.postValue(NetworkResult.Success(data.body()!!))
+                        Log.d("CONNECTIONS ", "getAllConnections: ${data.body()!!.data.following}")
+                    } else {
+                        Log.d("ERROR", "getUserInfo: Some Error Occurred ${errorResponse.giveErrorResult(data.errorBody()!!)}")
+                        val error = errorResponse.giveErrorResult(data.errorBody()!!)
+                        _allFollowing.postValue(NetworkResult.Error(error.message))
+                    }
+                } else {
+                    _allFollowing.postValue(NetworkResult.Error("No Internet Connection"))
+                }
+            } catch (t: Throwable) {
+                when (t) {
+                    is IOException -> _allFollowing.postValue(NetworkResult.Error("Network Failure"))
+                    else -> _allFollowing.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
                 }
             }
         }

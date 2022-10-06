@@ -10,11 +10,19 @@
         layout="@layout/home_toolbar" />
 
     <TextView
+        android:id="@+id/noPosts"
+        android:visibility="gone"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:textSize="20dp"
         android:fontFamily="@font/nunitosans_bold"
         android:layout_height="wrap_content"
-        android:text="Home Fragment" />
+        android:text="Start Following people to see posts" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/homeToolBar"
+        android:id="@+id/feedRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

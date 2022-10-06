@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "365599935269",
+    "project_id": "buzztalk-6cb1b",
+    "storage_bucket": "buzztalk-6cb1b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365599935269:android:83f11c3e4cf3e80d3868cc",
+        "android_client_info": {
+          "package_name": "com.ssip.buzztalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365599935269-halhhfoo8ciad4tobbqibnsbufan1a9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC2New2ABwzfVXLgV6DQLy_9CMw37d7Wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365599935269-halhhfoo8ciad4tobbqibnsbufan1a9q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

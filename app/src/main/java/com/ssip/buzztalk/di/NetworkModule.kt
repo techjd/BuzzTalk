@@ -7,10 +7,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
 import com.ssip.buzztalk.R
-import com.ssip.buzztalk.api.AuthAPI
-import com.ssip.buzztalk.api.AuthInterceptor
-import com.ssip.buzztalk.api.ChatAPI
-import com.ssip.buzztalk.api.UserAPI
+import com.ssip.buzztalk.api.*
 import com.ssip.buzztalk.models.user.response.User
 import com.ssip.buzztalk.utils.Constants.CHAT_SERVER_URL
 import com.ssip.buzztalk.utils.Constants.DEVELOPMENT_BASE_URL
@@ -67,6 +64,12 @@ class NetworkModule {
     @Singleton
     fun providesChatAPI(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): ChatAPI {
         return retrofitBuilder.client(okHttpClient).build().create(ChatAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesPostAPI(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): PostAPI {
+        return retrofitBuilder.client(okHttpClient).build().create(PostAPI::class.java)
     }
 
     @Provides

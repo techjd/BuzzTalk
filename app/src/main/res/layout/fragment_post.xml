@@ -29,18 +29,17 @@
             app:layout_constraintStart_toStartOf="@+id/postToolBar"
             app:layout_constraintTop_toBottomOf="@+id/postToolBar" />
 
-        <EditText
+        <com.linkedin.android.spyglass.ui.RichEditorView
             android:id="@+id/editTextTextMultiLine"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_margin="20dp"
-            android:background="@drawable/edt_background"
             android:ems="10"
             android:fontFamily="@font/nunitosans_semibold"
             android:gravity="start|top"
+            android:padding="10dp"
             android:hint="Start Writing Your Thoughts..."
             android:inputType="textMultiLine"
-            android:padding="20dp"
             app:layout_constraintEnd_toEndOf="@id/staticPost"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/staticPost"
@@ -61,12 +60,12 @@
 
             />
 
-        <MultiAutoCompleteTextView
+        <EditText
             android:id="@+id/hastag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:background="@drawable/edt_background"
+            android:background="@drawable/post_edt_background"
             android:ems="10"
             android:fontFamily="@font/nunitosans_semibold"
             android:gravity="start|top"

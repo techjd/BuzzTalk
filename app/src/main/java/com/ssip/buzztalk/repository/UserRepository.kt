@@ -4,6 +4,9 @@ import com.ssip.buzztalk.api.UserAPI
 import com.ssip.buzztalk.models.connections.request.ToId
 import com.ssip.buzztalk.models.connections.response.requestId.RequestId
 import com.ssip.buzztalk.models.followUnfollow.request.Followee
+import com.ssip.buzztalk.models.followers.request.FolloweeId
+import com.ssip.buzztalk.models.following.request.FollowerId
+import com.ssip.buzztalk.models.notifications.request.NotificationBody
 import com.ssip.buzztalk.models.searchusers.request.OtherUserInfoRequest
 import com.ssip.buzztalk.models.totalCount.request.UserID
 import retrofit2.http.Header
@@ -35,4 +38,10 @@ class UserRepository @Inject constructor(private val userAPI: UserAPI) {
     suspend fun acceptRequest(token: String, requestId: RequestId) = userAPI.acceptRequest(token, requestId)
 
     suspend fun getAllConnections(token: String, userID: UserID) = userAPI.getAllConnections(token, userID)
+
+    suspend fun sendNotiToken(token: String, notificationBody: NotificationBody) = userAPI.sendNotiToken(token, notificationBody)
+
+    suspend fun getAllFollowers(token: String, followeeId: FolloweeId) = userAPI.getAllFollowers(token, followeeId)
+
+    suspend fun getAllFollowing(token: String, followerId: FollowerId) = userAPI.getAllFollowing(token, followerId)
 }

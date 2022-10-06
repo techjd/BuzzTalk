@@ -14,6 +14,11 @@ import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentDetailedRelationBinding
 import com.ssip.buzztalk.databinding.FragmentProfileBinding
 import com.ssip.buzztalk.models.connections.response.allConnections.Connection
+import com.ssip.buzztalk.models.followers.request.FolloweeId
+import com.ssip.buzztalk.models.followers.response.Follower
+import com.ssip.buzztalk.models.followers.response.FollowerId
+import com.ssip.buzztalk.models.followers.response.Followers
+import com.ssip.buzztalk.models.following.response.Following
 import com.ssip.buzztalk.models.totalCount.request.UserID
 import com.ssip.buzztalk.ui.fragments.search.SearchFragmentDirections
 import com.ssip.buzztalk.ui.fragments.userdetailprofile.UserDetailProfileFragmentArgs
@@ -31,6 +36,8 @@ class DetailedRelationFragment : Fragment() {
     private val args: DetailedRelationFragmentArgs by navArgs()
     private val detailedRelationViewModel: DetailedRelationViewModel by viewModels()
     private lateinit var detailedRelationConnectionsAdapter: DetailedRelationConnectionsAdapter
+    private lateinit var detailedRelationFollowerAdapter: DetailedRelationFollowerAdapter
+    private lateinit var detailedRelationFollowingAdapter: DetailedRelationFollowingAdapter
 
     @Inject
     lateinit var tokenManager: TokenManager
@@ -59,13 +66,17 @@ class DetailedRelationFragment : Fragment() {
         when (args.type) {
             0 -> {
                 binding.detailedRelationToolBar.title.text = "\uD83D\uDC68\u200D\uD83D\uDCBC Followers"
-                binding.noRelation.text = "Your Followers will be shown here"
-                binding.noRelation.visibility = View.VISIBLE
+                detailedRelationViewModel.getAllFollowers(
+                    tokenManager.getTokenWithBearer()!!,
+                    FolloweeId(args.userId)
+                )
             }
             1 -> {
                 binding.detailedRelationToolBar.title.text = "\uD83D\uDC68\u200D\uD83D\uDCBC Following"
-                binding.noRelation.text = "Your Following will be shown here"
-                binding.noRelation.visibility = View.VISIBLE
+                detailedRelationViewModel.getAllFollowing(
+                    tokenManager.getTokenWithBearer()!!,
+                    com.ssip.buzztalk.models.following.request.FollowerId(args.userId)
+                )
             }
             2 -> {
                 binding.detailedRelationToolBar.title.text = "\uD83E\uDD1D Connections"
@@ -85,6 +96,48 @@ class DetailedRelationFragment : Fragment() {
                     )
                     detailedRelationConnectionsAdapter.users = response.data?.data?.connections as MutableList<Connection>
                     binding.relationsRecyclerView.adapter = detailedRelationConnectionsAdapter
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+
+        detailedRelationViewModel.allFollowers.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    detailedRelationFollowerAdapter = DetailedRelationFollowerAdapter(
+                        glide,
+                        navigate = { userId ->
+                            navigate(userId)
+                        },
+                    )
+                    detailedRelationFollowerAdapter.users = response.data?.data?.followers as MutableList<Follower>
+                    binding.relationsRecyclerView.adapter = detailedRelationFollowerAdapter
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+
+        detailedRelationViewModel.allFollowing.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    detailedRelationFollowingAdapter = DetailedRelationFollowingAdapter(
+                        glide,
+                        navigate = { userId ->
+                            navigate(userId)
+                        },
+                    )
+                    detailedRelationFollowingAdapter.users = response.data?.data?.following as MutableList<Following>
+                    binding.relationsRecyclerView.adapter = detailedRelationFollowingAdapter
                 }
                 Status.LOADING -> {
 

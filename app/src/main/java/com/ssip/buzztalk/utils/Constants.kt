@@ -7,6 +7,9 @@ object Constants {
     const val PREFS_TOKEN_FILE = "PREFS_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"
     const val USER_ID = "USER_ID"
+    const val NOTIFICATION_ON_CREATE = "NOTIFICATION_ON_CREATE"
+    const val NOTIFICATION_ON_TOKEN = "NOTIFICATION_ON_TOKEN"
+    const val IS_USER_FIRST_TIME = "IS_USER_FIRST_TIME"
     const val REGISTER_ENDPOINT = "auth/register"
     const val LOGIN_ENDPOINT = "auth/login"
     const val GET_USER_INFO_ENDPOINT = "user/userInfo"
@@ -29,6 +32,10 @@ object Constants {
     const val GET_ALL_MESSAGES = "chat/getAllMessages"
     const val GET_ALL_CONVERSATIONS = "chat/getAllConversations"
     const val GET_USER_STATUS = "chat/getUserStatus"
+    const val POST_CONTENT = "post/addPost"
+    const val SEND_NOTI_TOKEN = "user/sendNotiToken"
+    const val GET_USERNAMES = "user/getUserNames"
+    const val GET_FEED = "post/getFeed"
 
     // Constants Defined in the backend to cross verify in frontend
     const val SUCCESS = "SUCCESS"
