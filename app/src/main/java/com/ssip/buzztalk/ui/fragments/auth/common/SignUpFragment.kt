@@ -38,9 +38,6 @@ class SignUpFragment : Fragment() {
             findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
         }
         binding.companyCard.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
-        }
-        binding.btnCompany.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment_to_addCompanyName)
         }
 

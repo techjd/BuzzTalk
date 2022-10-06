@@ -1,15 +1,9 @@
 package com.ssip.buzztalk.utils
 
 object Constants {
-<<<<<<< HEAD
-    const val DEVELOPMENT_BASE_URL = "http://192.168.122.56:5500/api/"
-    const val PRODUCTION_BASE_URL = "" // Enter Deployed Server URL
-    const val CHAT_SERVER_URL = "http://192.168.122.56:5500/"
-=======
     const val DEVELOPMENT_BASE_URL = "http://192.168.64.56:5500/api/"
     const val PRODUCTION_BASE_URL = "" // Enter Deployed Server URL
     const val CHAT_SERVER_URL = "http://192.168.64.56:5500/"
->>>>>>> City-State_Spinner
     const val PREFS_TOKEN_FILE = "PREFS_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"
     const val USER_ID = "USER_ID"
