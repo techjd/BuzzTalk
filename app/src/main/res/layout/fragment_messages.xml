@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@drawable/chat_background"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chat_background"
     tools:context=".ui.fragments.chat.messages.MessagingFragment">
 
-<include
-    android:id="@+id/onlineMessageToolBar"
-    layout="@layout/messaging_toolbar" />
+    <include
+        android:id="@+id/onlineMessageToolBar"
+        layout="@layout/messaging_toolbar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/backgroundLayout"
 
-        android:layout_above="@id/footer"
-        android:layout_below="@id/onlineMessageToolBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/chat_background"
-        >
+        android:layout_above="@id/footer"
+        android:layout_below="@id/onlineMessageToolBar"
+        android:background="@drawable/chat_background">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/messageRecyclerView"
@@ -43,48 +41,48 @@ android:background="@drawable/chat_background"
         android:visibility="invisible"
         tools:visibility="visible" />
 
-<LinearLayout
-    android:background="@android:color/transparent"
-    android:layout_marginBottom="10dp"
-    android:id="@+id/footer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:orientation="horizontal">
-
-    <EditText
-        android:layout_marginLeft="5dp"
-        android:id="@+id/editTextChatMessage"
+    <LinearLayout
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:padding="12dp"
-        android:fontFamily="@font/nunitosans_semibold"
-        android:hint="Start Typing Message"
-        android:textColor="@color/black"
-        android:textColorHint="#626161"
-        android:inputType="textMultiLine"
-        android:maxLines="5"
-        android:scrollbars="vertical"
-        android:background="@drawable/edt_background"
-        />
-
-    <androidx.appcompat.widget.AppCompatButton
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
-        android:id="@+id/send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/send_message"
-        android:fontFamily="@font/nunitosans_semibold"
-        android:text="Send"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:textSize="20dp" />
-</LinearLayout>
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextChatMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/edt_background"
+            android:ems="10"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:hint="Start Typing Message..."
+            android:inputType="textMultiLine"
+            android:maxLines="5"
+            android:padding="12dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/black"
+            android:textColorHint="#626161" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/send_message"
+            android:clickable="true"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="Send"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 
 </RelativeLayout>

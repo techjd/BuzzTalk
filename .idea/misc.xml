@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/btnlogin_back.xml" value="0.1885" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/edt_background.xml" value="0.202" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/login_background.xml" value="0.1885" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/drawable/send_message.xml" value="0.202" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/activity_main.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/alert_dialog.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_add_email.xml" value="0.22826086956521738" />
@@ -13,9 +15,11 @@
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_home.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_login.xml" value="0.264" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_messages.xml" value="0.25679347826086957" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_profile.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_splash.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/item_chat_message_myself.xml" value="0.25679347826086957" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/search_toolbar.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/spinnertextview.xml" value="0.25679347826086957" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/toolbar.xml" value="0.22826086956521738" />
