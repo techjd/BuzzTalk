@@ -16,7 +16,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/nunitosans_bold"
-        android:text="Add Company Name"
+        android:text="Add About\nCompany"
         android:textColor="@color/light_blue"
         android:textSize="40sp" />
 
@@ -37,7 +37,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Full name of Company"
+                android:hint="Name of the Company"
                 app:boxStrokeColor="#000000">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -60,12 +60,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Parent Company(If any)"
+                android:hint="Company Username"
                 app:boxStrokeColor="#000000"
                 app:hintTextColor="#3F51B5">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/com_parent"
+                    android:id="@+id/com_uname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/login_background"
@@ -73,6 +73,34 @@
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Company Mission"
+                app:boxStrokeColor="#000000"
+                app:hintTextColor="#3F51B5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/com_motto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_background"
+                    android:fontFamily="@font/nunitosans_regular"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
         </LinearLayout>
 
 

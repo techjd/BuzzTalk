@@ -16,7 +16,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/nunitosans_bold"
-        android:text="Add Information"
+        android:text="Add Company\nInformation"
         android:textColor="@color/light_blue"
         android:textSize="40sp" />
 
@@ -37,7 +37,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Company's website Link"
+                android:hint="Company website Link"
                 app:boxStrokeColor="#000000">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/login_background"
                     android:fontFamily="@font/nunitosans_regular"
-                    android:inputType="text" />
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -60,7 +60,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Company's geographical link"
+                android:hint="Company Mobile No."
                 app:boxStrokeColor="#000000"
                 app:hintTextColor="#3F51B5"
 
@@ -77,6 +77,15 @@
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
+        <Spinner
+            android:layout_width="match_parent"
+            android:id="@+id/category_spinner"
+            android:layout_marginTop="10dp"
+            android:hint="State"
+            android:completionThreshold="1"
+            android:inputType="text"
+            android:background="@drawable/spinner_background"
+            android:layout_height="40dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/next"
