@@ -1,15 +1,11 @@
 package com.ssip.buzztalk.ui.fragments.auth.user
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
@@ -57,7 +53,7 @@ class AddPasswordFragment : Fragment() {
         }
 
         userSignUpViewModel.registerResponse.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
                     hideProgressBar()
                     tokenManager.saveToken(response.data!!.data.token)
@@ -81,7 +77,7 @@ class AddPasswordFragment : Fragment() {
             val firstName = userSignUpViewModel.firstName.value.toString().trim()
             val lastName = userSignUpViewModel.secondName.value.toString().trim()
 
-            if (validateDetails(email, password)) {
+            if (validateEmail(email) && validatePass(password)) {
                 userSignUpViewModel.register(
                     UserRequestRegister(
                         email = email,
@@ -90,24 +86,33 @@ class AddPasswordFragment : Fragment() {
                         lastName = lastName
                     )
                 )
-            } else{
-                Toast.makeText(context, "Password is not 6 Characters Long", Toast.LENGTH_LONG).show()
             }
         }
 
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                userSignUpViewModel.saveEmail(binding.emailAddress.text.toString().trim())
-                userSignUpViewModel.savePassword(binding.password.text.toString().trim())
-                findNavController().navigate(R.id.action_addPasswordFragment_to_addEmailFragment)
-            }
-        })
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    userSignUpViewModel.saveEmail(binding.emailAddress.text.toString().trim())
+                    userSignUpViewModel.savePassword(binding.password.text.toString().trim())
+                    findNavController().navigate(R.id.action_addPasswordFragment_to_addEmailFragment)
+                }
+            })
     }
 
-    private fun validateDetails(email: String, password: String) : Boolean {
-        if (password.isNotEmpty() && password.length >= 6 && email.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+    private fun validatePass(password: String): Boolean {
+        if (password.isNotEmpty()) {
             return true
         }
+        _binding?.password?.setError("Password not valid.")
+        return false
+    }
+
+    private fun validateEmail(email: String): Boolean {
+        if (email.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return true
+        }
+        _binding?.emailAddress?.setError("Enter valid emial address.")
         return false
     }
 
