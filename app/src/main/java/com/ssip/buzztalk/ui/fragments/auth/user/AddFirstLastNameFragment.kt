@@ -73,7 +73,7 @@ class AddFirstLastNameFragment : Fragment() {
         if (Sname.isNotEmpty()) {
             return true
         }
-        _binding?.firstName?.setError("Second name not valid.")
+        _binding?.secondName?.setError("Second name not valid.")
         return false
     }
 
