@@ -31,7 +31,7 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/Student_card"
+                android:id="@+id/industry_card"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_gravity="end"
@@ -41,22 +41,21 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#ffe66e"
+                app:cardBackgroundColor="#feafde"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center">
+                    android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView2"
+                        android:id="@+id/imageView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:src="@drawable/student" />
+                        android:src="@drawable/buildings" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -64,11 +63,9 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/nunitosans_bold"
                         android:gravity="center_vertical"
-                        android:text="Student                "
+                        android:text="Industry                 "
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-
-                        />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -117,7 +114,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/industry_card"
+                android:id="@+id/research_sc_card"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_gravity="end"
@@ -127,7 +124,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#feafde"
+                app:cardBackgroundColor="#FFB8B8"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -136,12 +133,12 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/imageView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:src="@drawable/buildings" />
+                        android:src="@drawable/school" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -149,7 +146,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/nunitosans_bold"
                         android:gravity="center_vertical"
-                        android:text="Industry                 "
+                        android:text="School                  "
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -189,54 +186,12 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/nunitosans_bold"
                         android:gravity="center_vertical"
-                        android:text="Proffesional          "
+                        android:text="Professional          "
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/Professor_card"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="end"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#9fdeff"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:src="@drawable/proffesor" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nunitosans_bold"
-                        android:gravity="center_vertical"
-                        android:text="Professor              "
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/school_card"
@@ -279,7 +234,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/research_sc_card"
+                android:id="@+id/Professor_card"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_gravity="end"
@@ -289,7 +244,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#FFB8B8"
+                app:cardBackgroundColor="#9fdeff"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -298,12 +253,12 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/imageView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:src="@drawable/school" />
+                        android:src="@drawable/proffesor" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -311,9 +266,52 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/nunitosans_bold"
                         android:gravity="center_vertical"
-                        android:text="School                  "
+                        android:text="Professor              "
                         android:textColor="@color/black"
                         android:textSize="20sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/Student_card"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="end"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="#ffe66e"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:src="@drawable/student" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nunitosans_bold"
+                        android:gravity="center_vertical"
+                        android:text="Student                "
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
