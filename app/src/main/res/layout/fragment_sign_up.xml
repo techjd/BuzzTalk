@@ -41,7 +41,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#feafde"
+                app:cardBackgroundColor="#ffe66e"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -124,7 +124,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#FFB8B8"
+                app:cardBackgroundColor="#feafde"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -186,7 +186,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/nunitosans_bold"
                         android:gravity="center_vertical"
-                        android:text="Professional          "
+                        android:text="Working Professional"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -284,7 +284,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#ffe66e"
+                app:cardBackgroundColor="#FFB8B8"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
