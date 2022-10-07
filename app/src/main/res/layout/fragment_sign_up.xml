@@ -41,7 +41,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#FFB4C9"
+                app:cardBackgroundColor="#ffe66e"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:src="@drawable/scholar" />
+                        android:src="@drawable/student" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#F8FFB5"
+                app:cardBackgroundColor="#a1ef9b"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -127,7 +127,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#B6FFDF"
+                app:cardBackgroundColor="#feafde"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -167,7 +167,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#B4C3FF"
+                app:cardBackgroundColor="#d7aefe"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -181,7 +181,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:src="@drawable/buildings" />
+                        android:src="@drawable/professionals" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -208,7 +208,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#B6FFDF"
+                app:cardBackgroundColor="#9fdeff"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -222,7 +222,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:src="@drawable/buildings" />
+                        android:src="@drawable/proffesor" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -239,7 +239,7 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/research_sc_card"
+                android:id="@+id/school_card"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_gravity="end"
@@ -249,7 +249,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#FFB5FF"
+                app:cardBackgroundColor="#e0e1e1"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp">
 
@@ -263,7 +263,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:src="@drawable/buildings" />
+                        android:src="@drawable/research_sc" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -271,7 +271,47 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/nunitosans_bold"
                         android:gravity="center_vertical"
-                        android:text="research scholars"
+                        android:text="Research scholars"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/research_sc_card"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="end"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="#FFB8B8"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:src="@drawable/school" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nunitosans_bold"
+                        android:gravity="center_vertical"
+                        android:text="School                  "
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

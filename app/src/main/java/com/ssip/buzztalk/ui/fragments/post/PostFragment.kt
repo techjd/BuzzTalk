@@ -85,8 +85,8 @@ class PostFragment : Fragment(), QueryTokenReceiver {
             }
         }
 
-        binding.editTextTextMultiLine.displayTextCounter(false)
-        binding.editTextTextMultiLine.setQueryTokenReceiver(this)
+//        binding.editTextTextMultiLine.displayTextCounter(false)
+//        binding.editTextTextMultiLine.setQueryTokenReceiver(this)
         binding.editTextTextMultiLine.setHint("Start Writing Thoughts")
 //        cities = CityLoader(resources)
 
@@ -94,7 +94,7 @@ class PostFragment : Fragment(), QueryTokenReceiver {
         config.setExplicitChars("@")
         config.setMaxNumKeywords(2)
         config.setWordBreakChars(" ")
-        binding.editTextTextMultiLine.setTokenizer(WordTokenizer(config.build()))
+//        binding.editTextTextMultiLine.setTokenizer(WordTokenizer(config.build()))
 
         postViewModel.addPost.observe(viewLifecycleOwner) { response ->
             when(response.status) {
@@ -153,7 +153,7 @@ class PostFragment : Fragment(), QueryTokenReceiver {
         val buckets: List<String> = Collections.singletonList(BUCKET)
         val suggestions: List<UserNameForSearch> =  getSuggestions(queryToken)
         val result = SuggestionsResult(queryToken, suggestions)
-        binding.editTextTextMultiLine.onReceiveSuggestionsResult(result, BUCKET)
+//        binding.editTextTextMultiLine.onReceiveSuggestionsResult(result, BUCKET)
         return buckets
     }
 
