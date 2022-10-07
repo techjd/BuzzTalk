@@ -65,20 +65,15 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.github.fobid.linkabletext.widget.LinkableTextView
+                <TextView
                     android:id="@+id/content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/nunitosans_semibold"
-                    tools:text="User Post Will Be Shown Here !!"
-                    app:mentionColor="@color/blue"
-                    app:hashtagColor="@color/blue"
                     android:textColor="@color/black"
-                    app:enabledLinks="false"
-                    app:enabledHashtag="true"
-                    app:enabledMention="true"
+                    tools:text="User Post Will Be Shown Here !!"
                     android:textSize="18dp" />
 
                 <LinearLayout

@@ -1,6 +1,16 @@
 package com.ssip.buzztalk.ui.fragments.home.adapter
 
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -34,32 +44,112 @@ class PostsAdapter(
         with(holder) {
             itemPostBinding.userName.text = "${singlePost.postId.userId.firstName} ${singlePost.postId.userId.lastName}"
 //            itemPostBinding.content.setLinkHint(singlePost.postId.content)
+            var content = singlePost.postId.content
 
-            itemPostBinding.content.apply {
-                setText(singlePost.postId.content)
-                setOnLinkClickListener(object : OnLinkClickListener {
-                    override fun onEmailAddressClick(email: String) {
+            var spannable = SpannableString(singlePost.postId.content)
 
+            var prevIdx = -1
+
+            for(i in 0..content.length-1) {
+                Log.d("CONTENT", "onBindViewHolder: ${content[i]}")
+                if (content[i] == ' ') {
+                    if (prevIdx != -1) {
+
+                        val substr = content.substring(prevIdx, i)
+
+//                        Log.d("SUBSTR", "onBindViewHolder: ${content.substring(prevIdx, i)}")
+
+
+                        val clickableStr = object : ClickableSpan() {
+                            override fun onClick(view: View) {
+                                Toast.makeText(view.context, substr, Toast.LENGTH_SHORT).show()
+                            }
+
+                            override fun updateDrawState(ds: TextPaint) {
+                                super.updateDrawState(ds)
+                                ds.isUnderlineText = false
+                            }
+                        }
+
+                        spannable.setSpan(
+                            clickableStr,
+                            prevIdx,
+                            i,
+                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+
+                        spannable.setSpan (
+                            ForegroundColorSpan(Color.parseColor("#03A9F4")),
+                            prevIdx, // start
+                            i, // end
+                            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+                        )
+                        prevIdx = -1
                     }
-
-                    override fun onHashtagClick(hashtag: String) {
-                        showToast(hashtag)
-                    }
-
-                    override fun onMentionClick(mention: String) {
-                        showToast(mention)
-                    }
-
-                    override fun onPhoneClick(phone: String) {
-
-                    }
-
-                    override fun onWebUrlClick(url: String) {
-
-                    }
-
-                })
+                } else if (content[i] == '@') {
+                    Log.d("@ POS", "onBindViewHolder: ${content[i]}")
+                    prevIdx = i
+                } else if(content[i] == '#') {
+                    prevIdx = i
+                }
             }
+
+            val clickableStr = object : ClickableSpan() {
+                override fun onClick(view: View) {
+                    Toast.makeText(view.context, content.substring(prevIdx, content.length), Toast.LENGTH_SHORT).show()
+                }
+                override fun updateDrawState(ds: TextPaint) {
+                    super.updateDrawState(ds)
+                    ds.isUnderlineText = false
+                }
+            }
+
+            spannable.setSpan(
+                clickableStr,
+                prevIdx,
+                content.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+
+            spannable.setSpan (
+                ForegroundColorSpan(Color.parseColor("#03A9F4")),
+                prevIdx, // start
+                content.length, // end
+                Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+            )
+
+
+            itemPostBinding.content.text = spannable
+            itemPostBinding.content.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+
+//            "You can start learning Android from MindOrks"
+//            itemPostBinding.content.apply {
+//                setText(singlePost.postId.content)
+//                setOnLinkClickListener(object : OnLinkClickListener {
+//                    override fun onEmailAddressClick(email: String) {
+//
+//                    }
+//
+//                    override fun onHashtagClick(hashtag: String) {
+//                        showToast(hashtag)
+//                    }
+//
+//                    override fun onMentionClick(mention: String) {
+//                        showToast(mention)
+//                    }
+//
+//                    override fun onPhoneClick(phone: String) {
+//
+//                    }
+//
+//                    override fun onWebUrlClick(url: String) {
+//
+//                    }
+//
+//                })
+//            }
 
 //            itemPostBinding.content.text = "${singlePost.postId.content}"
             itemPostBinding.totalLikesCnt.text = singlePost.postId.likes.toString()
