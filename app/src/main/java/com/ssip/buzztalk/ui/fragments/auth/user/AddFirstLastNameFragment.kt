@@ -48,11 +48,9 @@ class AddFirstLastNameFragment : Fragment() {
             val firstName = binding.firstName.text.toString().trim()
             val secondName = binding.secondName.text.toString().trim()
 
-            if (validate(firstName, secondName)) {
+            if (validateFname(firstName)&&validateSname(secondName)) {
                 userSignUpViewModel.saveFirstNameAndSecond(firstName, secondName)
                 findNavController().navigate(R.id.action_addFirstLastNameFragment_to_addEmailFragment)
-            } else {
-                Toast.makeText(context, "Please Fill All Fields", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -63,10 +61,19 @@ class AddFirstLastNameFragment : Fragment() {
         })
     }
 
-    private fun validate(firstName: String, lastName: String): Boolean {
-        if (firstName.isNotEmpty() && lastName.isNotEmpty()) {
+    private fun validateFname(Fname: String): Boolean {
+        if (Fname.isNotEmpty()) {
             return true
         }
+        _binding?.firstName?.setError("First name not valid.")
+        return false
+    }
+
+    private fun validateSname(Sname: String): Boolean {
+        if (Sname.isNotEmpty()) {
+            return true
+        }
+        _binding?.firstName?.setError("Second name not valid.")
         return false
     }
 

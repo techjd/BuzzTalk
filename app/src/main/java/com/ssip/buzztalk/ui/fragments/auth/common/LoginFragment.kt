@@ -1,14 +1,11 @@
 package com.ssip.buzztalk.ui.fragments.auth.common
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
@@ -49,20 +46,18 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             val email = binding.emailAddress.text.toString().trim()
             val password = binding.password.text.toString().trim()
-            if (validate(email, password)) {
+            if (validateEmail(email) && validatePass(password)) {
                 signInViewModel.login(
                     UserRequestLogin(
                         email = email,
                         password = password
                     )
                 )
-            } else {
-                Toast.makeText(context, "Please Fill All Field", Toast.LENGTH_LONG).show()
             }
         }
 
         signInViewModel.loginResponse.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
                     hideProgressBar()
                     tokenManager.saveToken(response.data!!.data.token)
@@ -80,18 +75,29 @@ class LoginFragment : Fragment() {
             }
         }
 
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                findNavController().navigate(R.id.action_loginFragment_to_chooseLoginSignUpFragment2)
-            }
-        })
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_loginFragment_to_chooseLoginSignUpFragment2)
+                }
+            })
 
     }
 
-    private fun validate(email: String, password: String): Boolean {
-        if (email.isNotEmpty() && password.isNotEmpty()) {
+    private fun validatePass(password: String): Boolean {
+        if (password.isNotEmpty()) {
             return true
         }
+        _binding?.password?.setError("Password not valid.")
+        return false
+    }
+
+    private fun validateEmail(email: String): Boolean {
+        if (email.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return true
+        }
+        _binding?.emailAddress?.setError("Enter valid emial address.")
         return false
     }
 
