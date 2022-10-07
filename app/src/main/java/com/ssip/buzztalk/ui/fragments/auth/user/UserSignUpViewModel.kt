@@ -26,8 +26,10 @@ class UserSignUpViewModel @Inject constructor(
     private val _secondName = MutableLiveData("")
     private val _email = MutableLiveData("")
     private val _password = MutableLiveData("")
+    private val _userName = MutableLiveData("")
     val firstName: LiveData<String> = _firstName
     val secondName: LiveData<String> = _secondName
+    val userName :LiveData<String> = _userName
     val email: LiveData<String> = _email
     val password: LiveData<String> = _password
 
@@ -57,6 +59,10 @@ class UserSignUpViewModel @Inject constructor(
 
     fun saveEmail(email: String) {
         _email.value = email
+    }
+
+    fun saveUserName(userName: String) {
+        _userName.value = userName
     }
 
     fun savePassword(password: String) {

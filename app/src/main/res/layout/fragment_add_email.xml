@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -42,6 +42,23 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_background"
+                    android:fontFamily="@font/nunitosans_regular"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter UserName"
+                app:boxStrokeColor="#000000">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/login_background"
@@ -65,6 +82,7 @@
             android:theme="@style/btn"
             app:icon="@drawable/ic_navigate_next"
             app:iconGravity="textEnd" />
+
 
     </LinearLayout>
 

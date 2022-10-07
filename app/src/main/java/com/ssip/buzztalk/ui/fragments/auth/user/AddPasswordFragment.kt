@@ -76,6 +76,7 @@ class AddPasswordFragment : Fragment() {
             val password = binding.password.text.toString().trim()
             val firstName = userSignUpViewModel.firstName.value.toString().trim()
             val lastName = userSignUpViewModel.secondName.value.toString().trim()
+            val userName = userSignUpViewModel.userName.value.toString().trim()
 
             if (validateEmail(email) && validatePass(password)) {
                 userSignUpViewModel.register(
@@ -83,7 +84,8 @@ class AddPasswordFragment : Fragment() {
                         email = email,
                         password = password,
                         firstName = firstName,
-                        lastName = lastName
+                        lastName = lastName,
+                        userName = userName
                     )
                 )
             }

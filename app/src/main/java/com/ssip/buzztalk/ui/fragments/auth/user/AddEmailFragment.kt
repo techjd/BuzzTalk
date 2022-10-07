@@ -41,12 +41,19 @@ class AddEmailFragment : Fragment() {
             binding.emailAddress.setText(it)
         }
 
+        userSignUpViewModel.userName.observe(viewLifecycleOwner) {
+            binding.userName.setText(it)
+        }
+
         binding.next.setOnClickListener {
             val email = binding.emailAddress.text.toString().trim()
+            val userName = binding.userName.text.toString().trim()
 
-            if (validateText(email)) {
+
+            if (validateText(email, userName)) {
                 if (validateEmail(email)) {
                     userSignUpViewModel.saveEmail(email)
+                    userSignUpViewModel.saveUserName(userName)
                     findNavController().navigate(R.id.action_addEmailFragment_to_addPasswordFragment)
                 } else {
                     Toast.makeText(context, "Not a Valid Email Address", Toast.LENGTH_LONG).show()
@@ -63,8 +70,8 @@ class AddEmailFragment : Fragment() {
         })
     }
 
-    private fun validateText(inputEmail: String): Boolean {
-        if (inputEmail.isNotEmpty()) {
+    private fun validateText(inputEmail: String, inputUserName: String): Boolean {
+        if (inputEmail.isNotEmpty() && inputUserName.isNotEmpty()) {
             return true
         }
         return false

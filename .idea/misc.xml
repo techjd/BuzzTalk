@@ -42,7 +42,7 @@
         <entry key="app/src/main/res/layout/alert_dialog.xml" value="0.2395742797851563" />
         <entry key="app/src/main/res/layout/bottom_navigation_menu.xml" value="0.2997957099080695" />
         <entry key="app/src/main/res/layout/connections_request_toolbar.xml" value="0.2601851851851852" />
-        <entry key="app/src/main/res/layout/fragment_add_email.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_add_email.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_add_first_last_name.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_add_password.xml" value="0.2615020751953125" />
         <entry key="app/src/main/res/layout/fragment_chats.xml" value="0.25" />
