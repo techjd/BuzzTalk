@@ -14,14 +14,17 @@
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_add_email.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_add_first_last_name.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_add_password.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_add_university_link.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_add_university_name.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_choose_login_sign_up.xml" value="0.264" />
-        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_company_profile.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_company_profile.xml" value="0.176" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_home.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_post.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_profile.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_splash.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/fragment_university_profile.xml" value="0.1721311475409836" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/home_toolbar.xml" value="0.1265625" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/search_toolbar.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jemish/AndroidStudioProjects/BuzzTalk/app/src/main/res/layout/spinner_background.xml" value="0.22826086956521738" />
