@@ -1,5 +1,6 @@
 package com.ssip.buzztalk.ui.fragments.auth.user
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentAddPasswordBinding
 import com.ssip.buzztalk.models.auth.user.register.request.UserRequestRegister
+import com.ssip.buzztalk.ui.activities.CompanyActivity
 import com.ssip.buzztalk.ui.activities.MainActivity
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
@@ -60,6 +62,10 @@ class AddPasswordFragment : Fragment() {
                     tokenManager.saveUserId(response.data!!.data.user._id)
                     findNavController().navigate(R.id.action_addPasswordFragment_to_homeFragment)
                     (activity as MainActivity).setStartDestinationAsHomeFragment()
+//                    Intent(context,  CompanyActivity::class.java).apply {
+//                        startActivity(this)
+//                    }
+//                    (activity as MainActivity).finish()
                 }
                 Status.ERROR -> {
                     hideProgressBar()
@@ -98,6 +104,7 @@ class AddPasswordFragment : Fragment() {
                     userSignUpViewModel.saveEmail(binding.emailAddress.text.toString().trim())
                     userSignUpViewModel.savePassword(binding.password.text.toString().trim())
                     findNavController().navigate(R.id.action_addPasswordFragment_to_addEmailFragment)
+
                 }
             })
     }

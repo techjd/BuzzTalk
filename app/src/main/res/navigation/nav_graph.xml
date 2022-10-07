@@ -58,6 +58,16 @@
             app:exitAnim="@anim/fade_out"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_companyActivity"
+            app:destination="@id/companyActivity"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_universityActivity"
+            app:destination="@id/universityActivity"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -257,4 +267,29 @@
             android:id="@+id/action_startNewConversationFragment_to_messagingFragment"
             app:destination="@id/messagingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addCompanyNameFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.company.AddCompanyNameFragment"
+        android:label="fragment_add_company_name"
+        tools:layout="@layout/fragment_add_company_name" />
+    <fragment
+        android:id="@+id/addCompanyLinkFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.company.AddCompanyLinkFragment"
+        android:label="fragment_add_company_link"
+        tools:layout="@layout/fragment_add_company_link" />
+    <fragment
+        android:id="@+id/addCompanyPasswordFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.company.AddCompanyPasswordFragment"
+        android:label="fragment_add_company_password"
+        tools:layout="@layout/fragment_add_company_password" />
+    <activity
+        android:id="@+id/companyActivity"
+        android:name="com.ssip.buzztalk.ui.activities.CompanyActivity"
+        android:label="activity_company"
+        tools:layout="@layout/activity_company" />
+    <activity
+        android:id="@+id/universityActivity"
+        android:name="com.ssip.buzztalk.ui.activities.UniversityActivity"
+        android:label="activity_university"
+        tools:layout="@layout/activity_university" />
 </navigation>

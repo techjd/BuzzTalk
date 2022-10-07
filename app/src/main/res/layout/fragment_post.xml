@@ -75,5 +75,14 @@
             app:layout_constraintEnd_toEndOf="@+id/staticHashtags"
             app:layout_constraintStart_toStartOf="@+id/staticHashtags"
             app:layout_constraintTop_toBottomOf="@+id/staticHashtags" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/choicesRv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/hastag" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.core.widget.NestedScrollView>

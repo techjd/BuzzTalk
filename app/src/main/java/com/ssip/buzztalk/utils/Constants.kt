@@ -51,4 +51,10 @@ object Constants {
     const val NEW_MESSAGE = "NEW MESSAGE"
     const val USER_OFFLINE = "USER OFFLINE"
     const val USER_ONLINE = "USER ONLINE"
+
+    // Constants for Types of users in backend
+    const val STUDENTS = "STUDENTS"
+    const val PROFESSIONAL_USERS = "PROFESSIONAL USERS"
+    const val RESEARCH_SCHOLARS = "RESEARCH SCHOLARS"
+    const val PROFESSORS = "PROFESSORS"
 }

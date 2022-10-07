@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.linkedin.android.spyglass.mentions.MentionSpan
 import com.linkedin.android.spyglass.mentions.MentionsEditable
 import com.linkedin.android.spyglass.suggestions.SuggestionsResult
@@ -17,6 +18,7 @@ import com.linkedin.android.spyglass.tokenization.impl.WordTokenizerConfig
 import com.linkedin.android.spyglass.tokenization.interfaces.QueryTokenReceiver
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentPostBinding
+import com.ssip.buzztalk.models.customdata.choices
 import com.ssip.buzztalk.models.post.request.PostBody
 import com.ssip.buzztalk.models.usernames.UserNameForSearch
 import com.ssip.buzztalk.utils.DialogClass
@@ -30,10 +32,20 @@ class PostFragment : Fragment(), QueryTokenReceiver {
     private var _binding: FragmentPostBinding? = null
     private val binding get() = _binding!!
     private val postViewModel: PostViewModel by viewModels()
-
+    private lateinit var choiceAdapter: PostChoiceAdapter
     var users = listOf<UserNameForSearch>()
 
     private val BUCKET = "users"
+
+    var choices: MutableList<choices> = mutableListOf(
+        choices("University", false),
+        choices("School", false),
+        choices("Industry", false),
+        choices("Students", false),
+        choices("Research Scholars", false),
+        choices("Professionals", false),
+        choices("Professors", false)
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,42 +122,60 @@ class PostFragment : Fragment(), QueryTokenReceiver {
                 }
             }
         }
+
+        binding.choicesRv.layoutManager = GridLayoutManager(context, 2)
+        binding.choicesRv.setHasFixedSize(true)
+        choiceAdapter = PostChoiceAdapter { pos ->
+            choices[pos].isMarked = !choices[pos].isMarked
+            choiceAdapter.changeList(choices)
+            choiceAdapter.notifyDataSetChanged()
+        }
+        choiceAdapter.choices = choices
+        binding.choicesRv.adapter = choiceAdapter
     }
 
     private fun postContent() {
-        val text = MentionsEditable(binding.editTextTextMultiLine.text)
-        val mentionSpans: List<MentionSpan> = text.mentionSpans
-        var taggedUsers = mutableListOf<String>()
-        for (span in mentionSpans) {
-            val start: Int = text.getSpanStart(span)
-            val end: Int = text.getSpanEnd(span)
-            val currentText: String = text.subSequence(start, end).toString()
-            taggedUsers.add(currentText)
-            text.replace(
-                start,
-                end,
-                "@$currentText "
-            )
-        }
-
-        val hashTags = binding.hastag.text.toString().trim().splitToSequence("#").toList()
-
-        val finalContent = "$text \n \n \n${binding.hastag.text.toString().trim()}"
-//        Toast.makeText(context, finalContent, Toast.LENGTH_LONG).show()
-
-        val tags = mutableListOf<String>()
-
-        for(tag in hashTags) {
-            if (tag.isNotEmpty() && tag.isNotBlank()) {
-                tags.add(tag.trim())
+        var choices = ""
+        for (ch in choiceAdapter.choices) {
+            if (ch.isMarked) {
+                choices += "${ch.category}"
             }
         }
+        Toast.makeText(context, choices, Toast.LENGTH_SHORT).show()
 
-        postViewModel.addPost(PostBody(
-            finalContent,
-            taggedUsers,
-            tags
-        ))
+//        val text = MentionsEditable(binding.editTextTextMultiLine.text)
+//        val mentionSpans: List<MentionSpan> = text.mentionSpans
+//        var taggedUsers = mutableListOf<String>()
+//        for (span in mentionSpans) {
+//            val start: Int = text.getSpanStart(span)
+//            val end: Int = text.getSpanEnd(span)
+//            val currentText: String = text.subSequence(start, end).toString()
+//            taggedUsers.add(currentText)
+//            text.replace(
+//                start,
+//                end,
+//                "@$currentText "
+//            )
+//        }
+//
+//        val hashTags = binding.hastag.text.toString().trim().splitToSequence("#").toList()
+//
+//        val finalContent = "$text \n \n \n${binding.hastag.text.toString().trim()}"
+////        Toast.makeText(context, finalContent, Toast.LENGTH_LONG).show()
+//
+//        val tags = mutableListOf<String>()
+//
+//        for(tag in hashTags) {
+//            if (tag.isNotEmpty() && tag.isNotBlank()) {
+//                tags.add(tag.trim())
+//            }
+//        }
+//
+//        postViewModel.addPost(PostBody(
+//            finalContent,
+//            taggedUsers,
+//            tags
+//        ))
 
     }
 

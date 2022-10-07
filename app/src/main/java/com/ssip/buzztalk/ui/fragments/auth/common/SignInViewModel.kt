@@ -42,7 +42,7 @@ class SignInViewModel @Inject constructor(
                 }
             } catch (t: Throwable) {
                 when (t) {
-                    is IOException -> _loginResponse.postValue(NetworkResult.Error("Network Failure"))
+                    is IOException -> _loginResponse.postValue(NetworkResult.Error("Network Failure ${t.message}"))
                     else -> _loginResponse.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
                 }
             }
