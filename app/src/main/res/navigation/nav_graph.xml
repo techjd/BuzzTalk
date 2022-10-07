@@ -21,18 +21,18 @@
             app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_companyActivity"
+            app:destination="@id/companyActivity" />
+        <action
+            android:id="@+id/action_splashFragment_to_universityActivity"
+            app:destination="@id/universityActivity" />
     </fragment>
     <fragment
         android:id="@+id/chooseLoginSignUpFragment"
         android:name="com.ssip.buzztalk.ui.fragments.auth.common.ChooseLoginSignUpFragment"
         android:label="fragment_choose_login_sign_up"
         tools:layout="@layout/fragment_choose_login_sign_up" >
-        <action
-            android:id="@+id/action_chooseLoginSignUpFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:popUpTo="@id/chooseLoginSignUpFragment"
-            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_chooseLoginSignUpFragment_to_signUpFragment"
             app:destination="@id/signUpFragment"
@@ -58,16 +58,9 @@
             app:exitAnim="@anim/fade_out"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_loginFragment_to_companyActivity"
-            app:destination="@id/companyActivity"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_loginFragment_to_universityActivity"
-            app:destination="@id/universityActivity"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true" />
+        <argument
+            android:name="userType"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -84,6 +77,24 @@
             android:id="@+id/action_signUpFragment_to_chooseLoginSignUpFragment2"
             app:destination="@id/chooseLoginSignUpFragment"
             app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="loginSignup"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_signUpFragment_to_addCompanyNameFragment"
+            app:destination="@id/addCompanyNameFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_signUpFragment_to_addUniversityNameFragment2"
+            app:destination="@id/addUniversityNameFragment"
             app:popUpTo="@id/signUpFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -271,17 +282,49 @@
         android:id="@+id/addCompanyNameFragment"
         android:name="com.ssip.buzztalk.ui.fragments.auth.company.AddCompanyNameFragment"
         android:label="fragment_add_company_name"
-        tools:layout="@layout/fragment_add_company_name" />
+        tools:layout="@layout/fragment_add_company_name" >
+        <action
+            android:id="@+id/action_addCompanyNameFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/addCompanyNameFragment" />
+        <action
+            android:id="@+id/action_addCompanyNameFragment_to_addCompanyLinkFragment"
+            app:destination="@id/addCompanyLinkFragment"
+            app:popUpTo="@id/addCompanyNameFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/addCompanyLinkFragment"
         android:name="com.ssip.buzztalk.ui.fragments.auth.company.AddCompanyLinkFragment"
         android:label="fragment_add_company_link"
-        tools:layout="@layout/fragment_add_company_link" />
+        tools:layout="@layout/fragment_add_company_link" >
+        <action
+            android:id="@+id/action_addCompanyLinkFragment_to_addCompanyPasswordFragment"
+            app:destination="@id/addCompanyPasswordFragment"
+            app:popUpTo="@id/addCompanyLinkFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addCompanyLinkFragment_to_addCompanyNameFragment"
+            app:destination="@id/addCompanyNameFragment"
+            app:popUpTo="@id/addCompanyLinkFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/addCompanyPasswordFragment"
         android:name="com.ssip.buzztalk.ui.fragments.auth.company.AddCompanyPasswordFragment"
         android:label="fragment_add_company_password"
-        tools:layout="@layout/fragment_add_company_password" />
+        tools:layout="@layout/fragment_add_company_password" >
+        <action
+            android:id="@+id/action_addCompanyPasswordFragment_to_addCompanyLinkFragment"
+            app:destination="@id/addCompanyLinkFragment"
+            app:popUpTo="@id/addCompanyPasswordFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addCompanyPasswordFragment_to_companyActivity"
+            app:destination="@id/companyActivity"
+            app:popUpTo="@id/addCompanyPasswordFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <activity
         android:id="@+id/companyActivity"
         android:name="com.ssip.buzztalk.ui.activities.CompanyActivity"
@@ -292,4 +335,51 @@
         android:name="com.ssip.buzztalk.ui.activities.UniversityActivity"
         android:label="activity_university"
         tools:layout="@layout/activity_university" />
+    <fragment
+        android:id="@+id/addUniversityNameFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.university.AddUniversityNameFragment"
+        android:label="fragment_add_university_name"
+        tools:layout="@layout/fragment_add_university_name" >
+        <action
+            android:id="@+id/action_addUniversityNameFragment_to_addUniversityLinkFragment"
+            app:destination="@id/addUniversityLinkFragment"
+            app:popUpTo="@id/addUniversityNameFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addUniversityNameFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/addUniversityNameFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUniversityLinkFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.university.AddUniversityLinkFragment"
+        android:label="fragment_add_university_link"
+        tools:layout="@layout/fragment_add_university_link" >
+        <action
+            android:id="@+id/action_addUniversityLinkFragment_to_addUniversityPasswordFragment"
+            app:destination="@id/addUniversityPasswordFragment"
+            app:popUpTo="@id/addUniversityLinkFragment" />
+        <action
+            android:id="@+id/action_addUniversityLinkFragment_to_addUniversityNameFragment"
+            app:destination="@id/addUniversityNameFragment"
+            app:popUpTo="@id/addUniversityLinkFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUniversityPasswordFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.university.AddUniversityPasswordFragment"
+        android:label="fragment_add_university_password"
+        tools:layout="@layout/fragment_add_university_password" >
+        <action
+            android:id="@+id/action_addUniversityPasswordFragment_to_universityActivity"
+            app:destination="@id/universityActivity"
+            app:popUpTo="@id/addUniversityPasswordFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addUniversityPasswordFragment_to_addUniversityLinkFragment"
+            app:destination="@id/addUniversityLinkFragment"
+            app:popUpTo="@id/addUniversityPasswordFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

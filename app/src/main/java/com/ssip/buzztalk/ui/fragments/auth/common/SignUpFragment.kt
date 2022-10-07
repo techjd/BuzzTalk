@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentLoginBinding
 import com.ssip.buzztalk.databinding.FragmentSignUpBinding
@@ -15,6 +16,7 @@ class SignUpFragment : Fragment() {
 
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
+    private val args: SignUpFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,14 +34,43 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.StudentCard.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
+            if (args.loginSignup == 0) {
+                // 0 for student
+                val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(0)
+                findNavController().navigate(action)
+            } else {
+                findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
+            }
         }
         binding.UniversityCard.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
-        }
+            if (args.loginSignup == 0) {
+                // 1 for university
+                val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(1)
+                findNavController().navigate(action)
+            } else {
+                findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
+            }        }
         binding.industryCard.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
+            if (args.loginSignup == 0) {
+                // 2 for company
+                val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(2)
+                findNavController().navigate(action)
+            } else {
+                findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
+            }
         }
+
+//        binding.schoolCard.setOnClickListener {
+//
+//        }
+//
+//        binding.UniversityCard.setOnClickListener {
+//
+//        }
+//
+//        binding.industryCard.setOnClickListener {
+//
+//        }
 
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

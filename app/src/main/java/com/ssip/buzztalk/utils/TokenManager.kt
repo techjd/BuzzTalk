@@ -21,6 +21,16 @@ class TokenManager @Inject constructor(@ApplicationContext context: Context) {
         editor.apply()
     }
 
+    fun saveUserType(userType: String) {
+        val editor = prefs.edit()
+        editor.putString(Constants.USER_TYPE, userType)
+        editor.apply()
+    }
+
+    fun getUserType(): String? {
+        return prefs.getString(Constants.USER_TYPE, null)
+    }
+
     fun saveNotificationTokenOnCreate(notificationToken: String) {
         val editor = prefs.edit()
         editor.putString(Constants.NOTIFICATION_ON_CREATE, notificationToken)

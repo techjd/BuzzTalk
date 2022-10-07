@@ -31,11 +31,14 @@ class ChooseLoginSignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnSignUp.setOnClickListener {
-            findNavController().navigate(R.id.action_chooseLoginSignUpFragment_to_signUpFragment)
+            val action = ChooseLoginSignUpFragmentDirections.actionChooseLoginSignUpFragmentToSignUpFragment(1)
+            findNavController().navigate(action)
         }
 
         binding.btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_chooseLoginSignUpFragment_to_loginFragment)
+            // O for login
+            val action = ChooseLoginSignUpFragmentDirections.actionChooseLoginSignUpFragmentToSignUpFragment(0)
+            findNavController().navigate(action)
         }
     }
 }
