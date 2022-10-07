@@ -17,43 +17,75 @@
             layout="@layout/post_toolbar" />
 
         <TextView
-            android:id="@+id/staticPost"
-            android:layout_width="0dp"
+            android:id="@+id/tv_post"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:fontFamily="@font/nunitosans_semibold"
-            android:text="Post"
+            android:text="Post Title"
             android:textColor="@color/black"
             android:textSize="25dp"
-            android:layout_margin="20dp"
             app:layout_constraintEnd_toEndOf="@+id/postToolBar"
             app:layout_constraintStart_toStartOf="@+id/postToolBar"
             app:layout_constraintTop_toBottomOf="@+id/postToolBar" />
 
-        <com.linkedin.android.spyglass.ui.RichEditorView
+        <EditText
+            android:id="@+id/Post_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/post_edt_background"
+            android:ems="10"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:gravity="start|top"
+            android:hint="Post title here"
+            android:inputType="textMultiLine"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/postToolBar"
+            app:layout_constraintStart_toStartOf="@+id/postToolBar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_post" />
+
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:text="Post Content"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Post_title" />
+
+        <EditText
             android:id="@+id/editTextTextMultiLine"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_margin="20dp"
+            android:background="@drawable/post_edt_background"
             android:ems="10"
             android:fontFamily="@font/nunitosans_semibold"
             android:gravity="start|top"
-            android:padding="10dp"
             android:hint="Start Writing Your Thoughts..."
             android:inputType="textMultiLine"
-            app:layout_constraintEnd_toEndOf="@id/staticPost"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@id/staticPost"
-            app:layout_constraintTop_toBottomOf="@+id/staticPost" />
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content" />
 
         <TextView
             android:id="@+id/staticHashtags"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HashTags"
             android:layout_margin="20dp"
             android:fontFamily="@font/nunitosans_semibold"
-            android:textSize="25dp"
+            android:text="HashTags"
             android:textColor="@color/black"
+            android:textSize="25dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/editTextTextMultiLine"
             app:layout_constraintStart_toStartOf="@+id/editTextTextMultiLine"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
@@ -72,6 +104,7 @@
             android:hint="Start Writing Hashtags"
             android:inputType="textMultiLine"
             android:padding="20dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/staticHashtags"
             app:layout_constraintStart_toStartOf="@+id/staticHashtags"
             app:layout_constraintTop_toBottomOf="@+id/staticHashtags" />

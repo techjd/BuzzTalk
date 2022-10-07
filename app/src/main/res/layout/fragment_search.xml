@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="50dp"
     tools:context=".ui.fragments.search.SearchFragment">
 
     <include
         android:id="@+id/topSearchBar"
-        layout="@layout/search_toolbar"
-        />
+        layout="@layout/search_toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/topSearchBar"
         android:id="@+id/personsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/topSearchBar" />
 </RelativeLayout>
