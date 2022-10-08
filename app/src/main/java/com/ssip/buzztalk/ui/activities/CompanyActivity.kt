@@ -18,8 +18,9 @@ class CompanyActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.NewPost.setOnClickListener {
-            Intent(this, postContent::class.java).also {
+            Intent(this, PostContent::class.java).also {
                 it.putExtra("EXTRA_PERSON", 1)
+                it.putExtra("CATEGORY", 10)
                 startActivity(it)
             }
         }

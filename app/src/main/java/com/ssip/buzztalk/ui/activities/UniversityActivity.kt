@@ -19,8 +19,9 @@ class UniversityActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.newPost.setOnClickListener {
-            Intent(this, postContent::class.java).also {
+            Intent(this, PostContent::class.java).also {
                 it.putExtra("EXTRA_PERSON", 2)
+                it.putExtra("CATEGORY", 20)
                 startActivity(it)
             }
         }

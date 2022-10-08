@@ -1,5 +1,6 @@
 package com.ssip.buzztalk.api
 
+import com.ssip.buzztalk.models.DefaultJSONResponse
 import com.ssip.buzztalk.models.feed.response.Feed
 import com.ssip.buzztalk.models.newfeed.NewFeed
 import com.ssip.buzztalk.models.post.request.PostBody
@@ -24,4 +25,16 @@ interface PostAPI {
 
     @GET(Constants.GET_NEW_FEED)
     suspend fun getNewFeed(): Response<NewFeed>
+
+    @POST(Constants.POST_NEW_OPPO_COMPANY)
+    suspend fun postNewOpportunitiesCompany(@Body newOpportunities: newOpportunities): Response<DefaultJSONResponse>
+
+    @POST(Constants.POST_NEW_OPPO_UNIVERSITY)
+    suspend fun postNewOpportunitiesUniversity(@Body newOpportunities: newOpportunities): Response<DefaultJSONResponse>
 }
+
+data class newOpportunities(
+    val postTitle: String,
+    val postContent: String,
+    val to: List<String>
+)

@@ -2,6 +2,7 @@ package com.ssip.buzztalk.repository
 
 import com.ssip.buzztalk.api.ChatAPI
 import com.ssip.buzztalk.api.PostAPI
+import com.ssip.buzztalk.api.newOpportunities
 import com.ssip.buzztalk.models.post.request.PostBody
 import javax.inject.Inject
 
@@ -21,5 +22,13 @@ class PostRepository @Inject constructor(private val postAPI: PostAPI): BaseRepo
 
     suspend fun getNewfeed() = safeApiCall {
         postAPI.getNewFeed()
+    }
+
+    suspend fun postNewOppoCompany(newOpportunities: newOpportunities) = safeApiCall {
+        postAPI.postNewOpportunitiesCompany(newOpportunities)
+    }
+
+    suspend fun postNewOppoUniversity(newOpportunities: newOpportunities) = safeApiCall {
+        postAPI.postNewOpportunitiesUniversity(newOpportunities)
     }
 }

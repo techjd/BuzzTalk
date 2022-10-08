@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:contentDescription="@string/post_content"
-    tools:context=".ui.fragments.post.PostFragment">
+    tools:context=".ui.activities.PostContent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -190,7 +190,7 @@
                         android:gravity="center">
 
                         <CheckBox
-                            android:id="@+id/cb_industry"
+                            android:id="@+id/cb_professors"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/nunitosans_semibold"
@@ -247,7 +247,7 @@
                         android:gravity="center">
 
                         <CheckBox
-                            android:id="@+id/cb_research_sc"
+                            android:id="@+id/cb_research"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/nunitosans_semibold"
