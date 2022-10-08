@@ -110,11 +110,8 @@
             app:popUpTo="@id/addFirstLastNameFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_addFirstLastNameFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment"
-            app:exitAnim="@anim/fade_out"
-            app:popUpTo="@id/addFirstLastNameFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_addFirstLastNameFragment_to_chooseLoginSignUpFragment"
+            app:destination="@id/chooseLoginSignUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEmailFragment"
@@ -284,12 +281,13 @@
         android:label="fragment_add_company_name"
         tools:layout="@layout/fragment_add_company_name" >
         <action
-            android:id="@+id/action_addCompanyNameFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment"
-            app:popUpTo="@id/addCompanyNameFragment" />
-        <action
             android:id="@+id/action_addCompanyNameFragment_to_addCompanyLinkFragment"
             app:destination="@id/addCompanyLinkFragment"
+            app:popUpTo="@id/addCompanyNameFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addCompanyNameFragment_to_chooseLoginSignUpFragment"
+            app:destination="@id/chooseLoginSignUpFragment"
             app:popUpTo="@id/addCompanyNameFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -346,8 +344,8 @@
             app:popUpTo="@id/addUniversityNameFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_addUniversityNameFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment"
+            android:id="@+id/action_addUniversityNameFragment_to_chooseLoginSignUpFragment"
+            app:destination="@id/chooseLoginSignUpFragment"
             app:popUpTo="@id/addUniversityNameFragment"
             app:popUpToInclusive="true" />
     </fragment>

@@ -1,60 +1,68 @@
 package com.ssip.buzztalk.ui.fragments.auth.company
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
+import com.ssip.buzztalk.databinding.FragmentAddCompanyLinkBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddCompanyLinkFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddCompanyLinkFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding: FragmentAddCompanyLinkBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_company_link, container, false)
+        _binding = FragmentAddCompanyLinkBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddCompanyLinkFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddCompanyLinkFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        binding.next.setOnClickListener {
+            val CompanyWebLink = binding.CompanyWebLink.toString().trim()
+            val CompanyGeoLink = binding.CompanyGeoLink.toString().trim()
+            val categorySpinner = binding.categorySpinner.toString().trim()
+
+            if (validateWB(CompanyWebLink) && validateCSP(categorySpinner)) {
+                findNavController().navigate(R.id.action_addCompanyNameFragment_to_addCompanyLinkFragment)
             }
+        }
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_addCompanyNameFragment_to_chooseLoginSignUpFragment)
+                }
+            })
+    }
+
+    private fun validateWB(Fname: String): Boolean {
+        if (Fname.isNotEmpty()) {
+            return true
+        }
+        _binding?.CompanyWebLink?.setError("Company name not valid.")
+        return false
+    }
+
+    private fun validateCSP(Sname: String): Boolean {
+        if (Sname.isNotEmpty()) {
+            return true
+        }
+        Toast.makeText(requireContext(), "Please select company type.", Toast.LENGTH_SHORT).show()
+        return false
     }
 }
