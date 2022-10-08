@@ -1,6 +1,7 @@
 package com.ssip.buzztalk.api
 
 import com.ssip.buzztalk.models.feed.response.Feed
+import com.ssip.buzztalk.models.newfeed.NewFeed
 import com.ssip.buzztalk.models.post.request.PostBody
 import com.ssip.buzztalk.models.post.response.PostAPIResponse
 import com.ssip.buzztalk.models.usernames.UserNames
@@ -20,4 +21,7 @@ interface PostAPI {
 
     @GET(Constants.GET_FEED)
     suspend fun getFeed(): Response<Feed>
+
+    @GET(Constants.GET_NEW_FEED)
+    suspend fun getNewFeed(): Response<NewFeed>
 }

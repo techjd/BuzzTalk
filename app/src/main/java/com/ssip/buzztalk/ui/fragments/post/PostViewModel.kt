@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssip.buzztalk.models.feed.response.Feed
+import com.ssip.buzztalk.models.newfeed.NewFeed
 import com.ssip.buzztalk.models.post.request.PostBody
 import com.ssip.buzztalk.models.post.response.PostAPIResponse
 import com.ssip.buzztalk.models.usernames.UserNames
@@ -26,6 +27,9 @@ class PostViewModel @Inject constructor(private val postRepository: PostReposito
     private val _feed: MutableLiveData<NetworkResult<Feed>> = MutableLiveData()
     val feed: LiveData<NetworkResult<Feed>> = _feed
 
+    private val _newFeed: MutableLiveData<NetworkResult<NewFeed>> = MutableLiveData()
+    val newFeed: LiveData<NetworkResult<NewFeed>> = _newFeed
+
     fun addPost(postBody: PostBody) {
         viewModelScope.launch {
             _addPost.postValue(NetworkResult.Loading())
@@ -44,6 +48,13 @@ class PostViewModel @Inject constructor(private val postRepository: PostReposito
         viewModelScope.launch {
             _feed.postValue(NetworkResult.Loading())
             _feed.postValue(postRepository.getFeed())
+        }
+    }
+
+    fun getNewFeed() {
+        viewModelScope.launch {
+            _newFeed.postValue(NetworkResult.Loading())
+            _newFeed.postValue(postRepository.getNewfeed())
         }
     }
 }

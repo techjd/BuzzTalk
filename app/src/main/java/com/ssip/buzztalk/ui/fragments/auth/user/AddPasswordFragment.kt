@@ -91,7 +91,7 @@ class AddPasswordFragment : Fragment() {
                         password = password,
                         firstName = firstName,
                         lastName = lastName,
-                        userName = userName
+                        userName = userName,
                     )
                 )
             }

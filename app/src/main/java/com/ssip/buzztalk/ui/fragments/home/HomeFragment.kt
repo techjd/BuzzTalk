@@ -17,8 +17,10 @@ import com.ssip.buzztalk.databinding.FragmentAddEmailBinding
 import com.ssip.buzztalk.databinding.FragmentHomeBinding
 import com.ssip.buzztalk.models.chat.request.MakeUserOnline
 import com.ssip.buzztalk.models.feed.response.FeedX
+import com.ssip.buzztalk.models.newfeed.Feed
 import com.ssip.buzztalk.models.notifications.request.NotificationBody
 import com.ssip.buzztalk.ui.fragments.chat.ChatViewModel
+import com.ssip.buzztalk.ui.fragments.home.adapter.FeedAdapter
 import com.ssip.buzztalk.ui.fragments.home.adapter.PostsAdapter
 import com.ssip.buzztalk.ui.fragments.post.PostViewModel
 import com.ssip.buzztalk.utils.DialogClass
@@ -40,6 +42,7 @@ class HomeFragment : Fragment() {
     private val postViewModel: PostViewModel by viewModels()
 
     private lateinit var postsAdapter: PostsAdapter
+    private lateinit var feedAdapter: FeedAdapter
 
     @Inject
     lateinit var socket: Socket
@@ -115,7 +118,9 @@ class HomeFragment : Fragment() {
             }
         }
 
-        postViewModel.getFeed()
+//        postViewModel.getFeed()
+
+        postViewModel.getNewFeed()
 
         postViewModel.feed.observe(viewLifecycleOwner) { response ->
             when(response.status) {
@@ -133,6 +138,33 @@ class HomeFragment : Fragment() {
                     } else {
                         postsAdapter.posts = response.data?.data?.feed as MutableList<FeedX>
                         binding.feedRv.adapter = postsAdapter
+                    }
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+
+        postViewModel.newFeed.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    feedAdapter = FeedAdapter(
+                        { id ->
+                            navigate(id)
+                        },
+                        { text ->
+                            navigateToUser(text)
+                        }
+                    )
+                    if (response?.data!!.data!!.feed!!.isEmpty()) {
+                        binding.noPosts.visibility = View.VISIBLE
+                    } else {
+                        feedAdapter.posts = response.data?.data?.feed as MutableList<Feed>
+                        binding.feedRv.adapter = feedAdapter
                     }
                 }
                 Status.LOADING -> {

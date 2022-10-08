@@ -39,6 +39,7 @@ object Constants {
     const val SEND_NOTI_TOKEN = "user/sendNotiToken"
     const val GET_USERNAMES = "user/getUserNames"
     const val GET_FEED = "post/getFeed"
+    const val GET_NEW_FEED = "post/getLatestFeed"
 
     // Constants Defined in the backend to cross verify in frontend
     const val SUCCESS = "SUCCESS"
