@@ -59,7 +59,7 @@ class SignUpFragment : Fragment() {
                 findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
             }
         }
-        binding.researchScCard.setOnClickListener {
+        binding.researchSc.setOnClickListener {
             if (args.loginSignup == 0) {
                 // 0 for student
                 val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(0)

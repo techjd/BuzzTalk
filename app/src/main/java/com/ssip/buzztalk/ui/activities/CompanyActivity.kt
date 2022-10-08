@@ -1,6 +1,7 @@
 package com.ssip.buzztalk.ui.activities
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ssip.buzztalk.databinding.ActivityCompanyBinding
@@ -21,6 +22,24 @@ class CompanyActivity : AppCompatActivity() {
                 it.putExtra("EXTRA_PERSON", 1)
                 startActivity(it)
             }
+        }
+        binding.email.setOnClickListener {
+            val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:reliance@gmail.com")
+            }
+            startActivity(Intent.createChooser(emailIntent, "Send email"))
+        }
+
+        binding.visitUs.setOnClickListener {
+            val url = "https://www.reliancedigital.in/"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+        }
+        binding.callUs.setOnClickListener {
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "9106369512"))
+            startActivity(intent)
+
         }
 
     }
