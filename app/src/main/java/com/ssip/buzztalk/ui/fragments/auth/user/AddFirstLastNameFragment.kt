@@ -56,7 +56,7 @@ class AddFirstLastNameFragment : Fragment() {
 
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().navigate(R.id.action_addFirstLastNameFragment_to_signUpFragment)
+                findNavController().navigate(R.id.action_addFirstLastNameFragment_to_chooseLoginSignUpFragment)
             }
         })
     }

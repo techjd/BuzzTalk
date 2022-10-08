@@ -1,14 +1,27 @@
 package com.ssip.buzztalk.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import com.ssip.buzztalk.R
+import androidx.appcompat.app.AppCompatActivity
+import com.ssip.buzztalk.databinding.ActivityCompanyBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CompanyActivity : AppCompatActivity() {
+    lateinit var binding: ActivityCompanyBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_company)
+        binding = ActivityCompanyBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.NewPost.setOnClickListener {
+            Intent(this, postContent::class.java).also {
+                it.putExtra("EXTRA_PERSON", 1)
+                startActivity(it)
+            }
+        }
+
     }
 }
