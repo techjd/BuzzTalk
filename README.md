@@ -9,6 +9,36 @@
 - **Tag Your Friends** - You can Tag your connections or anyone on the platform
 - **Push Notifications** - You will be notified on a new message or if someone tags you in a post .
 
+## 📸 Screenshots
+
+|   |   |   |
+|---|---|---|
+|![](screenshots/12.jpeg)|![](screenshots/13.jpeg)|![](screenshots/14.jpeg)
+
+|   |   |   |
+|---|---|---|
+|![](screenshots/15.jpeg)|![](screenshots/16.jpeg)|![](screenshots/22.jpeg)
+
+|   |   |   |
+|---|---|---|
+|![](screenshots/18.jpeg)|![](screenshots/19.jpeg)|![](screenshots/20.jpeg)
+
+|   |   |   |
+|---|---|---|
+|![](screenshots/21.jpeg)|![](screenshots/17.jpeg)|![](screenshots/3.jpeg)
+
+|   |   |   |
+|---|---|---|
+|![](screenshots/4.jpeg)|![](screenshots/5.jpeg)|![](screenshots/6.jpeg)
+
+|   |   |   |
+|---|---|---|
+|![](screenshots/7.jpeg)|![](screenshots/8.jpeg)|![](screenshots/9.jpeg)
+
+|   |   |   |
+|---|---|---|
+|![](screenshots/10.jpeg)|![](screenshots/11.jpeg)|![](screenshots/12.jpeg)
+
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For All Asynchronous operations in project
