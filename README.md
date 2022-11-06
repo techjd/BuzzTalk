@@ -9,6 +9,8 @@
 - **Tag Your Friends** - You can Tag your connections or anyone on the platform
 - **Push Notifications** - You will be notified on a new message or if someone tags you in a post .
 
+## As of now , the latest version of the app is in _stable-new_ branch
+
 ## 📸 Screenshots
 
 |   |   |   |
