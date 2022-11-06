@@ -1,4 +1,4 @@
-package com.ssip.buzztalk.ui.fragments.auth
+package com.ssip.buzztalk.ui.fragments.auth.common
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -30,11 +30,11 @@ class ChooseLoginSignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.signUp.setOnClickListener {
+        binding.btnSignUp.setOnClickListener {
             findNavController().navigate(R.id.action_chooseLoginSignUpFragment_to_signUpFragment)
         }
 
-        binding.login.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             findNavController().navigate(R.id.action_chooseLoginSignUpFragment_to_loginFragment)
         }
     }

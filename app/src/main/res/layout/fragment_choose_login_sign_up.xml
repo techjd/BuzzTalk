@@ -3,42 +3,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.auth.ChooseLoginSignUpFragment">
+    tools:context=".ui.fragments.auth.common.ChooseLoginSignUpFragment">
 
-    <TextView
-        android:id="@+id/title"
-        android:text="BuzzTalk"
-        android:gravity="center_horizontal"
-        android:textSize="65sp"
-        android:layout_marginTop="200dp"
-        android:fontFamily="@font/nunitosans_bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_below="@id/title"
-        android:id="@+id/signUp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:cornerRadius="20dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="25dp"
-        android:fontFamily="@font/nunitosans_extrabold"
-        android:textSize="30sp"
-        android:text="Sign Up" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_centerInParent="true"
-        android:id="@+id/login"
-        android:layout_below="@id/signUp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:cornerRadius="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="30sp"
-        android:fontFamily="@font/nunitosans_extrabold"
-        android:text="Login" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="-15dp"
+                android:src="@drawable/buzztalk" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_grow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:fontFamily="@font/nunitosans_extrabold"
+                android:gravity="center"
+                android:text="Grow\n Your Network!"
+                android:textColor="@color/light_blue"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_wel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_grow"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/nunitosans_regular"
+                android:gravity="center"
+                android:text="@string/short_Desc"
+                android:textColor="#353535"
+                android:textSize="15dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_wel"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/btnlogin_back"
+                android:fontFamily="@font/nunitosans_bold"
+                android:text="LogIn"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnLogin"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/btnsign_back"
+                android:fontFamily="@font/nunitosans_bold"
+                android:text="Sign up"
+                android:textAllCaps="false"
+                android:textColor="@color/light_blue"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>

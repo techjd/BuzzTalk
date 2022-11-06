@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -14,8 +15,8 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -84,4 +85,12 @@ dependencies {
     // Lottie Animation
     def lottieVersion = "3.7.1"
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    // Reaction Library
+    def reaction_version = "1.6"
+    implementation "com.github.pgreze:android-reactions:$reaction_version"
+
+    // Circular Image View
+    def image_version = "3.1.0"
+    implementation "de.hdodenhof:circleimageview:$image_version"
 }

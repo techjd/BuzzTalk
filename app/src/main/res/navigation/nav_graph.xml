@@ -12,29 +12,220 @@
         <action
             android:id="@+id/action_splashFragment_to_chooseLoginSignUpFragment"
             app:destination="@id/chooseLoginSignUpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/chooseLoginSignUpFragment"
-        android:name="com.ssip.buzztalk.ui.fragments.auth.ChooseLoginSignUpFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.common.ChooseLoginSignUpFragment"
         android:label="fragment_choose_login_sign_up"
         tools:layout="@layout/fragment_choose_login_sign_up" >
         <action
             android:id="@+id/action_chooseLoginSignUpFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/chooseLoginSignUpFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_chooseLoginSignUpFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/chooseLoginSignUpFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.ssip.buzztalk.ui.fragments.auth.LoginFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.common.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_chooseLoginSignUpFragment2"
+            app:destination="@id/chooseLoginSignUpFragment"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.ssip.buzztalk.ui.fragments.auth.SignUpFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.common.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_addFirstLastNameFragment"
+            app:destination="@id/addFirstLastNameFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_signUpFragment_to_chooseLoginSignUpFragment2"
+            app:destination="@id/chooseLoginSignUpFragment"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFirstLastNameFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.user.AddFirstLastNameFragment"
+        android:label="fragment_add_first_last_name"
+        tools:layout="@layout/fragment_add_first_last_name" >
+        <action
+            android:id="@+id/action_addFirstLastNameFragment_to_addEmailFragment"
+            app:destination="@id/addEmailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/addFirstLastNameFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addFirstLastNameFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/addFirstLastNameFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEmailFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.user.AddEmailFragment"
+        android:label="fragment_add_email"
+        tools:layout="@layout/fragment_add_email" >
+        <action
+            android:id="@+id/action_addEmailFragment_to_addPasswordFragment"
+            app:destination="@id/addPasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/addEmailFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addEmailFragment_to_addFirstLastNameFragment"
+            app:destination="@id/addFirstLastNameFragment"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/addEmailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPasswordFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.auth.user.AddPasswordFragment"
+        android:label="fragment_add_password"
+        tools:layout="@layout/fragment_add_password" >
+        <action
+            android:id="@+id/action_addPasswordFragment_to_addEmailFragment"
+            app:destination="@id/addEmailFragment"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/addPasswordFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addPasswordFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/addPasswordFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_left" />
+        <action
+            android:id="@+id/action_homeFragment_to_chatsFragment"
+            app:destination="@id/chatsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.post.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_userDetailProfileFragment"
+            app:destination="@id/userDetailProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.notifications.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_notificationsFragment_to_connectionRequestsFragment"
+            app:destination="@id/connectionRequestsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.jobs.JobsFragment"
+        android:label="fragment_jobs"
+        tools:layout="@layout/fragment_jobs" />
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.chat.ChatsFragment"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_detailedRelationFragment"
+            app:destination="@id/detailedRelationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/userDetailProfileFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.userdetailprofile.UserDetailProfileFragment"
+        android:label="fragment_user_detail_profile"
+        tools:layout="@layout/fragment_user_detail_profile" >
+        <argument
+            android:name="userId"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_userDetailProfileFragment_to_detailedRelationFragment"
+            app:destination="@id/detailedRelationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/connectionRequestsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.connections.ConnectionRequestsFragment"
+        android:label="fragment_connection_requests"
+        tools:layout="@layout/fragment_connection_requests" />
+    <fragment
+        android:id="@+id/detailedRelationFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.detailedrelation.DetailedRelationFragment"
+        android:label="fragment_detailed_relation"
+        tools:layout="@layout/fragment_detailed_relation" >
+        <argument
+            android:name="type"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailedRelationFragment_to_userDetailProfileFragment"
+            app:destination="@id/userDetailProfileFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
+    </fragment>
 </navigation>

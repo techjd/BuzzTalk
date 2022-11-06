@@ -9,13 +9,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentSplashBinding
+import com.ssip.buzztalk.ui.activities.MainActivity
+import com.ssip.buzztalk.utils.TokenManager
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
 
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var tokenManager: TokenManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +41,14 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch {
-            delay(2000L)
-            findNavController().navigate(R.id.action_splashFragment_to_chooseLoginSignUpFragment)
+            if (tokenManager.getToken() != null) {
+                delay(1500L)
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                (activity as MainActivity).setStartDestinationAsHomeFragment()
+            } else {
+                delay(1500L)
+                findNavController().navigate(R.id.action_splashFragment_to_chooseLoginSignUpFragment)
+            }
         }
     }
 }
