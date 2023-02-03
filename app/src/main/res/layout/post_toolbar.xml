@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Share Post"
-            android:textSize="25dp"
+            android:textSize="23dp"
             android:gravity="center_vertical"
             android:fontFamily="@font/nunitosans_semibold"
             android:textColor="@color/black"
