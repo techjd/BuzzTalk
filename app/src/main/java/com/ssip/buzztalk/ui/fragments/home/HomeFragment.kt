@@ -118,9 +118,9 @@ class HomeFragment : Fragment() {
             }
         }
 
-//        postViewModel.getFeed()
+        postViewModel.getFeed()
 
-        postViewModel.getNewFeed()
+//        postViewModel.getNewFeed()
 
         postViewModel.feed.observe(viewLifecycleOwner) { response ->
             when(response.status) {
@@ -163,7 +163,7 @@ class HomeFragment : Fragment() {
                     if (response?.data!!.data!!.feed!!.isEmpty()) {
                         binding.noPosts.visibility = View.VISIBLE
                     } else {
-                        feedAdapter.posts = response.data?.data?.feed as MutableList<Feed>
+                        feedAdapter.posts = response.data.data?.feed as MutableList<Feed>
                         binding.feedRv.adapter = feedAdapter
                     }
                 }
