@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="2dp"
     android:layout_height="wrap_content"
     android:id="@+id/postCardView"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,11 +10,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="5dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/linearLayoutPost"
             android:layout_width="match_parent"
+            android:paddingBottom="4dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -26,8 +28,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/cirularImageProfile"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:src="@drawable/user"
                     app:civ_border_width="1dp">
 
@@ -63,31 +65,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="60dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/nunitosans_semibold"
-                    android:textColor="@color/black"
+                    android:textColor="#4D4D4D"
                     tools:text="User Post Will Be Shown Here !!"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="30dp"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/totalLikesImg"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         app:srcCompat="@drawable/ic_like" />
 
                     <TextView
@@ -95,6 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
+                        android:textSize="12dp"
                         android:fontFamily="@font/nunitosans_semibold"
                         android:gravity="center_vertical"
                         tools:text="10" />
@@ -109,6 +111,7 @@
                             android:id="@+id/totalComments"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:textSize="12dp"
                             android:fontFamily="@font/nunitosans_semibold"
                             android:gravity="center_vertical"
                             tools:text="11 Comments" />
@@ -118,16 +121,14 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/dash" />
-
         </LinearLayout>
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.85dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/dash" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -146,13 +147,13 @@
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/ic_outlined_thumbs_up" />
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunitosans_regular"
-                    android:gravity="center"
-                    android:text="Like" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView8"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/nunitosans_regular"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Like" />-->
             </LinearLayout>
 
             <LinearLayout
@@ -167,13 +168,13 @@
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/ic_outline_comment" />
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunitosans_semibold"
-                    android:gravity="center"
-                    android:text="Comment" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView9"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/nunitosans_semibold"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Comment" />-->
             </LinearLayout>
 
             <LinearLayout
@@ -188,13 +189,13 @@
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/ic_share" />
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunitosans_semibold"
-                    android:gravity="center"
-                    android:text="share" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView10"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/nunitosans_semibold"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="share" />-->
             </LinearLayout>
         </LinearLayout>
 
