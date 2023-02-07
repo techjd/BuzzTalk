@@ -172,7 +172,7 @@ class MessagingFragment : Fragment() {
         messageViewModel.sendMessage.observe(viewLifecycleOwner) { response ->
             when(response.status) {
                 Status.SUCCESS -> {
-                    Toast.makeText(context, "Message Sent", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Message Sent", Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING -> {
 

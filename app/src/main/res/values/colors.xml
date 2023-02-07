@@ -8,8 +8,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparant">#00FFFFFF</color>
     <color name="grey">#D7D7D7</color>
-    <color name="adpink">#F5D5DE</color>
     <color name="sbyellow">#F2F5D5</color>
     <color name="legreen">#D5F5E7</color>
     <color name="salesblue">#D5EDF5</color>
