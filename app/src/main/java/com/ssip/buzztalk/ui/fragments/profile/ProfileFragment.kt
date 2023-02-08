@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.appbar.AppBarLayout
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentAddEmailBinding
 import com.ssip.buzztalk.databinding.FragmentProfileBinding
@@ -18,6 +20,7 @@ import com.ssip.buzztalk.utils.Status
 import com.ssip.buzztalk.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlin.math.abs
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -42,10 +45,24 @@ class ProfileFragment : Fragment() {
 
         profileViewModel.getUserInfo(tokenManager.getTokenWithBearer()!!)
 
+        val appBarLayout: AppBarLayout = binding.mainAppbar
+        val toolbar: Toolbar = binding.toolbarTop
+
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val isShow = true
+            val shouldShowIcon = abs(verticalOffset) >= 396
+
+            toolbar.navigationIcon = if (isShow && shouldShowIcon) {
+                resources.getDrawable(R.drawable.user_top_bar, null)
+            } else {
+                resources.getDrawable(R.color.transparant)
+            }
+        })
+
         profileViewModel.userInfo.observe(viewLifecycleOwner) { response ->
             when(response.status) {
                 Status.SUCCESS -> {
-                    binding.fullName.text = response.data!!.data.user.firstName + " " +response.data.data.user.lastName
+                    binding.mainCollapsing.title = response.data!!.data.user.firstName + " " +response.data.data.user.lastName
                     Log.d(" BIO VALUE ", "onViewCreated: ${response.data.data.user.bio}")
                 }
                 Status.LOADING -> {
