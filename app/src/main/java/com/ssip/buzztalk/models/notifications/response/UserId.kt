@@ -1,4 +1,4 @@
-package com.ssip.buzztalk.models.feed.response
+package com.ssip.buzztalk.models.notifications.response
 
 data class UserId(
     val __v: Int,

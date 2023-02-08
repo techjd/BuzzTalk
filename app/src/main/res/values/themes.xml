@@ -40,5 +40,13 @@
         <item name="android:fontFamily">@font/nunitosans_semibold</item>
     </style>
 
+    <style name="ChipFont" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="fontFamily">@font/nunitosans_semibold</item>
+    </style>
+    
+    <style name="Chip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:checkable">true</item>
+    </style>
+
 
 </resources>

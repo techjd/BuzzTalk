@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginBottom="54dp"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.home.HomeFragment">
 
     <include
         android:id="@+id/homeToolBar"
         layout="@layout/home_toolbar" />
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/homeToolBar"
+        android:id="@+id/filter_linear_ll"
+        android:layout_width="match_parent"
+        android:gravity="right"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/sort"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:fontFamily="@font/nunitosans_black"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="Filter"
+            />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/noPosts"
@@ -20,8 +49,9 @@
         android:text="Start Following people to see posts" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/homeToolBar"
+        android:layout_below="@id/filter_linear_ll"
         android:id="@+id/feedRv"
+        tools:listitem="@layout/item_post"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

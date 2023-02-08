@@ -29,7 +29,6 @@
         app:itemTextColor="@color/bottom_nav_foreground"
         app:itemTextAppearanceActive="@style/Widget.App.BottomNavigationView"
         app:labelVisibilityMode="labeled"
-
         app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

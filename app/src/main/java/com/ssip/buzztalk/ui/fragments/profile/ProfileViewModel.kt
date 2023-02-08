@@ -6,9 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssip.buzztalk.models.connections.response.allConnections.AllConnections
+import com.ssip.buzztalk.models.myfeed.response.MyFeed
 import com.ssip.buzztalk.models.totalCount.request.UserID
 import com.ssip.buzztalk.models.totalCount.response.FollowersFollowingCount
 import com.ssip.buzztalk.models.user.response.UserInfo
+import com.ssip.buzztalk.repository.PostRepository
 import com.ssip.buzztalk.repository.UserRepository
 import com.ssip.buzztalk.utils.ErrorResponse
 import com.ssip.buzztalk.utils.NetworkManager
@@ -23,6 +25,7 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val networkManager: NetworkManager,
     private val userRepository: UserRepository,
+    private val postRepository: PostRepository,
     private val errorResponse: ErrorResponse
     ): ViewModel() {
     private val _userInfo: MutableLiveData<NetworkResult<UserInfo>> = MutableLiveData()
@@ -34,6 +37,8 @@ class ProfileViewModel @Inject constructor(
     private val _allConnections: MutableLiveData<NetworkResult<AllConnections>> = MutableLiveData()
     val allConnections: LiveData<NetworkResult<AllConnections>> = _allConnections
 
+    private val _myFeed: MutableLiveData<NetworkResult<MyFeed>> = MutableLiveData()
+    val myFeed: LiveData<NetworkResult<MyFeed>> = _myFeed
     fun getUserInfo(token: String) {
         viewModelScope.launch {
             _userInfo.postValue(NetworkResult.Loading())
@@ -106,6 +111,13 @@ class ProfileViewModel @Inject constructor(
                     else -> _allConnections.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later $t"))
                 }
             }
+        }
+    }
+
+    fun getMyFeed() {
+        viewModelScope.launch {
+            _myFeed.postValue(NetworkResult.Loading())
+            _myFeed.postValue(postRepository.getMyFeed())
         }
     }
 }

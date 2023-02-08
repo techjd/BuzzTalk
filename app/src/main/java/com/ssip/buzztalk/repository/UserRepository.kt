@@ -44,4 +44,6 @@ class UserRepository @Inject constructor(private val userAPI: UserAPI) {
     suspend fun getAllFollowers(token: String, followeeId: FolloweeId) = userAPI.getAllFollowers(token, followeeId)
 
     suspend fun getAllFollowing(token: String, followerId: FollowerId) = userAPI.getAllFollowing(token, followerId)
+
+    suspend fun getUserNotifications(token: String) = userAPI.getNotifications(token)
 }

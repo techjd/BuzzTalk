@@ -1,8 +1,29 @@
 <resources>
-    <string name="app_name">BuzzTalk</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="short_Desc">Millions of Entrepreneurs, Students, and Higher Authorities are waiting to for you at BuzzTalk.</string>
-    <string name="choose_sign_up_text">Select\nUser type</string>
-    <string name="post_content">Post Content</string>
+  <string name="app_name">BuzzTalk</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="short_Desc">Millions of Entrepreneurs, Students, and Higher Authorities are waiting to for you at BuzzTalk.</string>
+  <string name="choose_sign_up_text">Select\nUser type</string>
+  <string name="post_content">Post Content</string>
+
+  <string name="research_scholars">Research Scholars</string>
+  <string name="industry">Industry</string>
+  <string name="school">School</string>
+  <string name="working_professional">Working Professional</string>
+  <string name="university">University</string>
+  <string name="professor">Professors</string>
+  <string name="students">Students</string>
+  <string name="freelancers">Freelancers</string>
+  <string name="entrepreneurs">Entrepreneurs</string>
+
+  <string name="sample_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at facilisis tortor, sit amet condimentum orci. Etiam in enim ac ipsum porta auctor non id purus. Phasellus venenatis purus ex, sit amet imperdiet urna rhoncus vel. Vestibulum bibendum vestibulum porta. Duis iaculis eros quis nisi ultricies, id ornare tortor porta. Nam tincidunt justo eu interdum semper. Praesent tristique rutrum turpis. Cras finibus, est sed tincidunt elementum, est diam faucibus urna, at tempor magna justo sed nunc. Praesent varius massa a libero elementum, efficitur posuere ex mattis. In eu maximus quam.
+
+Etiam lobortis dictum massa eu tempus. Cras ac congue sapien, sed fringilla nisl. Morbi ultrices, metus ac mollis pretium, nisi diam faucibus mauris, nec laoreet turpis ante vel quam. In accumsan justo vitae semper pellentesque. Aenean bibendum, nulla nec viverra eleifend, ex justo posuere nisl, nec viverra sapien ante commodo tellus. Aliquam ultrices, libero et tincidunt pulvinar, massa dui condimentum est, venenatis pretium mauris risus sit amet diam. Proin pharetra et lectus eget vestibulum. Donec semper lorem elit, ut efficitur massa varius nec. Nulla molestie feugiat sapien non finibus. Praesent venenatis lorem in purus facilisis rutrum. Aenean pellentesque auctor elit, ut venenatis turpis vulputate nec. Donec a enim tristique diam venenatis dictum in ut nibh. Sed vehicula mi dignissim maximus tempor. Phasellus sagittis, leo ut dictum finibus, odio metus sodales lectus, eu accumsan metus odio quis elit. Quisque vitae purus quis ante placerat euismod ut condimentum mi. Integer dignissim elementum erat, in cursus ex commodo a.
+
+Morbi condimentum ultrices tortor, at imperdiet diam interdum vel. Phasellus sodales dui at mattis tristique. Duis congue suscipit dapibus. Proin placerat felis non viverra porttitor. Aenean dictum commodo ex, at pellentesque diam dapibus vel. Suspendisse ligula lectus, mollis eget mi vitae, varius accumsan velit. Sed facilisis, nunc id placerat lobortis, leo nisi bibendum ligula, quis rutrum urna ipsum id ex.
+
+Aenean ut est orci. Mauris quis auctor dui. Duis sem elit, lacinia eu dui et, pharetra tempus velit. Curabitur id nisl nec tellus facilisis sagittis. Morbi massa turpis, bibendum quis sollicitudin nec, tincidunt a nibh. Cras ullamcorper suscipit molestie. Nullam hendrerit arcu id tortor euismod luctus. Duis efficitur porttitor ligula, eu commodo est consectetur in. Integer tempor sem erat, a accumsan lectus fringilla eget.
+
+Fusce purus ipsum, dignissim nec dignissim non, blandit interdum lacus. Vestibulum vitae mauris ligula. Nam finibus sollicitudin egestas. Mauris tincidunt, augue et semper ullamcorper, ligula massa pulvinar quam, quis molestie neque metus nec lacus. Ut quam ligula, semper non enim quis, semper ultricies erat. Praesent auctor risus nec orci maximus suscipit. Cras vel sodales dolor, at malesuada lacus. Donec nec ex et massa bibendum placerat. Nullam ut convallis felis. Nunc aliquam fermentum nibh vel ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+
 </resources>

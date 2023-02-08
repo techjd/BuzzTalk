@@ -31,4 +31,8 @@ class PostRepository @Inject constructor(private val postAPI: PostAPI): BaseRepo
     suspend fun postNewOppoUniversity(newOpportunities: newOpportunities) = safeApiCall {
         postAPI.postNewOpportunitiesUniversity(newOpportunities)
     }
+
+    suspend fun getMyFeed() = safeApiCall {
+        postAPI.getMyFeed()
+    }
 }

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+  <com.google.android.material.chip.ChipGroup
+      android:padding="5dp"
+      android:id="@+id/chipGroup"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:singleSelection="false"
+      >
+
+    <com.google.android.material.chip.Chip
+        style="@style/Chip"
+        android:textAppearance="@style/ChipFont"
+        android:id="@+id/research_scholars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/research_scholars"
+        />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Chip"
+        android:textAppearance="@style/ChipFont"
+        android:id="@+id/industry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/industry"
+        />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Chip"
+        android:textAppearance="@style/ChipFont"
+        android:id="@+id/school"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/school"
+        />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Chip"
+        android:textAppearance="@style/ChipFont"
+        android:id="@+id/working_professional"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/working_professional"
+        />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Chip"
+        android:textAppearance="@style/ChipFont"
+        android:id="@+id/universities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/university"
+        />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Chip"
+        android:textAppearance="@style/ChipFont"
+        android:id="@+id/professors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Professors"
+        />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Chip"
+        android:textAppearance="@style/ChipFont"
+        android:id="@+id/student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/students"
+        />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Chip"
+        android:textAppearance="@style/ChipFont"
+        android:id="@+id/entrepreneurs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/entrepreneurs"
+        />
+
+  </com.google.android.material.chip.ChipGroup>
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btnApply"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:layout_marginTop="10dp"
+      android:background="@drawable/btnlogin_back"
+      android:fontFamily="@font/nunitosans_bold"
+      android:text="Apply"
+      android:textAllCaps="false"
+      android:textColor="@color/white"
+      android:textSize="20sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/chipGroup"
+      app:layout_constraintStart_toStartOf="@+id/chipGroup"
+      app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+      />
+  <TextView
+      android:id="@+id/textView4"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="10dp"
+      android:text="Select Categories"
+      android:textSize="25sp"
+      android:fontFamily="@font/nunitosans_semibold"
+      app:layout_constraintBottom_toTopOf="@+id/chipGroup"
+      app:layout_constraintEnd_toEndOf="@+id/chipGroup"
+      app:layout_constraintStart_toStartOf="@+id/chipGroup"
+      />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

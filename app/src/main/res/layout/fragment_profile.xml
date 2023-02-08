@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <androidx.core.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragments.profile.ProfileFragment" >
@@ -75,6 +73,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/bio">
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/staticLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -86,6 +85,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunitosans_semibold"
                     android:text="City, State"
+                    android:visibility="gone"
                     android:textSize="15dp" />
             </LinearLayout>
 
@@ -218,13 +218,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:visibility="gone"
+                android:id="@+id/myPostsRv"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView"
                 app:layout_constraintStart_toStartOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView" >
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:listitem="@layout/item_my_posts"
+                >
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -237,6 +240,7 @@
                 android:layout_marginTop="20dp"
                 android:text="You Have Not Posted Anything Yet ! \n Post Something.. 😃️"
                 android:textSize="20dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/textView"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView"

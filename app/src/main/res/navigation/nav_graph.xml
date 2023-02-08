@@ -163,6 +163,9 @@
             app:destination="@id/chatsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailedPostFragment"
+            app:destination="@id/detailedPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -379,5 +382,14 @@
             app:destination="@id/addUniversityLinkFragment"
             app:popUpTo="@id/addUniversityPasswordFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailedPostFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.detailedpost.DetailedPostFragment"
+        android:label="fragment_detailed_post"
+        tools:layout="@layout/fragment_detailed_post" >
+        <argument
+            android:name="postId"
+            app:argType="string" />
     </fragment>
 </navigation>

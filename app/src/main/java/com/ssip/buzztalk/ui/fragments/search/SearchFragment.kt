@@ -62,6 +62,7 @@ class SearchFragment : Fragment() {
                         navigate(userID)
                     })
                     binding.personsRecyclerView.adapter = searchAdapter
+                    binding.edtSearch.visibility = View.VISIBLE
                     searchAdapter.users = response.data!!.data.users as MutableList<User>
                 }
                 Status.LOADING -> {

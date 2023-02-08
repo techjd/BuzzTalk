@@ -14,11 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.github.fobid.linkabletext.view.OnLinkClickListener
-import com.ssip.buzztalk.databinding.ItemConnectionRequestBinding
 import com.ssip.buzztalk.databinding.ItemPostBinding
-import com.ssip.buzztalk.models.connections.response.connectionrequests.Request
-import com.ssip.buzztalk.models.feed.response.Feed
 import com.ssip.buzztalk.models.feed.response.FeedX
 
 class PostsAdapter(
@@ -44,6 +40,8 @@ class PostsAdapter(
         with(holder) {
             itemPostBinding.userName.text = "${singlePost.postId.userId.firstName} ${singlePost.postId.userId.lastName}"
 //            itemPostBinding.content.setLinkHint(singlePost.postId.content)
+            val bio = singlePost.postId.userId.userType
+            itemPostBinding.bio.text = "${bio.substring(0, bio.length - 1)}"
             var content = singlePost.postId.content
 
             var spannable = SpannableString(singlePost.postId.content)
@@ -56,9 +54,6 @@ class PostsAdapter(
                     if (prevIdx != -1) {
 
                         val substr = content.substring(prevIdx, i)
-
-//                        Log.d("SUBSTR", "onBindViewHolder: ${content.substring(prevIdx, i)}")
-
 
                         val clickableStr = object : ClickableSpan() {
                             override fun onClick(view: View) {
@@ -120,7 +115,7 @@ class PostsAdapter(
 
 
             itemPostBinding.content.text = spannable
-            itemPostBinding.content.setMovementMethod(LinkMovementMethod.getInstance());
+            itemPostBinding.content.setMovementMethod(LinkMovementMethod.getInstance())
 
 
 

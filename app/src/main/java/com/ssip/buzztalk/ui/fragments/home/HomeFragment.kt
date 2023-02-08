@@ -1,5 +1,6 @@
 package com.ssip.buzztalk.ui.fragments.home
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentAddEmailBinding
@@ -19,7 +22,10 @@ import com.ssip.buzztalk.models.chat.request.MakeUserOnline
 import com.ssip.buzztalk.models.feed.response.FeedX
 import com.ssip.buzztalk.models.newfeed.Feed
 import com.ssip.buzztalk.models.notifications.request.NotificationBody
+import com.ssip.buzztalk.ui.components.HomeBottomSheet
+import com.ssip.buzztalk.ui.components.HomeBottomSheetViewModel
 import com.ssip.buzztalk.ui.fragments.chat.ChatViewModel
+import com.ssip.buzztalk.ui.fragments.chat.conversations.ConversationsFragmentDirections
 import com.ssip.buzztalk.ui.fragments.home.adapter.FeedAdapter
 import com.ssip.buzztalk.ui.fragments.home.adapter.PostsAdapter
 import com.ssip.buzztalk.ui.fragments.post.PostViewModel
@@ -40,6 +46,16 @@ class HomeFragment : Fragment() {
     private val chatViewModel: ChatViewModel by viewModels()
     private val homeViewModel: HomeViewModel by viewModels()
     private val postViewModel: PostViewModel by viewModels()
+    private val homeBottomSheetViewModel: HomeBottomSheetViewModel by viewModels()
+
+    private val chipsCategoriesList = listOf<String>(
+      "University",
+      "School",
+      "Working Professional",
+      "Research Scholars",
+      "Professor",
+      "Student"
+    )
 
     private lateinit var postsAdapter: PostsAdapter
     private lateinit var feedAdapter: FeedAdapter
@@ -52,6 +68,9 @@ class HomeFragment : Fragment() {
 
     @Inject
     lateinit var tokenManager: TokenManager
+
+    @Inject
+    lateinit var homeBottomSheet: HomeBottomSheet
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +101,10 @@ class HomeFragment : Fragment() {
             }
         }
 
+        binding.filterLinearLl.setOnClickListener {
+            homeBottomSheet.show(parentFragmentManager, "BOTTOM SHEET")
+        }
+
         binding.feedRv.layoutManager = LinearLayoutManager(context)
         binding.feedRv.setHasFixedSize(true)
 
@@ -101,6 +124,8 @@ class HomeFragment : Fragment() {
             }
         }
 
+        homeBottomSheetViewModel
+
         lifecycleScope.launch{
             if (tokenManager.getUserFirstTime()) {
                 homeViewModel.sendNoti(tokenManager.getTokenWithBearer()!!, NotificationBody(tokenManager.getNotificationTokenOnCreate()!!))
@@ -118,9 +143,9 @@ class HomeFragment : Fragment() {
             }
         }
 
-//        postViewModel.getFeed()
+       postViewModel.getFeed()
 
-        postViewModel.getNewFeed()
+        // postViewModel.getNewFeed()
 
         postViewModel.feed.observe(viewLifecycleOwner) { response ->
             when(response.status) {
@@ -149,32 +174,32 @@ class HomeFragment : Fragment() {
             }
         }
 
-        postViewModel.newFeed.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
-                Status.SUCCESS -> {
-                    feedAdapter = FeedAdapter(
-                        { id ->
-                            navigate(id)
-                        },
-                        { text ->
-                            navigateToUser(text)
-                        }
-                    )
-                    if (response?.data!!.data!!.feed!!.isEmpty()) {
-                        binding.noPosts.visibility = View.VISIBLE
-                    } else {
-                        feedAdapter.posts = response.data?.data?.feed as MutableList<Feed>
-                        binding.feedRv.adapter = feedAdapter
-                    }
-                }
-                Status.LOADING -> {
-
-                }
-                Status.ERROR -> {
-                    DialogClass(view).showDialog(response.message!!)
-                }
-            }
-        }
+        // postViewModel.newFeed.observe(viewLifecycleOwner) { response ->
+        //     when(response.status) {
+        //         Status.SUCCESS -> {
+        //             feedAdapter = FeedAdapter(
+        //                 { id ->
+        //                     navigate(id)
+        //                 },
+        //                 { text ->
+        //                     navigateToUser(text)
+        //                 }
+        //             )
+        //             if (response?.data!!.data!!.feed!!.isEmpty()) {
+        //                 binding.noPosts.visibility = View.VISIBLE
+        //             } else {
+        //                 feedAdapter.posts = response.data?.data?.feed as MutableList<Feed>
+        //                 binding.feedRv.adapter = feedAdapter
+        //             }
+        //         }
+        //         Status.LOADING -> {
+        //
+        //         }
+        //         Status.ERROR -> {
+        //             DialogClass(view).showDialog(response.message!!)
+        //         }
+        //     }
+        // }
 
         Log.d("SOCKET ID", "onViewCreated: ${socket.id()}")
     }
@@ -184,6 +209,20 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigate(id: String) {
-        Toast.makeText(context, "Navigate to detail screen", Toast.LENGTH_SHORT).show()
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailedPostFragment(id)
+        findNavController().navigate(action)
+        // Toast.makeText(context, "Navigate to detail screen", Toast.LENGTH_SHORT).show()
+    }
+
+    fun ChipGroup.addChip(context: Context, label: String){
+        Chip(context).apply {
+            id = View.generateViewId()
+            text = label
+            isClickable = true
+            isCheckable = true
+            isCheckedIconVisible = false
+            isFocusable = true
+            addView(this)
+        }
     }
 }
