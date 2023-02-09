@@ -16,7 +16,7 @@
             android:layout_height="250dp"
             android:background="@color/white"
             app:collapsedTitleGravity="center"
-            app:contentScrim="#FFFFFF"
+            app:contentScrim="#BFFFFFFF"
             app:expandedTitleMarginBottom="10dp"
             app:expandedTitleMarginStart="120dp"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"

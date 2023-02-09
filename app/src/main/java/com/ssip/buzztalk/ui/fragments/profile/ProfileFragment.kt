@@ -50,7 +50,7 @@ class ProfileFragment : Fragment() {
 
         appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             val isShow = true
-            val shouldShowIcon = abs(verticalOffset) >= 396
+            val shouldShowIcon = abs(verticalOffset) >= 534
 
             toolbar.navigationIcon = if (isShow && shouldShowIcon) {
                 resources.getDrawable(R.drawable.user_top_bar, null)

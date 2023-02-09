@@ -9,9 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.appbar.AppBarLayout
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentUserDetailProfileBinding
 import com.ssip.buzztalk.models.connections.request.ToId
@@ -25,6 +27,7 @@ import com.ssip.buzztalk.utils.Status
 import com.ssip.buzztalk.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlin.math.abs
 
 
 @AndroidEntryPoint
@@ -55,18 +58,42 @@ class UserDetailProfileFragment : Fragment() {
 
 //        Toast.makeText(context, args.userId, Toast.LENGTH_LONG).show()
 
-        userDetailProfileViewModel.getInfo(tokenManager.getTokenWithBearer()!!, OtherUserInfoRequest(args.userId))
+        userDetailProfileViewModel.getInfo(
+            tokenManager.getTokenWithBearer()!!,
+            OtherUserInfoRequest(args.userId)
+        )
 
+        val appBarLayout: AppBarLayout = binding.mainAppbar
+        val toolbar: Toolbar = binding.toolbarTop
+
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val isShow = true
+            val shouldShowIcon = abs(verticalOffset) >= 534
+
+            toolbar.navigationIcon = if (isShow && shouldShowIcon) {
+                resources.getDrawable(R.drawable.user_top_bar, null)
+            } else {
+                resources.getDrawable(R.color.transparant)
+            }
+        })
 
         userDetailProfileViewModel.otherUserInfo.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
-                    binding.fullName.text = "${response.data!!.data.user.firstName} ${response.data!!.data.user.lastName}"
+                    binding.mainCollapsing.title =
+                        "${response.data!!.data.user.firstName} ${response.data!!.data.user.lastName}"
+                    binding.posttextView.text = "${response.data!!.data.user.firstName}'s posts"
+                    binding.textView2.text = "${response.data!!.data.user.firstName} Hasn't Posted Anything Yet! \\n Post Something.. \uD83D\uDE03️"
                     binding.email.setOnClickListener {
                         val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
                             data = Uri.parse("mailto:${response.data.data.user.email}")
                         }
-                        startActivity(Intent.createChooser(emailIntent, "Email ${response.data!!.data.user.firstName} ${response.data!!.data.user.lastName}"))
+                        startActivity(
+                            Intent.createChooser(
+                                emailIntent,
+                                "Email ${response.data!!.data.user.firstName} ${response.data!!.data.user.lastName}"
+                            )
+                        )
                     }
                 }
                 Status.LOADING -> {
@@ -80,16 +107,25 @@ class UserDetailProfileFragment : Fragment() {
 
         binding.followUnfollow.setOnClickListener {
             if (binding.followUnfollow.text.toString().toLowerCase().trim() == "follow") {
-                userDetailProfileViewModel.followUser(tokenManager.getTokenWithBearer()!!, Followee(args.userId))
+                userDetailProfileViewModel.followUser(
+                    tokenManager.getTokenWithBearer()!!,
+                    Followee(args.userId)
+                )
             } else {
-                userDetailProfileViewModel.unFollowUser(tokenManager.getTokenWithBearer()!!, Followee(args.userId))
+                userDetailProfileViewModel.unFollowUser(
+                    tokenManager.getTokenWithBearer()!!,
+                    Followee(args.userId)
+                )
             }
         }
 
-        userDetailProfileViewModel.checkIfUserIsFollowedOrNot(tokenManager.getTokenWithBearer()!!, Followee(args.userId))
+        userDetailProfileViewModel.checkIfUserIsFollowedOrNot(
+            tokenManager.getTokenWithBearer()!!,
+            Followee(args.userId)
+        )
 
         userDetailProfileViewModel.userFollowedOrNot.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
                     Log.d("MESSAGE", "onViewCreated: ${response.data!!.message}")
                     if (response.data.message == Constants.USER_FOLLOWED) {
@@ -108,7 +144,7 @@ class UserDetailProfileFragment : Fragment() {
         }
 
         userDetailProfileViewModel.followUser.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
                     binding.followUnfollow.setBackgroundResource(R.drawable.btnsign_back)
                     binding.followUnfollow.text = "Unfollow"
@@ -125,7 +161,7 @@ class UserDetailProfileFragment : Fragment() {
         }
 
         userDetailProfileViewModel.unFollowUser.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
                     binding.followUnfollow.setBackgroundResource(R.drawable.btnlogin_back)
                     binding.followUnfollow.text = "Follow"
@@ -141,10 +177,13 @@ class UserDetailProfileFragment : Fragment() {
             }
         }
 
-        userDetailProfileViewModel.getFollowersFollowingCount(tokenManager.getTokenWithBearer()!!, UserID(args.userId))
+        userDetailProfileViewModel.getFollowersFollowingCount(
+            tokenManager.getTokenWithBearer()!!,
+            UserID(args.userId)
+        )
 
         userDetailProfileViewModel.totalFollowersFollowingCount.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
                     binding.followers.text = response.data!!.data.followers.size.toString()
                     binding.following.text = response.data.data.following.size.toString()
@@ -160,18 +199,21 @@ class UserDetailProfileFragment : Fragment() {
 
         binding.connect.setOnClickListener {
             if (binding.connect.text.toString().toLowerCase().trim() == "connect") {
-                userDetailProfileViewModel.sendRequest(tokenManager.getTokenWithBearer()!!, ToId(args.userId))
-            } else if (binding.connect.text.toString().toLowerCase().trim() == "cancel"){
+                userDetailProfileViewModel.sendRequest(
+                    tokenManager.getTokenWithBearer()!!,
+                    ToId(args.userId)
+                )
+            } else if (binding.connect.text.toString().toLowerCase().trim() == "cancel") {
 //                userDetailProfileViewModel.unFollowUser(tokenManager.getTokenWithBearer()!!, Followee(args.userId))
-            } else if(binding.connect.text.toString().toLowerCase().trim() == "disconnect") {
-                   // Implement Later
+            } else if (binding.connect.text.toString().toLowerCase().trim() == "disconnect") {
+                // Implement Later
                 Toast.makeText(context, "Implementation Left", Toast.LENGTH_SHORT).show()
             }
 //            userDetailProfileViewModel.sendRequest(tokenManager.getTokenWithBearer()!!, ToId(args.userId))
         }
 
         userDetailProfileViewModel.sendRequest.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
                     binding.connect.setBackgroundResource(R.drawable.btnsign_back)
                     binding.connect.text = "Cancel Request"
@@ -186,10 +228,13 @@ class UserDetailProfileFragment : Fragment() {
             }
         }
 //
-        userDetailProfileViewModel.checkIfUserIsConnectedOrNot(tokenManager.getTokenWithBearer()!!, ToId(args.userId))
+        userDetailProfileViewModel.checkIfUserIsConnectedOrNot(
+            tokenManager.getTokenWithBearer()!!,
+            ToId(args.userId)
+        )
 
         userDetailProfileViewModel.connectionSentOrNot.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
                     if (response.data!!.message == Constants.REQUEST_ACCEPTED) {
                         binding.connect.setBackgroundResource(R.drawable.btnsign_back)
@@ -197,7 +242,7 @@ class UserDetailProfileFragment : Fragment() {
                         binding.connect.setTextColor(resources.getColor(R.color.black))
 
                         binding.email.visibility = View.VISIBLE
-                    } else if(response.data.message == Constants.REQUEST_SENT) {
+                    } else if (response.data.message == Constants.REQUEST_SENT) {
                         binding.connect.setBackgroundResource(R.drawable.btnsign_back)
                         binding.connect.text = "Cancel Request"
                         binding.connect.setTextColor(resources.getColor(R.color.black))
@@ -213,10 +258,13 @@ class UserDetailProfileFragment : Fragment() {
             }
         }
 
-        userDetailProfileViewModel.getAllConnections(tokenManager.getTokenWithBearer()!!, UserID(args.userId))
+        userDetailProfileViewModel.getAllConnections(
+            tokenManager.getTokenWithBearer()!!,
+            UserID(args.userId)
+        )
 
         userDetailProfileViewModel.allConnections.observe(viewLifecycleOwner) { response ->
-            when(response.status) {
+            when (response.status) {
                 Status.SUCCESS -> {
                     binding.connections.text = response.data!!.data.connections.size.toString()
                 }
@@ -231,17 +279,29 @@ class UserDetailProfileFragment : Fragment() {
         }
 
         binding.followersBlock.setOnClickListener {
-            val action = UserDetailProfileFragmentDirections.actionUserDetailProfileFragmentToDetailedRelationFragment(0, args.userId)
+            val action =
+                UserDetailProfileFragmentDirections.actionUserDetailProfileFragmentToDetailedRelationFragment(
+                    0,
+                    args.userId
+                )
             findNavController().navigate(action)
         }
 
         binding.followingBlock.setOnClickListener {
-            val action = UserDetailProfileFragmentDirections.actionUserDetailProfileFragmentToDetailedRelationFragment(1, args.userId)
+            val action =
+                UserDetailProfileFragmentDirections.actionUserDetailProfileFragmentToDetailedRelationFragment(
+                    1,
+                    args.userId
+                )
             findNavController().navigate(action)
         }
 
         binding.connectionsBlock.setOnClickListener {
-            val action = UserDetailProfileFragmentDirections.actionUserDetailProfileFragmentToDetailedRelationFragment(2, args.userId)
+            val action =
+                UserDetailProfileFragmentDirections.actionUserDetailProfileFragmentToDetailedRelationFragment(
+                    2,
+                    args.userId
+                )
             findNavController().navigate(action)
         }
     }
