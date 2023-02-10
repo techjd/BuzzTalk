@@ -25,9 +25,6 @@
         <activity
             android:name=".ui.activities.CompanyActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.activities.UniversityActivity"
-            android:exported="false" />
 
         <activity
             android:name=".ui.activities.MainActivity"

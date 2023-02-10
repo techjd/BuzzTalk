@@ -68,24 +68,24 @@ class SignUpFragment : Fragment() {
                 findNavController().navigate(R.id.action_signUpFragment_to_addFirstLastNameFragment)
             }
         }
-        binding.UniversityCard.setOnClickListener {
-            if (args.loginSignup == 0) {
-                // 1 for university
-                val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(1)
-                findNavController().navigate(action)
-            } else {
-                findNavController().navigate(R.id.action_signUpFragment_to_addUniversityNameFragment2)
-            }
-        }
-        binding.schoolCard.setOnClickListener {
-            if (args.loginSignup == 0) {
-                // 1 for university
-                val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(1)
-                findNavController().navigate(action)
-            } else {
-                findNavController().navigate(R.id.action_signUpFragment_to_addUniversityNameFragment2)
-            }
-        }
+        // binding.UniversityCard.setOnClickListener {
+        //     if (args.loginSignup == 0) {
+        //         // 1 for university
+        //         val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(1)
+        //         findNavController().navigate(action)
+        //     } else {
+        //         findNavController().navigate(R.id.action_signUpFragment_to_addUniversityNameFragment2)
+        //     }
+        // }
+        // binding.schoolCard.setOnClickListener {
+        //     if (args.loginSignup == 0) {
+        //         // 1 for university
+        //         val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(1)
+        //         findNavController().navigate(action)
+        //     } else {
+        //         findNavController().navigate(R.id.action_signUpFragment_to_addUniversityNameFragment2)
+        //     }
+        // }
         binding.industryCard.setOnClickListener {
             if (args.loginSignup == 0) {
                 // 2 for company

@@ -117,7 +117,9 @@ class PostsAdapter(
             itemPostBinding.content.text = spannable
             itemPostBinding.content.setMovementMethod(LinkMovementMethod.getInstance())
 
-
+            itemPostBinding.content.setOnClickListener {
+                onClickListener.invoke(singlePost.postId._id)
+            }
 
 //            "You can start learning Android from MindOrks"
 //            itemPostBinding.content.apply {
@@ -156,6 +158,15 @@ class PostsAdapter(
 //            itemPostBinding.content.setOnLinkClickListener { linkType, matchedText ->
 //                showToast(matchedText)
 //            }
+            with(itemPostBinding) {
+                bioHeader.setOnClickListener {
+                    onClickListener.invoke(singlePost.postId._id)
+                }
+                mainPost.setOnClickListener {
+                    onClickListener.invoke(singlePost.postId._id)
+                }
+
+            }
 
         }
     }

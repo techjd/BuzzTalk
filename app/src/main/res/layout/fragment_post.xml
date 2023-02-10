@@ -65,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/post_edt_background"
             android:ems="10"
             android:fontFamily="@font/nunitosans_semibold"
@@ -73,9 +74,10 @@
             android:inputType="textMultiLine"
             android:padding="20dp"
             app:layout_constraintEnd_toEndOf="@+id/staticHashtags"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/staticHashtags"
-            app:layout_constraintTop_toBottomOf="@+id/staticHashtags" />
-
+            app:layout_constraintTop_toBottomOf="@+id/staticHashtags"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/choicesRv"
             android:layout_width="match_parent"

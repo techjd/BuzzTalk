@@ -41,6 +41,7 @@ class AddCompanyLinkFragment : Fragment() {
                 findNavController().navigate(R.id.action_addCompanyNameFragment_to_addCompanyLinkFragment)
             }
         }
+
         activity?.onBackPressedDispatcher?.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {

@@ -15,7 +15,7 @@ import com.ssip.buzztalk.databinding.FragmentLoginBinding
 import com.ssip.buzztalk.models.auth.user.login.request.UserRequestLogin
 import com.ssip.buzztalk.ui.activities.CompanyActivity
 import com.ssip.buzztalk.ui.activities.MainActivity
-import com.ssip.buzztalk.ui.activities.UniversityActivity
+// import com.ssip.buzztalk.ui.activities.UniversityActivity
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
 import com.ssip.buzztalk.utils.TokenManager
@@ -103,56 +103,56 @@ class LoginFragment : Fragment() {
             }
         }
 
-        signInViewModel.loginResponseCompany.observe(viewLifecycleOwner) { response ->
-            when (response.status) {
-                Status.SUCCESS -> {
-                    hideProgressBar()
-                    tokenManager.saveToken(response.data!!.data.token)
-                    tokenManager.saveUserId(response.data!!.data.user._id)
-                    tokenManager.saveUserType("COMPANY")
-//                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-//                    (activity as MainActivity).setStartDestinationAsHomeFragment()
+//         signInViewModel.loginResponseCompany.observe(viewLifecycleOwner) { response ->
+//             when (response.status) {
+//                 Status.SUCCESS -> {
+//                     hideProgressBar()
+//                     tokenManager.saveToken(response.data!!.data.token)
+//                     tokenManager.saveUserId(response.data!!.data.user._id)
+//                     tokenManager.saveUserType("COMPANY")
+// //                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+// //                    (activity as MainActivity).setStartDestinationAsHomeFragment()
+//
+//                     Intent(context,  CompanyActivity::class.java).apply {
+//                         startActivity(this)
+//                     }
+//                     (activity as MainActivity).finish()
+//                 }
+//                 Status.LOADING -> {
+//                     showProgressBar()
+//                 }
+//                 Status.ERROR -> {
+//                     hideProgressBar()
+//                     DialogClass(view).showDialog(response.message!!)
+//                 }
+//             }
+//         }
 
-                    Intent(context,  CompanyActivity::class.java).apply {
-                        startActivity(this)
-                    }
-                    (activity as MainActivity).finish()
-                }
-                Status.LOADING -> {
-                    showProgressBar()
-                }
-                Status.ERROR -> {
-                    hideProgressBar()
-                    DialogClass(view).showDialog(response.message!!)
-                }
-            }
-        }
-
-        signInViewModel.loginResponseUniversity.observe(viewLifecycleOwner) { response ->
-            when (response.status) {
-                Status.SUCCESS -> {
-                    hideProgressBar()
-                    tokenManager.saveToken(response.data!!.data.token)
-                    tokenManager.saveUserId(response.data!!.data.user._id)
-                    tokenManager.saveUserType("UNIVERSITY")
-
-                    Intent(context,  UniversityActivity::class.java).apply {
-                        startActivity(this)
-                    }
-                    (activity as MainActivity).finish()
-
-//                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-//                    (activity as MainActivity).setStartDestinationAsHomeFragment()
-                }
-                Status.LOADING -> {
-                    showProgressBar()
-                }
-                Status.ERROR -> {
-                    hideProgressBar()
-                    DialogClass(view).showDialog(response.message!!)
-                }
-            }
-        }
+//         signInViewModel.loginResponseUniversity.observe(viewLifecycleOwner) { response ->
+//             when (response.status) {
+//                 Status.SUCCESS -> {
+//                     hideProgressBar()
+//                     tokenManager.saveToken(response.data!!.data.token)
+//                     tokenManager.saveUserId(response.data!!.data.user._id)
+//                     tokenManager.saveUserType("UNIVERSITY")
+//
+//                     Intent(context,  UniversityActivity::class.java).apply {
+//                         startActivity(this)
+//                     }
+//                     (activity as MainActivity).finish()
+//
+// //                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+// //                    (activity as MainActivity).setStartDestinationAsHomeFragment()
+//                 }
+//                 Status.LOADING -> {
+//                     showProgressBar()
+//                 }
+//                 Status.ERROR -> {
+//                     hideProgressBar()
+//                     DialogClass(view).showDialog(response.message!!)
+//                 }
+//             }
+//         }
 
 
 

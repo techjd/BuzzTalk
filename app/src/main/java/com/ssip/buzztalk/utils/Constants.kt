@@ -1,9 +1,9 @@
 package com.ssip.buzztalk.utils
 
 object Constants {
-    const val DEVELOPMENT_BASE_URL = "http://192.168.68.101:5500/api/"
+    const val DEVELOPMENT_BASE_URL = "http://172.15.7.94:5500/api/"
     const val PRODUCTION_BASE_URL = "" // Enter Deployed Server URL
-    const val CHAT_SERVER_URL = "http://192.168.68.101:5500/"
+    const val CHAT_SERVER_URL = "http://172.15.7.94:5500/"
     const val PREFS_TOKEN_FILE = "PREFS_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"
     const val USER_ID = "USER_ID"
@@ -44,6 +44,12 @@ object Constants {
     const val POST_NEW_OPPO_UNIVERSITY = "post/postNewOpportunititesUniversity"
     const val GET_MY_FEED = "post/myFeed"
     const val GET_NOTIFICATIONS = "user/getNotifications"
+    const val GET_SINGLE_POST = "post/singlePost/{id}"
+    const val COMMENT_ON_POST = "post/comment"
+    const val GET_ALL_COMMENTS = "post/getComments/{postId}"
+
+    // Organizations
+    const val REGISTER_ORG = ""
 
     // Constants Defined in the backend to cross verify in frontend
     const val SUCCESS = "SUCCESS"

@@ -16,7 +16,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/nunitosans_bold"
-        android:text="Add Company\nInformation"
+        android:text="Add Organization\nInformation"
         android:textColor="@color/light_blue"
         android:textSize="40sp" />
 
@@ -78,6 +78,7 @@
         </LinearLayout>
 
         <Spinner
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:id="@+id/category_spinner"
             android:layout_marginTop="20dp"

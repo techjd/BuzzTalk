@@ -46,9 +46,8 @@ class SplashFragment : Fragment() {
                 if (tokenManager.getUserType() == "COMPANY") {
                     findNavController().navigate(R.id.action_splashFragment_to_companyActivity)
                     (activity as MainActivity).finish()
-                } else if(tokenManager.getUserType() == "UNIVERSITY") {
-                    findNavController().navigate(R.id.action_splashFragment_to_universityActivity)
-                    (activity as MainActivity).finish()
+                }else if(tokenManager.getUserType() == "SCHOOL") {
+
                 } else {
                     findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
                     (activity as MainActivity).setStartDestinationAsHomeFragment()

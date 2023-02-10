@@ -91,6 +91,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.connectionRequestsFragment -> {
                     hideBottomNavigationView()
                 }
+                R.id.detailedPostFragment -> {
+                    hideBottomNavigationView()
+                }
             }
         }
     }

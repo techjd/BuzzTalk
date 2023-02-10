@@ -24,9 +24,6 @@
         <action
             android:id="@+id/action_splashFragment_to_companyActivity"
             app:destination="@id/companyActivity" />
-        <action
-            android:id="@+id/action_splashFragment_to_universityActivity"
-            app:destination="@id/universityActivity" />
     </fragment>
     <fragment
         android:id="@+id/chooseLoginSignUpFragment"
@@ -90,11 +87,6 @@
         <action
             android:id="@+id/action_signUpFragment_to_addCompanyNameFragment"
             app:destination="@id/addCompanyNameFragment"
-            app:popUpTo="@id/signUpFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_signUpFragment_to_addUniversityNameFragment2"
-            app:destination="@id/addUniversityNameFragment"
             app:popUpTo="@id/signUpFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -331,58 +323,6 @@
         android:name="com.ssip.buzztalk.ui.activities.CompanyActivity"
         android:label="activity_company"
         tools:layout="@layout/activity_company" />
-    <activity
-        android:id="@+id/universityActivity"
-        android:name="com.ssip.buzztalk.ui.activities.UniversityActivity"
-        android:label="activity_university"
-        tools:layout="@layout/activity_university" />
-    <fragment
-        android:id="@+id/addUniversityNameFragment"
-        android:name="com.ssip.buzztalk.ui.fragments.auth.university.AddUniversityNameFragment"
-        android:label="fragment_add_university_name"
-        tools:layout="@layout/fragment_add_university_name" >
-        <action
-            android:id="@+id/action_addUniversityNameFragment_to_addUniversityLinkFragment"
-            app:destination="@id/addUniversityLinkFragment"
-            app:popUpTo="@id/addUniversityNameFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_addUniversityNameFragment_to_chooseLoginSignUpFragment"
-            app:destination="@id/chooseLoginSignUpFragment"
-            app:popUpTo="@id/addUniversityNameFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/addUniversityLinkFragment"
-        android:name="com.ssip.buzztalk.ui.fragments.auth.university.AddUniversityLinkFragment"
-        android:label="fragment_add_university_link"
-        tools:layout="@layout/fragment_add_university_link" >
-        <action
-            android:id="@+id/action_addUniversityLinkFragment_to_addUniversityPasswordFragment"
-            app:destination="@id/addUniversityPasswordFragment"
-            app:popUpTo="@id/addUniversityLinkFragment" />
-        <action
-            android:id="@+id/action_addUniversityLinkFragment_to_addUniversityNameFragment"
-            app:destination="@id/addUniversityNameFragment"
-            app:popUpTo="@id/addUniversityLinkFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/addUniversityPasswordFragment"
-        android:name="com.ssip.buzztalk.ui.fragments.auth.university.AddUniversityPasswordFragment"
-        android:label="fragment_add_university_password"
-        tools:layout="@layout/fragment_add_university_password" >
-        <action
-            android:id="@+id/action_addUniversityPasswordFragment_to_universityActivity"
-            app:destination="@id/universityActivity"
-            app:popUpTo="@id/addUniversityPasswordFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_addUniversityPasswordFragment_to_addUniversityLinkFragment"
-            app:destination="@id/addUniversityLinkFragment"
-            app:popUpTo="@id/addUniversityPasswordFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
     <fragment
         android:id="@+id/detailedPostFragment"
         android:name="com.ssip.buzztalk.ui.fragments.detailedpost.DetailedPostFragment"

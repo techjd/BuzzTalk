@@ -4,29 +4,24 @@ import android.annotation.SuppressLint
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.ssip.buzztalk.R
-import com.ssip.buzztalk.databinding.FragmentAddEmailBinding
 import com.ssip.buzztalk.databinding.FragmentProfileBinding
-import com.ssip.buzztalk.models.myfeed.response.Feed
 import com.ssip.buzztalk.models.totalCount.request.UserID
-import com.ssip.buzztalk.ui.fragments.detailedrelation.DetailedRelationFragmentArgs
 import com.ssip.buzztalk.utils.DialogClass
-import com.ssip.buzztalk.utils.Status
 import com.ssip.buzztalk.utils.Status.ERROR
 import com.ssip.buzztalk.utils.Status.LOADING
 import com.ssip.buzztalk.utils.Status.SUCCESS
 import com.ssip.buzztalk.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -85,11 +80,18 @@ class ProfileFragment : Fragment() {
             myPostsRv.setHasFixedSize(true)
         }
 
+
+        val typeface = ResourcesCompat.getFont(requireContext(), com.ssip.buzztalk.R.font.nunitosans_semibold)
+
         profileViewModel.userInfo.observe(viewLifecycleOwner) { response ->
             when(response.status) {
                 SUCCESS -> {
-                    binding.fullName.text = response.data!!.data.user.firstName + " " +response.data.data.user.lastName
-                    val bio = response.data.data.user.userType
+                    with(binding) {
+                        mainCollapsing.title = response.data!!.data.user.firstName + " " +response.data.data.user.lastName
+                        mainCollapsing.setCollapsedTitleTypeface(typeface)
+                        mainCollapsing.setExpandedTitleTypeface(typeface)
+                    }
+                    val bio = response.data!!.data.user.userType
                     binding.bio.text = bio.substring(0, bio.length - 1)
                     Log.d(" BIO VALUE ", "onViewCreated: ${response.data.data.user.bio}")
                 }
@@ -146,11 +148,12 @@ class ProfileFragment : Fragment() {
                     if (response.data?.data?.feed?.isEmpty()!!) {
                         binding.textView2.visibility = View.VISIBLE
                     } else {
-                        profileFeedAdapter.posts = response.data.data.feed as MutableList<Feed>
+                        profileFeedAdapter.posts = response.data.data.feed as MutableList<com.ssip.buzztalk.models.myfeed.response.Feed>
 
                         with(binding) {
                             myPostsRv.adapter = profileFeedAdapter
                             myPostsRv.visibility = View.VISIBLE
+                            textView2.visibility = View.GONE
                         }
                     }
                 }
