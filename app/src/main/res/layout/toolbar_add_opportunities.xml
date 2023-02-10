@@ -9,7 +9,6 @@
       android:layout_height="?attr/actionBarSize"
       android:background="#FFFFFF"
       app:navigationIcon="@drawable/ic_close"
-      app:menu="@menu/post_toolbar"
       >
 
     <TextView

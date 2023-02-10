@@ -4,12 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ssip.buzztalk.api.AuthAPI
-import com.ssip.buzztalk.models.auth.user.register.request.UserRequestRegister
-import com.ssip.buzztalk.models.auth.user.register.response.UserRegisterResponse
-import com.ssip.buzztalk.utils.ErrorResponse
-import com.ssip.buzztalk.utils.NetworkManager
+import com.ssip.buzztalk.models.organizations.request.LoginRequest
+import com.ssip.buzztalk.models.organizations.request.RegisterRequest
+import com.ssip.buzztalk.models.organizations.response.info.OrgInfo
+import com.ssip.buzztalk.models.organizations.response.login.OrgLoginInfo
+import com.ssip.buzztalk.models.organizations.response.register.OrgRegisterResponse
+import com.ssip.buzztalk.repository.CompanyRepository
 import com.ssip.buzztalk.utils.NetworkResult
+import com.ssip.buzztalk.utils.OrgTypes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okio.IOException
@@ -18,78 +20,115 @@ import javax.inject.Inject
 
 @HiltViewModel
 class OrganizationViewModel @Inject constructor(
-  private val networkManager: NetworkManager,
-  private val errorResponse: ErrorResponse,
-  private val authAPI: AuthAPI
+  private val companyRepository: CompanyRepository
 ): ViewModel() {
-  private val _firstName = MutableLiveData("")
-  private val _secondName = MutableLiveData("")
-  private val _email = MutableLiveData("")
-  private val _password = MutableLiveData("")
-  private val _userName = MutableLiveData("")
-  val firstName: LiveData<String> = _firstName
-  val secondName: LiveData<String> = _secondName
-  val userName :LiveData<String> = _userName
-  val email: LiveData<String> = _email
-  val password: LiveData<String> = _password
+  private val _orgName = MutableLiveData("")
+  private val _orgUserName = MutableLiveData("")
+  private val _orgMotto = MutableLiveData("")
+  private val _orgLink = MutableLiveData("")
+  private val _orgPhone = MutableLiveData("")
+  private val _orgEmail = MutableLiveData("")
+  private val _orgPassword = MutableLiveData("")
+  private val _orgType = MutableLiveData(OrgTypes.DEFAULT)
 
-  private val _registerResponse: MutableLiveData<NetworkResult<UserRegisterResponse>> = MutableLiveData()
-  val registerResponse: LiveData<NetworkResult<UserRegisterResponse>> = _registerResponse
+  val orgName= _orgName
+  val orgUserName= _orgUserName
+  val orgMotto= _orgMotto
+  val orgLink= _orgLink
+  val orgPhone= _orgPhone
+  val orgEmail = _orgEmail
+  val orgPassword= _orgPassword
+  val orgType= _orgType
 
-  fun saveFirstNameAndSecond(firstName: String, secondName: String) {
-    _firstName.value = firstName
-    _secondName.value = secondName
+  private val _registerResponse: MutableLiveData<NetworkResult<OrgRegisterResponse>> = MutableLiveData()
+  val registerResponse: LiveData<NetworkResult<OrgRegisterResponse>> = _registerResponse
+
+  private val _loginResponse: MutableLiveData<NetworkResult<OrgLoginInfo>> = MutableLiveData()
+  val loginResponse: LiveData<NetworkResult<OrgLoginInfo>> = _loginResponse
+
+  private val _orgInfo: MutableLiveData<NetworkResult<OrgInfo>> = MutableLiveData()
+  val orgInfo: LiveData<NetworkResult<OrgInfo>> = _orgInfo
+
+  fun saveNameUserNameMotto(name: String, userName: String, bio: String) {
+    _orgName.value = name
+    _orgUserName.value = userName
+    _orgMotto.value = bio
   }
 
-  fun saveFirstName(firstName: String) {
-    _firstName.value = firstName
+  fun saveWebAndMobileNum(webSite: String, mobile: String) {
+    _orgLink.value = webSite
+    _orgPhone.value = mobile
   }
 
-  fun saveSecondName(secondName: String) {
-    _secondName.value = secondName
+  fun saveEmailPassword(email: String, password: String) {
+    _orgEmail.value = email
+    _orgPassword.value = password
+  }
+
+  fun saveUserType(orgTypes: OrgTypes) {
+
+  }
+
+  fun getUserName(): String? {
+    return orgUserName.value
   }
 
   fun getName(): String? {
-    return firstName.value
+    return orgName.value
   }
 
   fun getEmail(): String? {
-    return email.value
+    return orgEmail.value
   }
 
-  fun saveEmail(email: String) {
-    _email.value = email
+  fun getBio(): String? {
+    return orgMotto.value
   }
 
-  fun saveUserName(userName: String) {
-    _userName.value = userName
+  fun getPassword(): String? {
+    return orgPassword.value
   }
 
-  fun savePassword(password: String) {
-    _password.value = password
+  fun getLink(): String? {
+    return orgLink.value
   }
 
-  fun register(userRequestRegister: UserRequestRegister) {
+  fun getPhone(): String? {
+    return orgPhone.value
+  }
+
+  fun registerOrg() {
+    val registerReq = RegisterRequest(
+      orgName = orgName.value!!,
+      orgType = orgType.value!!.name,
+      orgBio = if (orgMotto.value == null) orgType.value!!.name else orgMotto.value!!,
+      orgWebSite = orgLink.value!!,
+      orgPhone = orgPhone.value!!,
+      orgEmail = orgEmail.value!!,
+      orgPwd = orgPassword.value!!,
+      orgUserName = orgUserName.value!!
+    )
     viewModelScope.launch {
       _registerResponse.postValue(NetworkResult.Loading())
-      try {
-        if (networkManager.hasInternetConnection()) {
-          val data = authAPI.register(userRequestRegister)
-          if (data.isSuccessful) {
-            _registerResponse.postValue(NetworkResult.Success(data.body()!!))
-          } else {
-            val error = errorResponse.giveErrorResult(data.errorBody()!!)
-            _registerResponse.postValue(NetworkResult.Error(error.message))
-          }
-        } else {
-          _registerResponse.postValue(NetworkResult.Error("No Internet Connection"))
-        }
-      } catch (t: Throwable) {
-        when (t) {
-          is IOException -> _registerResponse.postValue(NetworkResult.Error("Network Failure"))
-          else -> _registerResponse.postValue(NetworkResult.Error("Some Error Occurred , Please Try Again Later"))
-        }
-      }
+      _registerResponse.postValue(companyRepository.registerOrg(registerReq))
+    }
+  }
+
+  fun loginOrg() {
+    val loginReq = LoginRequest(
+      orgEmail = orgEmail.value!!,
+      orgPwd = orgPassword.value!!
+    )
+    viewModelScope.launch {
+      _loginResponse.postValue(NetworkResult.Loading())
+      _loginResponse.postValue(companyRepository.loginOrg(loginReq))
+    }
+  }
+
+  fun getUserInfo() {
+    viewModelScope.launch {
+      _orgInfo.postValue(NetworkResult.Loading())
+      _orgInfo.postValue(companyRepository.getOrgInfo())
     }
   }
 }

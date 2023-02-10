@@ -23,7 +23,8 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_companyActivity"
-            app:destination="@id/companyActivity" />
+            app:destination="@id/companyActivity"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/chooseLoginSignUpFragment"

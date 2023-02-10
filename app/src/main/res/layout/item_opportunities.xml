@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/postCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="10dp">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutPost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+      <LinearLayout
+          android:id="@+id/bioHeader"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_margin="10dp"
+          android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cirularImageProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/user"
+            app:civ_border_width="1dp">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+          <TextView
+              android:id="@+id/userName"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/nunitosans_semibold"
+              android:textColor="@color/black"
+              android:textSize="18dp"
+              android:text="Google" />
+
+          <TextView
+              android:id="@+id/textView6"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:maxLines="1"
+              android:text="A platform to search." />
+        </LinearLayout>
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="5dp"
+          android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lookingForTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/nunitosans_bold"
+            android:text="Looking For :"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/lookingForContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:text="Android Developer" />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="10dp"
+          android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/descTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/nunitosans_bold"
+            android:text="Description :"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/descContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:maxLines="3"
+            android:text="Need a Developer who can integrate RazroPay Paymeny Gateway" />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="10dp"
+          android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/requiredSkillsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/nunitosans_bold"
+            android:text="Required Skills :"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/requiredSkillsContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:text="JAVA , Kotlin, Android, FireBase" />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="10dp"
+          android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/budgetTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:text="Budget :"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+        <TextView
+            android:id="@+id/budgetContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:text="4000 $" />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:paddingStart="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:singleSelection="false">
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/research_scholars"
+              style="@style/Chip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/research_scholars"
+              android:textAppearance="@style/ChipFont"
+              android:visibility="gone" />
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/industry"
+              style="@style/Chip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/industry"
+              android:textAppearance="@style/ChipFont"
+              android:visibility="gone" />
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/school"
+              style="@style/Chip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/school"
+              android:textAppearance="@style/ChipFont"
+              android:visibility="visible" />
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/working_professional"
+              style="@style/Chip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/working_professional"
+              android:textAppearance="@style/ChipFont"
+              android:visibility="visible" />
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/universities"
+              style="@style/Chip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/university"
+              android:textAppearance="@style/ChipFont"
+              android:visibility="gone" />
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/professors"
+              style="@style/Chip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Professors"
+              android:textAppearance="@style/ChipFont"
+              android:visibility="gone" />
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/student"
+              style="@style/Chip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/students"
+              android:textAppearance="@style/ChipFont"
+              android:visibility="visible" />
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/entrepreneurs"
+              style="@style/Chip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/entrepreneurs"
+              android:textAppearance="@style/ChipFont"
+              android:visibility="visible" />
+
+        </com.google.android.material.chip.ChipGroup>
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp"
+          android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/applyJob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btnlogin_back"
+            android:fontFamily="@font/nunitosans_bold"
+            android:text="Apply"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:theme="@style/btn"
+            app:icon="@drawable/ic_navigate_next"
+            app:iconGravity="textEnd" />
+      </LinearLayout>
+
+      <View
+          android:layout_width="wrap_content"
+          android:layout_height="1dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginTop="7dp"
+          android:layout_marginRight="10dp"
+          android:background="@drawable/dash" />
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</androidx.cardview.widget.CardView>

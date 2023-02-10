@@ -140,6 +140,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:weightSum="2">
 
                     <LinearLayout
@@ -150,7 +152,7 @@
 
                         <CheckBox
                             android:id="@+id/cb_schools"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/nunitosans_semibold"
                             android:text="schools"
@@ -166,7 +168,7 @@
 
                         <CheckBox
                             android:id="@+id/cb_students"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/nunitosans_semibold"
                             android:text="students"
@@ -177,6 +179,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_marginHorizontal="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -191,7 +194,7 @@
 
                         <CheckBox
                             android:id="@+id/cb_professors"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/nunitosans_semibold"
                             android:text="Professor"
@@ -207,7 +210,7 @@
 
                         <CheckBox
                             android:id="@+id/cb_university"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/nunitosans_semibold"
                             android:text="University"
@@ -222,6 +225,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingTop="20dp"
+                    android:layout_marginHorizontal="20dp"
                     android:weightSum="2">
 
                     <LinearLayout
@@ -232,7 +236,7 @@
 
                         <CheckBox
                             android:id="@+id/cb_Professional"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/nunitosans_semibold"
                             android:text="Professionals"
@@ -248,16 +252,15 @@
 
                         <CheckBox
                             android:id="@+id/cb_research"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/nunitosans_semibold"
-                            android:text="Research scholar"
+                            android:text="Research \nscholar"
                             android:textColor="@color/black"
                             android:textSize="20dp" />
                     </LinearLayout>
 
                 </LinearLayout>
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

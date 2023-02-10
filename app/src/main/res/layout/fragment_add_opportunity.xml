@@ -82,7 +82,7 @@
             android:ems="10"
             android:fontFamily="@font/nunitosans_semibold"
             android:gravity="start|top"
-            android:hint="Enter Required Skills"
+            android:hint="Enter Required Skills ( Comma Separated Values )"
             android:inputType="textMultiLine"
             android:padding="20dp"
             />
@@ -113,8 +113,153 @@
 
       <LinearLayout
           android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_check_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:text="Choose whom do you want to share"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:weightSum="2">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_weight="1"
+              android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_schools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:text="schools"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_weight="1"
+              android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_students"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:text="students"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+          </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:weightSum="2">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_weight="1"
+              android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_professors"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:text="Professor"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_weight="1"
+              android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_university"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:text="University"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+          </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:weightSum="2">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_weight="1"
+              android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_Professional"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:text="Professionals"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_research"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:text="Research \nscholar"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+          </LinearLayout>
+
+        </LinearLayout>
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_marginTop="10dp"
+          android:layout_marginBottom="10dp"
           android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
@@ -132,8 +277,10 @@
 
       </LinearLayout>
 
+
+
       <ProgressBar
-          android:visibility="gone"
+          android:visibility="visible"
           android:id="@+id/addJobProgressBar"
           style="?android:attr/progressBarStyle"
           android:layout_width="match_parent"

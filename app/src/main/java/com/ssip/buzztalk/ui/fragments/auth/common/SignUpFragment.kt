@@ -86,6 +86,7 @@ class SignUpFragment : Fragment() {
         //         findNavController().navigate(R.id.action_signUpFragment_to_addUniversityNameFragment2)
         //     }
         // }
+
         binding.industryCard.setOnClickListener {
             if (args.loginSignup == 0) {
                 // 2 for company
@@ -95,7 +96,6 @@ class SignUpFragment : Fragment() {
                 findNavController().navigate(R.id.action_signUpFragment_to_addCompanyNameFragment)
             }
         }
-
 
         activity?.onBackPressedDispatcher?.addCallback(
             viewLifecycleOwner,

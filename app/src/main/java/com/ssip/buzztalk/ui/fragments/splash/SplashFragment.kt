@@ -43,11 +43,10 @@ class SplashFragment : Fragment() {
         lifecycleScope.launch {
             if (tokenManager.getToken() != null) {
                 delay(1600L)
-                if (tokenManager.getUserType() == "COMPANY") {
+                val userType = tokenManager.getUserType()
+                if (userType == "INDUSTRY" || userType == "SCHOOL" || userType == "UNIVERSITY") {
                     findNavController().navigate(R.id.action_splashFragment_to_companyActivity)
                     (activity as MainActivity).finish()
-                }else if(tokenManager.getUserType() == "SCHOOL") {
-
                 } else {
                     findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
                     (activity as MainActivity).setStartDestinationAsHomeFragment()

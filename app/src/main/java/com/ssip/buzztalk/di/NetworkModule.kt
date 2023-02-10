@@ -24,6 +24,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import javax.inject.Singleton
+import retrofit2.Retrofit.Builder
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -70,6 +71,12 @@ class NetworkModule {
     @Singleton
     fun providesPostAPI(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): PostAPI {
         return retrofitBuilder.client(okHttpClient).build().create(PostAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesCompanyAPI(retrofitBuilder: Builder, okHttpClient: OkHttpClient): CompanyAPI {
+        return retrofitBuilder.client(okHttpClient).build().create(CompanyAPI::class.java)
     }
 
     @Provides
