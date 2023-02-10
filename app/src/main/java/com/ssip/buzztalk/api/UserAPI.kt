@@ -18,6 +18,7 @@ import com.ssip.buzztalk.models.followers.response.FollowerId
 import com.ssip.buzztalk.models.followers.response.Followers
 import com.ssip.buzztalk.models.following.response.Followings
 import com.ssip.buzztalk.models.notifications.request.NotificationBody
+import com.ssip.buzztalk.models.notifications.response.UserNotifications
 import com.ssip.buzztalk.models.searchusers.request.OtherUserInfoRequest
 import com.ssip.buzztalk.models.searchusers.response.SearchUsers
 import com.ssip.buzztalk.models.searchusers.response.User
@@ -75,4 +76,7 @@ interface UserAPI {
 
     @POST(Constants.SEND_NOTI_TOKEN)
     suspend fun sendNotiToken(@Header("Authorization") token: String, @Body notificationBody: NotificationBody): Response<DefaultJSONResponse>
+
+    @GET(Constants.GET_NOTIFICATIONS)
+    suspend fun getNotifications(@Header("Authorization") token: String): Response<UserNotifications>
 }

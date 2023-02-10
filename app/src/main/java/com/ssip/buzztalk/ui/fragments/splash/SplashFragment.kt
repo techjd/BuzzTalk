@@ -42,7 +42,7 @@ class SplashFragment : Fragment() {
 
         lifecycleScope.launch {
             if (tokenManager.getToken() != null) {
-                delay(1500L)
+                delay(1600L)
                 if (tokenManager.getUserType() == "COMPANY") {
                     findNavController().navigate(R.id.action_splashFragment_to_companyActivity)
                     (activity as MainActivity).finish()

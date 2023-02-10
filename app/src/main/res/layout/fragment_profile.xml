@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -40,6 +41,14 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+=======
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+>>>>>>> bc23a194fc140547835f2d8c79afd44008abb4bf
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -74,6 +83,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/bio">
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/staticLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -85,6 +95,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunitosans_semibold"
                     android:text="City, State"
+                    android:visibility="gone"
                     android:textSize="15dp" />
             </LinearLayout>
 
@@ -218,13 +229,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
             <androidx.recyclerview.widget.RecyclerView
+<<<<<<< HEAD
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+=======
+                android:id="@+id/myPostsRv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+>>>>>>> bc23a194fc140547835f2d8c79afd44008abb4bf
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView"
                 app:layout_constraintStart_toStartOf="@+id/textView"
+<<<<<<< HEAD
                 app:layout_constraintTop_toBottomOf="@+id/textView">
+=======
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:listitem="@layout/item_my_posts"
+                >
+>>>>>>> bc23a194fc140547835f2d8c79afd44008abb4bf
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -237,6 +260,7 @@
                 android:gravity="center"
                 android:text="You Have Not Posted Anything Yet ! \n Post Something.. 😃️"
                 android:textSize="20dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/textView"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView"

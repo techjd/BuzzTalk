@@ -1,0 +1,13 @@
+package com.ssip.buzztalk.utils
+
+enum class BottomSheetOptions {
+  RESEARCH_SCHOLARS,
+  INDUSTRY,
+  SCHOOL,
+  WORKING_PROFESSIONAL,
+  UNIVERSITY,
+  PROFESSORS,
+  STUDENTS,
+  FREELANCERS,
+  ENTREPRENEURS
+}

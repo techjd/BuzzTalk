@@ -23,5 +23,5 @@
         android:id="@+id/jobsFragment"
         android:enabled="true"
         android:icon="@drawable/suitcase"
-        android:title="Jobs"/>
+        android:title="Opportunities"/>
 </menu>

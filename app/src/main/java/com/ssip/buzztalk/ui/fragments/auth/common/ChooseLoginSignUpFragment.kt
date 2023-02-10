@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentChooseLoginSignUpBinding
@@ -40,5 +41,14 @@ class ChooseLoginSignUpFragment : Fragment() {
             val action = ChooseLoginSignUpFragmentDirections.actionChooseLoginSignUpFragmentToSignUpFragment(0)
             findNavController().navigate(action)
         }
+
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    finish()
+                }
+            })
+
     }
 }

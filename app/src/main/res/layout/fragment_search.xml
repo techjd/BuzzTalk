@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="54dp"
     tools:context=".ui.fragments.search.SearchFragment">
 
     <include
@@ -10,10 +11,39 @@
         layout="@layout/search_toolbar"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
+        android:id="@+id/searchArea"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_below="@id/topSearchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edtSearch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/message_edit_text_background"
+            android:hint="Type Anything To Search"
+            android:padding="10dp"
+            tools:visibility="visible"
+            android:visibility="invisible"
+            android:fontFamily="@font/nunitosans_semibold"
+            />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/searchArea"
         android:id="@+id/personsRecyclerView"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_marginBottom="50dp"
         android:layout_height="match_parent" />
+=======
+        android:layout_height="wrap_content" />
+>>>>>>> bc23a194fc140547835f2d8c79afd44008abb4bf
 </RelativeLayout>

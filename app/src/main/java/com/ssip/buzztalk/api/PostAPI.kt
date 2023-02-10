@@ -2,6 +2,7 @@ package com.ssip.buzztalk.api
 
 import com.ssip.buzztalk.models.DefaultJSONResponse
 import com.ssip.buzztalk.models.feed.response.Feed
+import com.ssip.buzztalk.models.myfeed.response.MyFeed
 import com.ssip.buzztalk.models.newfeed.NewFeed
 import com.ssip.buzztalk.models.post.request.PostBody
 import com.ssip.buzztalk.models.post.response.PostAPIResponse
@@ -10,7 +11,6 @@ import com.ssip.buzztalk.utils.Constants
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface PostAPI {
@@ -31,6 +31,9 @@ interface PostAPI {
 
     @POST(Constants.POST_NEW_OPPO_UNIVERSITY)
     suspend fun postNewOpportunitiesUniversity(@Body newOpportunities: newOpportunities): Response<DefaultJSONResponse>
+
+    @GET(Constants.GET_MY_FEED)
+    suspend fun getMyFeed(): Response<MyFeed>
 }
 
 data class newOpportunities(

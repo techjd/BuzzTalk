@@ -89,7 +89,7 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
     // Lottie Animation
-    def lottieVersion = "3.7.1"
+    def lottieVersion = "5.2.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
     // Reaction Library
@@ -109,5 +109,6 @@ dependencies {
     // Clickable HashTags and Mentions
     implementation 'com.github.fobid:linkable-text:0.2.0'
 
-
+    // Play Services
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
 }

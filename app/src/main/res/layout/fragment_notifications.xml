@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="54dp"
     tools:context=".ui.fragments.notifications.NotificationsFragment">
 
     <include
@@ -81,13 +82,16 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="557dp"
+        android:id="@+id/notiRv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        tools:listitem="@layout/item_notification"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+<<<<<<< HEAD
     android:layout_marginTop="2dp"
+=======
+>>>>>>> bc23a194fc140547835f2d8c79afd44008abb4bf
     android:layout_height="wrap_content"
     android:id="@+id/postCardView"
+    app:cardUseCompatPadding="true"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="10dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -51,7 +64,7 @@
                         android:textSize="18dp" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/bio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunitosans_semibold"
@@ -74,7 +87,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/nunitosans_semibold"
+<<<<<<< HEAD
                     android:textColor="#4D4D4D"
+=======
+                    android:textColor="#4A4A4A"
+>>>>>>> bc23a194fc140547835f2d8c79afd44008abb4bf
                     tools:text="User Post Will Be Shown Here !!"
                     android:textSize="16dp" />
 
@@ -121,6 +138,17 @@
 
             </LinearLayout>
 
+<<<<<<< HEAD
+=======
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/dash" />
+
+>>>>>>> bc23a194fc140547835f2d8c79afd44008abb4bf
         </LinearLayout>
         <View
             android:layout_width="wrap_content"
@@ -132,7 +160,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <LinearLayout
