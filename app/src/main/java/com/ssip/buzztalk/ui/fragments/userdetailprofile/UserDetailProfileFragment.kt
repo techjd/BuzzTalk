@@ -1,15 +1,17 @@
 package com.ssip.buzztalk.ui.fragments.userdetailprofile
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -20,7 +22,6 @@ import com.ssip.buzztalk.models.connections.request.ToId
 import com.ssip.buzztalk.models.followUnfollow.request.Followee
 import com.ssip.buzztalk.models.searchusers.request.OtherUserInfoRequest
 import com.ssip.buzztalk.models.totalCount.request.UserID
-import com.ssip.buzztalk.ui.fragments.profile.ProfileFragmentDirections
 import com.ssip.buzztalk.utils.Constants
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
@@ -53,6 +54,7 @@ class UserDetailProfileFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -65,6 +67,14 @@ class UserDetailProfileFragment : Fragment() {
 
         val appBarLayout: AppBarLayout = binding.mainAppbar
         val toolbar: Toolbar = binding.toolbarTop
+
+        val tf: Typeface =
+            Typeface.createFromAsset(requireContext().assets, "fonts/nunitosans_semibold.ttf")
+
+        binding.mainCollapsing.apply {
+            setCollapsedTitleTypeface(tf)
+            setExpandedTitleTypeface(tf)
+        }
 
         appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             val isShow = true
@@ -83,7 +93,8 @@ class UserDetailProfileFragment : Fragment() {
                     binding.mainCollapsing.title =
                         "${response.data!!.data.user.firstName} ${response.data!!.data.user.lastName}"
                     binding.posttextView.text = "${response.data!!.data.user.firstName}'s posts"
-                    binding.textView2.text = "${response.data!!.data.user.firstName} Hasn't Posted Anything Yet! \\n Post Something.. \uD83D\uDE03️"
+                    binding.textView2.text =
+                        "${response.data!!.data.user.firstName} Hasn't Posted Anything Yet! \\n Post Something.. \uD83D\uDE03️"
                     binding.email.setOnClickListener {
                         val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
                             data = Uri.parse("mailto:${response.data.data.user.email}")
