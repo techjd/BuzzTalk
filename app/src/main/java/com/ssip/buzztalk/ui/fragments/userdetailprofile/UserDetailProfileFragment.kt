@@ -9,9 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.appbar.AppBarLayout
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentUserDetailProfileBinding
 import com.ssip.buzztalk.models.connections.request.ToId
@@ -25,6 +27,7 @@ import com.ssip.buzztalk.utils.Status
 import com.ssip.buzztalk.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlin.math.abs
 
 
 @AndroidEntryPoint
@@ -56,12 +59,27 @@ class UserDetailProfileFragment : Fragment() {
 //        Toast.makeText(context, args.userId, Toast.LENGTH_LONG).show()
 
         userDetailProfileViewModel.getInfo(tokenManager.getTokenWithBearer()!!, OtherUserInfoRequest(args.userId))
+        val appBarLayout: AppBarLayout = binding.mainAppbar
+        val toolbar: Toolbar = binding.toolbarTop
+
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val isShow = true
+            val shouldShowIcon = abs(verticalOffset) >= 534
+
+            toolbar.navigationIcon = if (isShow && shouldShowIcon) {
+                resources.getDrawable(R.drawable.user_top_bar, null)
+            } else {
+                resources.getDrawable(R.color.transparant)
+            }
+        })
 
 
         userDetailProfileViewModel.otherUserInfo.observe(viewLifecycleOwner) { response ->
             when(response.status) {
                 Status.SUCCESS -> {
-                    binding.fullName.text = "${response.data!!.data.user.firstName} ${response.data!!.data.user.lastName}"
+                    val bio = response.data!!.data.user.userType
+                    binding.bio.text = bio.substring(0, bio.length - 1)
+                    binding.mainCollapsing.title = "${response.data!!.data.user.firstName} ${response.data!!.data.user.lastName}"
                     binding.email.setOnClickListener {
                         val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
                             data = Uri.parse("mailto:${response.data.data.user.email}")

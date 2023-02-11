@@ -21,7 +21,7 @@
             app:expandedTitleMarginBottom="10dp"
             app:expandedTitleMarginStart="120dp"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:title="First Second">
+            app:title="Organization Name">
 
 
             <ImageView
@@ -58,35 +58,41 @@
                 android:layout_margin="20dp"
                 android:fontFamily="@font/nunitosans_semibold"
                 android:gravity="center"
-                android:text="A One Liner Introduction about User"
+                android:text="Motto of the Company"
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+
+
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bio">
 
-                <ImageView
-                    android:id="@+id/staticLogo"
+                <TextView
+                    android:id="@+id/followers"
                     android:layout_width="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_location" />
+                    android:text="0" />
 
                 <TextView
                     android:id="@+id/location"
                     android:layout_width="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/nunitosans_semibold"
-                    android:text="City, State"
-                    android:textSize="15dp" />
+                    android:text="Followers"
+                    android:textSize="20dp" />
             </LinearLayout>
 
             <View
@@ -101,146 +107,53 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/divider">
-
-
-                <LinearLayout
-                    android:id="@+id/followersBlock"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/followers"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunitosans_semibold"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/staticFollowers"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunitosans_semibold"
-                        android:gravity="center"
-                        android:text="Followers"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/followingBlock"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/following"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunitosans_semibold"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/staticFollowing"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunitosans_semibold"
-                        android:gravity="center"
-                        android:text="Following"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/connectionsBlock"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/connections"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunitosans_semibold"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/staticConnectiobs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunitosans_semibold"
-                        android:gravity="center"
-                        android:text="Connections"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:id="@+id/linearLayout4"
-                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:paddingVertical="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout2"
-                app:layout_constraintTop_toBottomOf="@id/linearLayout2">
-
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/connect"
+                    android:id="@+id/visitUs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/btnlogin_back"
+                    android:background="@drawable/btnsign_back"
                     android:clickable="true"
                     android:fontFamily="@font/nunitosans_semibold"
                     android:foreground="?attr/selectableItemBackground"
-                    android:text="Connect"
+                    android:text="Visit Us"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="20dp" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/followUnfollow"
+                    android:id="@+id/callUs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btnlogin_back"
+                    android:background="@drawable/btnsign_back"
                     android:clickable="true"
                     android:fontFamily="@font/nunitosans_semibold"
                     android:foreground="?attr/selectableItemBackground"
-                    android:text="Follow"
+                    android:text="Call Us"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="20dp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/btnlogin_back"
                     android:clickable="true"
@@ -250,23 +163,23 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="20dp"
-                    android:visibility="gone"
                     tools:visibility="visible" />
 
             </LinearLayout>
+
+
             <TextView
                 android:id="@+id/posttextView"
                 android:layout_width="match_parent"
-                android:text="Posts:"
-                android:textColor="#000"
-                android:textSize="25dp"
-                android:layout_marginStart="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/nunitosans_semibold"
+                android:text="Posts:"
+                android:textColor="@color/black"
+                android:textSize="25dp"
                 app:layout_constraintEnd_toEndOf="@+id/divider"
                 app:layout_constraintStart_toStartOf="@+id/divider"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="0dp"
