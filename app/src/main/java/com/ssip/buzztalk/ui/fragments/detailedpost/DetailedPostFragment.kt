@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssip.buzztalk.R
@@ -49,7 +50,9 @@ class DetailedPostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         detailedPostViewModel.getSinglePost(detailedPostFragmentArgs.postId)
-
+        binding.topDetailedPostBar.topDetailedPostBar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
         detailedPostViewModel.singlePost.observe(viewLifecycleOwner) { response ->
             when (response.status) {
                 SUCCESS -> {
