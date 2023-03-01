@@ -20,4 +20,8 @@ class CompanyRepository @Inject constructor(
   suspend fun getOrgInfo() = safeApiCall {
     companyAPI.getOrgInfo()
   }
+
+  suspend fun getAllOppo() = safeApiCall {
+    companyAPI.getAllOppo()
+  }
 }

@@ -1,6 +1,7 @@
 package com.ssip.buzztalk.api
 
 import com.ssip.buzztalk.models.feed.response.Feed
+import com.ssip.buzztalk.models.opportunities.response.AllOppo
 import com.ssip.buzztalk.models.organizations.request.LoginRequest
 import com.ssip.buzztalk.models.organizations.request.RegisterRequest
 import com.ssip.buzztalk.models.organizations.response.info.OrgInfo
@@ -24,4 +25,7 @@ interface CompanyAPI {
 
     @GET(Constants.GET_ORG_INFO)
     suspend fun getOrgInfo(): Response<OrgInfo>
+
+    @GET(Constants.GET_OPPO)
+    suspend fun getAllOppo(): Response<AllOppo>
 }

@@ -35,6 +35,11 @@ class ProfileFeedAdapter(
       userName.text = "${post.userId.firstName} ${post.userId.lastName}"
       content.text = post.content
       textView6.text = post.userId.userType
+      totalLikesCnt.text= post.likes.toString()
+      totalComments.text = "${post.comments} comments"
+      root.setOnClickListener {
+        onPostOnClick(post._id)
+      }
     }
   }
 }

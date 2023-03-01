@@ -1,5 +1,5 @@
 package com.ssip.buzztalk.models.feed.response
 
 data class Data(
-    val feed: List<FeedX>
+    val feed: MutableList<FeedX>
 )

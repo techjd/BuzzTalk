@@ -38,8 +38,14 @@ abstract class BaseRepository {
                 }
             } catch (t: Throwable) {
                 when(t) {
-                    is IOException -> NetworkResult.Error("Network Failure")
-                    else -> NetworkResult.Error("Some Error Occurred , Please Try Again Later")
+                    is IOException -> {
+                        Log.d("ERR1", "safeApiCall: ${t.message}")
+                        NetworkResult.Error("Network Failure")
+                    }
+                    else -> {
+                        Log.d("ERR ", "safeApiCall: ${t.message}")
+                        NetworkResult.Error("Some Error Occurred , Please Try Again Later")
+                    }
                 }
             }
         }

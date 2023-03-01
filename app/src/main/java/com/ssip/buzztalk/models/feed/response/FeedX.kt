@@ -8,5 +8,8 @@ data class FeedX(
     val toId: String,
     val type: String,
     val updatedAt: String,
-    val userId: String
+    val userId: String,
+    val postsFor: List<String> = emptyList(),
+    var isLiked: Boolean = false,
+
 )

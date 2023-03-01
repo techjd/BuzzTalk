@@ -1,9 +1,9 @@
 package com.ssip.buzztalk.utils
 
 object Constants {
-    const val DEVELOPMENT_BASE_URL = "http://192.168.102.74:5500/api/"
+    const val DEVELOPMENT_BASE_URL = "http://172.15.7.134:5500/api/"
     const val PRODUCTION_BASE_URL = "" // Enter Deployed Server URL
-    const val CHAT_SERVER_URL = "http://192.168.102.74:5500/"
+    const val CHAT_SERVER_URL = "http://172.15.7.134:5500/"
     const val PREFS_TOKEN_FILE = "PREFS_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"
     const val USER_ID = "USER_ID"
@@ -47,11 +47,21 @@ object Constants {
     const val GET_SINGLE_POST = "post/singlePost/{id}"
     const val COMMENT_ON_POST = "post/comment"
     const val GET_ALL_COMMENTS = "post/getComments/{postId}"
+    const val GET_HASH_TAG_POSTS = "post/getHashTagPosts"
+
+    const val GET_HASH_TAG_ID = "post/getHashTagId"
+    const val LIKE_POST = "post/like"
+    const val IS_LIKED = "post/isLiked"
+
+    // Image Upload
+    const val IMAGE_UPLOAD = "post/uploadImage"
+    const val GET_IMAGE = "post/getImage"
 
     // Organizations API
     const val ORG_REGISTER = "org/register"
     const val ORG_LOGIN = "org/login"
     const val GET_ORG_INFO = "org/getOrgInfo"
+    const val GET_OPPO = "org/getAllOppo"
 
     // Organizations
     const val REGISTER_ORG = ""

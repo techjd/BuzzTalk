@@ -8,12 +8,12 @@
     >
 
   <include
-    android:id="@+id/topDetailedPostBar"
+    android:id="@+id/topDetailedPostAppBar"
       layout="@layout/detailed_post_fragment_toolbar"
     />
 
   <androidx.cardview.widget.CardView
-      android:layout_below="@id/topDetailedPostBar"
+      android:layout_below="@id/topDetailedPostAppBar"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:id="@+id/postCardView">

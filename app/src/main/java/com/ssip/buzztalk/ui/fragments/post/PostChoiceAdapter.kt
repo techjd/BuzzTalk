@@ -8,7 +8,7 @@ import com.ssip.buzztalk.databinding.ItemSearchUserBinding
 import com.ssip.buzztalk.models.customdata.choices
 
 class PostChoiceAdapter(
-    val change: (pos: Int) -> Unit
+    val onValueChanged: (Boolean, String) -> Unit
 ): RecyclerView.Adapter<PostChoiceAdapter.PostChoiceViewHolder>() {
 
     var choices: MutableList<choices> = mutableListOf()
@@ -25,10 +25,13 @@ class PostChoiceAdapter(
         val choice = choices[position]
         with(holder){
             itemChoicesBinding.choice.text = choice.category
-            itemChoicesBinding.root.setOnClickListener {
-                change(position)
+            // itemChoicesBinding.root.setOnClickListener {
+            //     change(position)
+            // }
+            itemChoicesBinding.choice.setOnCheckedChangeListener { compoundButton, b ->
+                onValueChanged(b, itemChoicesBinding.choice.text.toString())
             }
-            itemChoicesBinding.choice.isChecked = choice.isMarked
+            // itemChoicesBinding.choice.isChecked = choice.isMarked
         }
     }
 

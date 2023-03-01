@@ -16,23 +16,36 @@
             android:id="@+id/postToolBar"
             layout="@layout/post_toolbar" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder"
+            android:layout_margin="20dp"
+            android:background="@drawable/post_edt_background"
+            app:layout_constraintEnd_toEndOf="@+id/postToolBar"
+            app:layout_constraintStart_toStartOf="@+id/postToolBar"
+            app:layout_constraintTop_toBottomOf="@+id/postToolBar"
+            />
         <TextView
             android:id="@+id/staticPost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunitosans_semibold"
-            android:text="Post"
+            android:text="Write Your Post"
             android:textColor="@color/black"
             android:textSize="25dp"
             android:layout_margin="20dp"
             app:layout_constraintEnd_toEndOf="@+id/postToolBar"
             app:layout_constraintStart_toStartOf="@+id/postToolBar"
-            app:layout_constraintTop_toBottomOf="@+id/postToolBar" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <com.linkedin.android.spyglass.ui.RichEditorView
             android:id="@+id/editTextTextMultiLine"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             android:layout_margin="20dp"
             android:ems="10"
             android:fontFamily="@font/nunitosans_semibold"
@@ -78,12 +91,179 @@
             app:layout_constraintStart_toStartOf="@+id/staticHashtags"
             app:layout_constraintTop_toBottomOf="@+id/staticHashtags"
             />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/choicesRv"
+
+        <LinearLayout
+            android:layout_marginBottom="20dp"
+            app:layout_constraintTop_toBottomOf="@id/hastag"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/hastag" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_check_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:text="Choose whom do you want to share"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/cb_schools"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:text="Schools"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/cb_students"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:text="Students"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginHorizontal="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/cb_professors"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:text="Professors"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/cb_university"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:text="University"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/cb_Professional"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:text="Professionals"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/cb_industry"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:text="Industry"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/cb_research"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:text="Research scholar"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

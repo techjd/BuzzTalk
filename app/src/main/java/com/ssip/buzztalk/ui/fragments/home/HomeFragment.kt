@@ -8,8 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
@@ -20,8 +23,10 @@ import com.ssip.buzztalk.databinding.FragmentAddEmailBinding
 import com.ssip.buzztalk.databinding.FragmentHomeBinding
 import com.ssip.buzztalk.models.chat.request.MakeUserOnline
 import com.ssip.buzztalk.models.feed.response.FeedX
+import com.ssip.buzztalk.models.likes.request.PostId
 import com.ssip.buzztalk.models.newfeed.Feed
 import com.ssip.buzztalk.models.notifications.request.NotificationBody
+import com.ssip.buzztalk.ui.components.Event
 import com.ssip.buzztalk.ui.components.HomeBottomSheet
 import com.ssip.buzztalk.ui.components.HomeBottomSheetViewModel
 import com.ssip.buzztalk.ui.fragments.chat.ChatViewModel
@@ -31,12 +36,18 @@ import com.ssip.buzztalk.ui.fragments.home.adapter.PostsAdapter
 import com.ssip.buzztalk.ui.fragments.post.PostViewModel
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
+import com.ssip.buzztalk.utils.Status.ERROR
+import com.ssip.buzztalk.utils.Status.LOADING
+import com.ssip.buzztalk.utils.Status.SUCCESS
 import com.ssip.buzztalk.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import io.socket.client.Socket
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
+import kotlinx.coroutines.channels.consume
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -46,7 +57,7 @@ class HomeFragment : Fragment() {
     private val chatViewModel: ChatViewModel by viewModels()
     private val homeViewModel: HomeViewModel by viewModels()
     private val postViewModel: PostViewModel by viewModels()
-    private val homeBottomSheetViewModel: HomeBottomSheetViewModel by viewModels()
+    private val homeBottomSheetViewModel: HomeBottomSheetViewModel by activityViewModels()
 
     private val chipsCategoriesList = listOf<String>(
       "University",
@@ -103,6 +114,7 @@ class HomeFragment : Fragment() {
 
         binding.filterLinearLl.setOnClickListener {
             homeBottomSheet.show(parentFragmentManager, "BOTTOM SHEET")
+            homeBottomSheet
         }
 
         binding.feedRv.layoutManager = LinearLayoutManager(context)
@@ -124,7 +136,21 @@ class HomeFragment : Fragment() {
             }
         }
 
-        homeBottomSheetViewModel
+        // homeBottomSheetViewModel.clickEvent.observe(viewLifecycleOwner) {
+        //     Log.d("EVENT REV", "onViewCreated: ")
+        //     postViewModel.filterFeed(homeBottomSheetViewModel.items.value as List<String>)
+        // }
+
+        lifecycleScope.launch {
+            homeBottomSheetViewModel.events.collect {
+                when(it) {
+                    Event.Click -> {
+                        postViewModel.filterFeed(homeBottomSheetViewModel.items.value as MutableList<String>)
+                        Log.d("CLICK ", "onViewCreated: ")
+                    }
+                }
+            }
+        }
 
         lifecycleScope.launch{
             if (tokenManager.getUserFirstTime()) {
@@ -137,6 +163,13 @@ class HomeFragment : Fragment() {
             }
         }
 
+        postViewModel.filteredFeed.observe(viewLifecycleOwner) {
+            // postsAdapter.posts = it.data.feed
+            postsAdapter.changeList(it.data.feed)
+            Log.d("CLICK HERE", "onViewCreated: ${it.data.feed}")
+            // postsAdapter.notifyDataSetChanged()
+        }
+
         lifecycleScope.launch {
             if (socket.id() != null) {
                 chatViewModel.makeMeOnline(MakeUserOnline(socket.id()))
@@ -147,6 +180,20 @@ class HomeFragment : Fragment() {
 
         // postViewModel.getNewFeed()
 
+        postViewModel.likePost.observe(viewLifecycleOwner) { response ->
+            when(response.status) {
+                SUCCESS -> {
+                    postViewModel.getFeed()
+                }
+                LOADING -> {
+
+                }
+                ERROR -> {
+                    DialogClass(view).showDialog(response.message!!)
+                }
+            }
+        }
+
         postViewModel.feed.observe(viewLifecycleOwner) { response ->
             when(response.status) {
                 Status.SUCCESS -> {
@@ -154,9 +201,11 @@ class HomeFragment : Fragment() {
                         { id ->
                             navigate(id)
                         },
-                        { text ->
-                            navigateToUser(text)
-                        }
+                        { postId ->
+                            postViewModel.likePost(PostId(postId))
+
+                        },
+                      requireContext()
                     )
                     if (response?.data!!.data!!.feed!!.isEmpty()) {
                         binding.noPosts.visibility = View.VISIBLE
@@ -164,11 +213,13 @@ class HomeFragment : Fragment() {
                         postsAdapter.posts = response.data?.data?.feed as MutableList<FeedX>
                         binding.feedRv.adapter = postsAdapter
                     }
+                    binding.shimmerLayout2.visibility = View.GONE
                 }
                 Status.LOADING -> {
 
                 }
                 Status.ERROR -> {
+                    binding.shimmerLayout2.visibility = View.GONE
                     DialogClass(view).showDialog(response.message!!)
                 }
             }

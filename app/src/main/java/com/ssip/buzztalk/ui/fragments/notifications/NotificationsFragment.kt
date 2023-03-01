@@ -12,6 +12,7 @@ import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.FragmentChatsBinding
 import com.ssip.buzztalk.databinding.FragmentNotificationsBinding
 import com.ssip.buzztalk.models.notifications.response.Data
+import com.ssip.buzztalk.ui.fragments.home.HomeFragmentDirections
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.NetworkResult
 import com.ssip.buzztalk.utils.Status.ERROR
@@ -79,6 +80,7 @@ class NotificationsFragment : Fragment() {
     }
 
     private fun navigateToPost(postId: String) {
-        // navigate
+        val action = NotificationsFragmentDirections.actionNotificationsFragmentToDetailedPostFragment(postId)
+        findNavController().navigate(action)
     }
 }

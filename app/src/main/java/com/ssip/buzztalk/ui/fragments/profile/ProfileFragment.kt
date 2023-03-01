@@ -183,6 +183,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun navigate(postId: String) {
-        // navigate to detailed postId
+        val action = ProfileFragmentDirections.actionProfileFragmentToDetailedPostFragment(postId)
+        findNavController().navigate(action)
     }
 }

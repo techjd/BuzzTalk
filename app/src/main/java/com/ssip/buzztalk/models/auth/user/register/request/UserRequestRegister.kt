@@ -5,5 +5,6 @@ data class UserRequestRegister(
     val email: String,
     val firstName: String,
     val lastName: String,
-    val password: String
+    val password: String,
+    val userType: String = "RESEARCH SCHOLARS"
 )

@@ -7,5 +7,5 @@ data class Data(
     val postId: PostId,
     val text: String,
     val updatedAt: String,
-    val userId: String
+    val userId: UserId
 )

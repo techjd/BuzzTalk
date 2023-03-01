@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ssip.buzztalk.databinding.FilterLayoutBinding
+import com.ssip.buzztalk.ui.fragments.post.PostViewModel
 import com.ssip.buzztalk.utils.BottomSheetOptions
 import com.ssip.buzztalk.utils.BottomSheetOptions.ENTREPRENEURS
 import com.ssip.buzztalk.utils.BottomSheetOptions.INDUSTRY
@@ -17,12 +19,14 @@ import com.ssip.buzztalk.utils.BottomSheetOptions.SCHOOL
 import com.ssip.buzztalk.utils.BottomSheetOptions.STUDENTS
 import com.ssip.buzztalk.utils.BottomSheetOptions.UNIVERSITY
 import com.ssip.buzztalk.utils.BottomSheetOptions.WORKING_PROFESSIONAL
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeBottomSheet: BottomSheetDialogFragment() {
     private var _binding: FilterLayoutBinding? = null
     private val binding get() = _binding!!
 
-    private val homeBottomSheetViewModel: HomeBottomSheetViewModel by viewModels()
+    private val homeBottomSheetViewModel: HomeBottomSheetViewModel by activityViewModels()
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -39,34 +43,37 @@ class HomeBottomSheet: BottomSheetDialogFragment() {
     with(binding) {
       for (chips in chipGroup.checkedChipIds) {
         if (industry.id == chips) {
-          homeBottomSheetViewModel.addData(INDUSTRY)
+          homeBottomSheetViewModel.addData("INDUSTRY")
         }
         if (researchScholars.id == chips) {
-          homeBottomSheetViewModel.addData(RESEARCH_SCHOLARS)
+          homeBottomSheetViewModel.addData("RESEARCH SCHOLARS")
         }
         if (school.id == chips) {
-          homeBottomSheetViewModel.addData(SCHOOL)
+          homeBottomSheetViewModel.addData("SCHOOL")
         }
         if (workingProfessional.id == chips) {
-          homeBottomSheetViewModel.addData(WORKING_PROFESSIONAL)
+          homeBottomSheetViewModel.addData("WORKING PROFESSIONALS")
         }
         if (universities.id == chips) {
-          homeBottomSheetViewModel.addData(UNIVERSITY)
+          homeBottomSheetViewModel.addData("UNIVERSITY")
         }
         if (professors.id == chips) {
-          homeBottomSheetViewModel.addData(PROFESSORS)
+          homeBottomSheetViewModel.addData("PROFESSORS")
         }
         if (student.id == chips) {
-          homeBottomSheetViewModel.addData(STUDENTS)
-        }
-        if (entrepreneurs.id == chips) {
-          homeBottomSheetViewModel.addData(ENTREPRENEURS)
+          homeBottomSheetViewModel.addData("STUDENTS")
         }
       }
+
       btnApply.setOnClickListener {
         val cat = "${chipGroup.checkedChipIds.size}"
-        Toast.makeText(context, cat, Toast.LENGTH_SHORT).show()
+        // Toast.makeText(context, cat, Toast.LENGTH_SHORT).show()
+        homeBottomSheetViewModel.click()
       }
     }
   }
+
+  // private fun sendValues(postViewModel: PostViewModel) {
+  //   postViewModel.filterFeed()
+  // }
 }

@@ -1,5 +1,6 @@
 package com.ssip.buzztalk.ui.fragments.home.adapter
 
+import android.content.Context
 import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableString
@@ -14,12 +15,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.ItemPostBinding
 import com.ssip.buzztalk.models.feed.response.FeedX
+import kotlinx.coroutines.CoroutineScope
 
 class PostsAdapter(
     val onClickListener: (String) -> Unit,
-    val showToast: (String) -> Unit
+    val onLike: (String) -> Unit,
+    val context: Context
 ) :
     RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
 
@@ -46,10 +51,18 @@ class PostsAdapter(
 
             var spannable = SpannableString(singlePost.postId.content)
 
+            with(itemPostBinding) {
+                if (singlePost.isLiked) {
+                    imageView2.setImageResource(R.drawable.ic_filled_thumbs_up)
+                } else {
+                    imageView2.setImageResource(R.drawable.ic_outlined_thumbs_up)
+                }
+            }
+
             var prevIdx = -1
 
             for(i in 0..content.length-1) {
-                Log.d("CONTENT", "onBindViewHolder: ${content[i]}")
+                // Log.d("CONTENT", "onBindViewHolder: ${content[i]}")
                 if (content[i] == ' ') {
                     if (prevIdx != -1) {
 
@@ -57,7 +70,8 @@ class PostsAdapter(
 
                         val clickableStr = object : ClickableSpan() {
                             override fun onClick(view: View) {
-                                Toast.makeText(view.context, substr, Toast.LENGTH_SHORT).show()
+                                // onClickListener.invoke(singlePost.postId._id, 0)
+                                // Toast.makeText(view.context, substr, Toast.LENGTH_SHORT).show()
                             }
 
                             override fun updateDrawState(ds: TextPaint) {
@@ -82,7 +96,7 @@ class PostsAdapter(
                         prevIdx = -1
                     }
                 } else if (content[i] == '@') {
-                    Log.d("@ POS", "onBindViewHolder: ${content[i]}")
+                    // Log.d("@ POS", "onBindViewHolder: ${content[i]}")
                     prevIdx = i
                 } else if(content[i] == '#') {
                     prevIdx = i
@@ -91,7 +105,7 @@ class PostsAdapter(
 
             val clickableStr = object : ClickableSpan() {
                 override fun onClick(view: View) {
-                    Toast.makeText(view.context, content.substring(prevIdx, content.length), Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(view.context, content.substring(prevIdx, content.length), Toast.LENGTH_SHORT).show()
                 }
                 override fun updateDrawState(ds: TextPaint) {
                     super.updateDrawState(ds)
@@ -113,13 +127,29 @@ class PostsAdapter(
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE
             )
 
-
             itemPostBinding.content.text = spannable
             itemPostBinding.content.setMovementMethod(LinkMovementMethod.getInstance())
 
             itemPostBinding.content.setOnClickListener {
                 onClickListener.invoke(singlePost.postId._id)
             }
+
+            itemPostBinding.likeLL.setOnClickListener {
+                onLike(singlePost.postId._id)
+            }
+
+            Log.d("IMG ", "onBindViewHolder: ${singlePost.postId.imageUrl} some")
+
+            if (!singlePost.postId.imageUrl.isNullOrEmpty()) {
+                itemPostBinding.postImg.visibility = View.VISIBLE
+                Glide.with(context).load(singlePost.postId.imageUrl).into(itemPostBinding.postImg)
+            }
+            // itemPostBinding.content.setOnClickListener {
+            //
+            //
+            //
+            //     onClickListener.invoke(singlePost.postId._id)
+            // }
 
 //            "You can start learning Android from MindOrks"
 //            itemPostBinding.content.apply {
@@ -173,5 +203,10 @@ class PostsAdapter(
 
     override fun getItemCount(): Int {
         return posts.size
+    }
+
+    fun changeList(list: MutableList<FeedX>) {
+        posts = list
+        notifyDataSetChanged()
     }
 }

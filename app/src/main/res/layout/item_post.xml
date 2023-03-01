@@ -61,7 +61,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunitosans_semibold"
-                        android:text="One Liner Bio About User"
                         android:maxLines="1"
                         tools:text="One Liner Bio About User" />
                 </LinearLayout>
@@ -85,6 +84,16 @@
                     tools:text="User Post Will Be Shown Here !!"
                     android:textSize="18dp" />
 
+                <ImageView
+                    android:visibility="gone"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/postImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/placeholder"
+                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -145,6 +154,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/likeLL"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

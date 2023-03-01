@@ -8,7 +8,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.api.*
-import com.ssip.buzztalk.models.user.response.User
 import com.ssip.buzztalk.utils.Constants.CHAT_SERVER_URL
 import com.ssip.buzztalk.utils.Constants.DEVELOPMENT_BASE_URL
 import com.ssip.buzztalk.utils.NetworkManager
@@ -19,12 +18,13 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.socket.client.IO
 import io.socket.client.Socket
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
+import retrofit2.Retrofit
 import retrofit2.Retrofit.Builder
+import retrofit2.converter.gson.GsonConverterFactory
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -35,6 +35,14 @@ class NetworkModule {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(DEVELOPMENT_BASE_URL)
+    }
+
+    @Provides
+    @Singleton
+    fun providesHttpLoggingInterceptor(): HttpLoggingInterceptor {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(BODY)
+        return loggingInterceptor
     }
 
     @Provides
@@ -51,8 +59,11 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesAuthAPI(retrofitBuilder: Retrofit.Builder): AuthAPI {
-        return retrofitBuilder.build().create(AuthAPI::class.java)
+    fun providesAuthAPI(retrofitBuilder: Retrofit.Builder, loggingInterceptor: HttpLoggingInterceptor): AuthAPI {
+        val client: OkHttpClient = OkHttpClient.Builder()
+          .addInterceptor(loggingInterceptor)
+          .build()
+        return retrofitBuilder.client(client).build().create(AuthAPI::class.java)
     }
 
     @Provides

@@ -186,6 +186,9 @@
             app:destination="@id/connectionRequestsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_notificationsFragment_to_detailedPostFragment"
+            app:destination="@id/detailedPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/jobsFragment"
@@ -218,6 +221,9 @@
             app:destination="@id/detailedRelationFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_profileFragment_to_detailedPostFragment"
+            app:destination="@id/detailedPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailProfileFragment"
@@ -331,6 +337,21 @@
         tools:layout="@layout/fragment_detailed_post" >
         <argument
             android:name="postId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailedPostFragment_to_hashTagsFragment2"
+            app:destination="@id/hashTagsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hashTagsFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.hashtags.HashTagsFragment"
+        android:label="hashTags"
+        tools:layout="@layout/fragment_hash_tags">
+        <argument
+            android:name="hashtagId"
+            app:argType="string" />
+        <argument
+            android:name="hashTags"
             app:argType="string" />
     </fragment>
 </navigation>

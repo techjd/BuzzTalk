@@ -167,7 +167,6 @@
             android:textColor="@color/black"
             android:textSize="16dp" />
 
-
         <TextView
             android:id="@+id/budgetContent"
             android:layout_width="match_parent"
@@ -180,6 +179,7 @@
       </LinearLayout>
 
       <LinearLayout
+          android:visibility="gone"
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
 
@@ -288,6 +288,7 @@
             android:textColor="@color/white"
             android:textSize="20dp"
             android:theme="@style/btn"
+            android:layout_marginTop="10dp"
             app:icon="@drawable/ic_navigate_next"
             app:iconGravity="textEnd" />
       </LinearLayout>

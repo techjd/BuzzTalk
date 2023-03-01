@@ -9,18 +9,13 @@
         android:id="@+id/topOppoToolBar"
         layout="@layout/opportunities_toolbar"
         />
-
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/oppoRv"
         android:layout_below="@id/topOppoToolBar"
+        tools:listitem="@layout/item_opportunities"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include
-            layout="@layout/item_opportunities"
+        android:layout_height="match_parent"
         />
-
-    </ScrollView>
-
 
 
 </RelativeLayout>

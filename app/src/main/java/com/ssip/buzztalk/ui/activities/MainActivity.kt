@@ -94,6 +94,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.detailedPostFragment -> {
                     hideBottomNavigationView()
                 }
+                R.id.hashTagsFragment -> {
+                    hideBottomNavigationView()
+                }
             }
         }
     }
