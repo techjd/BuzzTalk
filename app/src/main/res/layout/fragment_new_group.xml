@@ -24,6 +24,9 @@
         >
 
       <TextView
+          tools:visibility="visible"
+          android:id="@+id/selectedMembersTitle"
+          android:visibility="gone"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:text="Selected Members :"
@@ -34,6 +37,11 @@
         />
 
       <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/selectedMembersRv"
+          android:visibility="gone"
+          tools:visibility="visible"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          android:orientation="horizontal"
           tools:listitem="@layout/item_selected_member"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
@@ -42,15 +50,18 @@
           />
 
       <TextView
+          android:id="@+id/yourConnectionsTitle"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:text="Your Connections :"
+          android:text="Select Members from Your Connections"
           android:fontFamily="@font/nunitosans_semibold"
           android:textColor="@color/black"
           android:layout_margin="8dp"
           android:textSize="24sp"
           />
+
       <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/yourConnectionsRv"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           tools:listitem="@layout/item_search_user"

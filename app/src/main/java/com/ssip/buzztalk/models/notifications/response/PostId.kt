@@ -7,7 +7,7 @@ data class PostId(
     val content: String,
     val createdAt: String,
     val likes: Int,
-    val postsFor: List<Any>,
+    val postsFor: List<Any> = emptyList(),
     val updatedAt: String,
     val userId: UserId
 )

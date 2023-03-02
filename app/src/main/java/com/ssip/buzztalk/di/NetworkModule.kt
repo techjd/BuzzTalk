@@ -34,7 +34,7 @@ class NetworkModule {
     fun providesRetrofit(): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.68.163:5500/api/")
+            .baseUrl("http://192.168.0.95:5500/api/")
     }
 
     @Provides
@@ -48,7 +48,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun providesSocket(): Socket {
-        return IO.socket("http://192.168.68.163:5500/").connect()
+        return IO.socket("http://192.168.0.95:5500/").connect()
     }
 
     @Provides
@@ -68,8 +68,11 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesUserAPI(retrofitBuilder: Retrofit.Builder): UserAPI {
-        return retrofitBuilder.build().create(UserAPI::class.java)
+    fun providesUserAPI(retrofitBuilder: Retrofit.Builder, loggingInterceptor: HttpLoggingInterceptor): UserAPI {
+        val client: OkHttpClient = OkHttpClient.Builder()
+          .addInterceptor(loggingInterceptor)
+          .build()
+        return retrofitBuilder.client(client).build().create(UserAPI::class.java)
     }
 
     @Provides

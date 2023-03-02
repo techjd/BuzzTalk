@@ -68,11 +68,11 @@ class PostViewModel @Inject constructor(private val postRepository: PostReposito
             if (data.data == null) {
                 _feed.postValue(NetworkResult.Error("Some Error Happened"))
             } else {
-                data.data.let { feed ->
-                    for(feeds in feed.data?.feed!!) {
-                        feeds.isLiked = postRepository.isPostLiked(PostId(feeds.postId._id)).data!!.data
-                    }
-                }
+                // data.data.let { feed ->
+                //     for(feeds in feed.data?.feed!!) {
+                //         feeds.isLiked = postRepository.isPostLiked(PostId(feeds.postId._id)).data!!.data
+                //     }
+                // }
                 _feed.postValue(NetworkResult.Success(data.data))
             }
         }
