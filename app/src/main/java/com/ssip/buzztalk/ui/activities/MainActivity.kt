@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.ActivityMainBinding
 import com.ssip.buzztalk.ui.fragments.chat.ChatViewModel
+import com.ssip.buzztalk.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -39,6 +40,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setupWithNavController(navController)
         navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+
+        Log.d("URL ", "onCreate: ${Constants.DEVELOPMENT_BASE_URL}")
 
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->

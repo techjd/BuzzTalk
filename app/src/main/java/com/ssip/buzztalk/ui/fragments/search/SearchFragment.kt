@@ -49,7 +49,6 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        searchViewModel.getAllSearchUsers()
         binding.personsRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.personsRecyclerView.setHasFixedSize(true)
 

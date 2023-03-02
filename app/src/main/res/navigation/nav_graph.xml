@@ -210,6 +210,9 @@
             app:destination="@id/startNewConversationFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_chatsFragment_to_newGroupFragment"
+            app:destination="@id/newGroupFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -354,4 +357,18 @@
             android:name="hashTags"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/newGroupFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.newgroup.NewGroupFragment"
+        android:label="fragment_new_group"
+        tools:layout="@layout/fragment_new_group" >
+        <action
+            android:id="@+id/action_newGroupFragment_to_newGroupDetailFragment"
+            app:destination="@id/newGroupDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newGroupDetailFragment"
+        android:name="com.ssip.buzztalk.ui.fragments.newgroup.NewGroupDetailFragment"
+        android:label="fragment_new_group_detail"
+        tools:layout="@layout/fragment_new_group_detail" />
 </navigation>

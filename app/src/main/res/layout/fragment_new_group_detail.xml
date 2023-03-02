@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.newgroup.NewGroupDetailFragment"
+    >
+
+  <include
+      android:id="@+id/newGroupDetails"
+      layout="@layout/item_group_details"
+      />
+
+  <ScrollView
+      android:layout_below="@id/newGroupDetails"
+      android:layout_above="@id/createGroup"
+      android:layout_marginBottom="10dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+      <de.hdodenhof.circleimageview.CircleImageView
+          android:id="@+id/cirularImageProfile"
+          android:layout_width="120dp"
+          android:layout_height="120dp"
+          android:layout_gravity="center"
+          android:layout_marginTop="10dp"
+          android:src="@drawable/selecticon"
+          android:layout_marginBottom="10dp"
+          app:civ_border_width="1dp"
+          app:civ_border_color="@color/grey"
+          />
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Enter Group Name"
+          android:layout_margin="16dp"
+          app:boxStrokeColor="#000000">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/groupName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_background"
+            android:fontFamily="@font/nunitosans_regular" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Enter Group Description"
+          android:layout_margin="16dp"
+          app:boxStrokeColor="#000000">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/groupDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:inputType="textMultiLine"
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            android:background="@drawable/login_background"
+            android:fontFamily="@font/nunitosans_regular" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="Selected Members :"
+          android:fontFamily="@font/nunitosans_semibold"
+          android:textColor="@color/black"
+          android:layout_margin="8dp"
+          android:textSize="24sp"
+          />
+
+      <androidx.recyclerview.widget.RecyclerView
+          tools:listitem="@layout/item_search_user"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          />
+
+    </LinearLayout>
+  </ScrollView>
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="16dp"
+      android:id="@+id/createGroup"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/btnlogin_back"
+      android:fontFamily="@font/nunitosans_bold"
+      android:text="Create Group"
+      android:layout_marginHorizontal="16dp"
+      android:textAllCaps="false"
+      android:textColor="@color/white"
+      android:textSize="25sp" />
+
+</RelativeLayout>

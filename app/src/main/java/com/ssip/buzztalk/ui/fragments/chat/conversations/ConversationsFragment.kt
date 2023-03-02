@@ -29,6 +29,8 @@ class ConversationsFragment : Fragment() {
     private val conversationViewModel: ConversationViewModel by viewModels()
     private lateinit var conversationsAdapter: ConversationsAdapter
 
+    private var areOptionsVisible: Boolean = false
+
     @Inject
     lateinit var glide: RequestManager
 
@@ -55,7 +57,24 @@ class ConversationsFragment : Fragment() {
         conversationViewModel.getAllConversations()
 
         binding.floatingActionButton.setOnClickListener {
+            if (areOptionsVisible) {
+                binding.newConversationFab.visibility = View.VISIBLE
+                binding.newGroupFab.visibility = View.VISIBLE
+                areOptionsVisible = false
+            } else {
+                binding.newConversationFab.visibility = View.INVISIBLE
+                binding.newGroupFab.visibility = View.INVISIBLE
+                areOptionsVisible = true
+            }
+            // findNavController().navigate(R.id.action_chatsFragment_to_startNewConversationFragment)
+        }
+
+        binding.newConversationFab.setOnClickListener {
             findNavController().navigate(R.id.action_chatsFragment_to_startNewConversationFragment)
+        }
+
+        binding.newGroupFab.setOnClickListener {
+            findNavController().navigate(R.id.action_chatsFragment_to_newGroupFragment)
         }
 
         conversationViewModel.allConversations.observe(viewLifecycleOwner) { response ->
