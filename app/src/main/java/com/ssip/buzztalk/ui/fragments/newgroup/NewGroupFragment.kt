@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -79,7 +81,11 @@ class NewGroupFragment : Fragment() {
     }
 
     binding.newGrpDetailScreen.setOnClickListener {
-      findNavController().navigate(R.id.action_newGroupFragment_to_newGroupDetailFragment)
+      if (groupViewModel.selectedMembers.value!!.data.connections.isNotEmpty()) {
+        findNavController().navigate(R.id.action_newGroupFragment_to_newGroupDetailFragment)
+      } else {
+        Toast.makeText(context, "Please Add Atleast 1 Member to continue", Toast.LENGTH_SHORT).show()
+      }
     }
 
     groupViewModel.getAllConnections(tokenManager.getTokenWithBearer()!!, UserID(tokenManager.getUserId()!!))
@@ -101,5 +107,13 @@ class NewGroupFragment : Fragment() {
         }
       }
     }
+
+    activity?.onBackPressedDispatcher?.addCallback(
+      viewLifecycleOwner,
+      object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+          findNavController().navigate(R.id.action_newGroupFragment_to_chatsFragment)
+        }
+      })
   }
 }

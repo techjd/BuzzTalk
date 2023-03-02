@@ -4,6 +4,7 @@ import com.ssip.buzztalk.api.ChatAPI
 import com.ssip.buzztalk.models.chat.request.MakeUserOnline
 import com.ssip.buzztalk.models.chat.request.MessageBody
 import com.ssip.buzztalk.models.chat.request.messages.To
+import com.ssip.buzztalk.models.groupchat.request.CreateNewGroupRequest
 import com.ssip.buzztalk.utils.NetworkManager
 import javax.inject.Inject
 
@@ -31,5 +32,13 @@ class ChatRepository @Inject constructor(private val chatAPI: ChatAPI): BaseRepo
 
     suspend fun getUserStatus(to: To) = safeApiCall {
         chatAPI.getUserStatus(to)
+    }
+
+    suspend fun getGroups() = safeApiCall {
+        chatAPI.getGroups()
+    }
+
+    suspend fun createChatGroup(createNewGroupRequest: CreateNewGroupRequest) = safeApiCall {
+        chatAPI.createGroup(createNewGroupRequest)
     }
 }

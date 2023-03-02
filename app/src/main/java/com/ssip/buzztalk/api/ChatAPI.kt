@@ -1,11 +1,14 @@
 package com.ssip.buzztalk.api
 
+import com.ssip.buzztalk.models.DefaultJSONResponse
 import com.ssip.buzztalk.models.chat.request.MakeUserOnline
 import com.ssip.buzztalk.models.chat.request.MessageBody
 import com.ssip.buzztalk.models.chat.request.messages.To
 import com.ssip.buzztalk.models.chat.response.ChatAPIResponse
 import com.ssip.buzztalk.models.chat.response.conversations.Conversations
 import com.ssip.buzztalk.models.chat.response.messages.Messages
+import com.ssip.buzztalk.models.groupchat.request.CreateNewGroupRequest
+import com.ssip.buzztalk.models.groupchat.response.AllGroupsResponse
 import com.ssip.buzztalk.utils.Constants
 import retrofit2.Response
 import retrofit2.http.Body
@@ -31,4 +34,10 @@ interface ChatAPI {
 
     @POST(Constants.GET_USER_STATUS)
     suspend fun getUserStatus(@Body to: To): Response<ChatAPIResponse>
+
+    @POST(Constants.CREATE_GROUP)
+    suspend fun createGroup(@Body createNewGroupRequest: CreateNewGroupRequest): Response<DefaultJSONResponse>
+
+    @GET(Constants.GET_GROUPS)
+    suspend fun getGroups(): Response<AllGroupsResponse>
 }

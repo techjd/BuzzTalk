@@ -34,7 +34,7 @@ class NetworkModule {
     fun providesRetrofit(): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.0.95:5500/api/")
+            .baseUrl(DEVELOPMENT_BASE_URL)
     }
 
     @Provides
@@ -48,7 +48,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun providesSocket(): Socket {
-        return IO.socket("http://192.168.0.95:5500/").connect()
+        return IO.socket(CHAT_SERVER_URL).connect()
     }
 
     @Provides

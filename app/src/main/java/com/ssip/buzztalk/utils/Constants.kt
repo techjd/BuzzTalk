@@ -1,9 +1,9 @@
 package com.ssip.buzztalk.utils
 
 object Constants {
-    const val DEVELOPMENT_BASE_URL = "http://192.168.0.95:5500/api/"
+    const val DEVELOPMENT_BASE_URL = "http://192.168.68.163:5500/api/"
     const val PRODUCTION_BASE_URL = "" // Enter Deployed Server URL
-    const val CHAT_SERVER_URL = "http://192.168.0.95:5500/"
+    const val CHAT_SERVER_URL = "http://192.168.68.163:5500/"
     const val PREFS_TOKEN_FILE = "PREFS_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"
     const val USER_ID = "USER_ID"
@@ -52,6 +52,10 @@ object Constants {
     const val GET_HASH_TAG_ID = "post/getHashTagId"
     const val LIKE_POST = "post/like"
     const val IS_LIKED = "post/isLiked"
+
+    // Group Chat
+    const val CREATE_GROUP = "chat/createGroup"
+    const val GET_GROUPS = "chat/getGroups"
 
     // Image Upload
     const val IMAGE_UPLOAD = "post/uploadImage"

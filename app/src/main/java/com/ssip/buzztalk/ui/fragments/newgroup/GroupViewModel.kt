@@ -5,10 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ssip.buzztalk.models.DefaultJSONResponse
 import com.ssip.buzztalk.models.connections.response.allConnections.AllConnections
 import com.ssip.buzztalk.models.connections.response.allConnections.Connection
 import com.ssip.buzztalk.models.connections.response.allConnections.Data
+import com.ssip.buzztalk.models.groupchat.request.CreateNewGroupRequest
 import com.ssip.buzztalk.models.totalCount.request.UserID
+import com.ssip.buzztalk.repository.ChatRepository
 import com.ssip.buzztalk.repository.UserRepository
 import com.ssip.buzztalk.utils.ErrorResponse
 import com.ssip.buzztalk.utils.NetworkManager
@@ -23,10 +26,17 @@ class GroupViewModel @Inject constructor(
   private val networkManager: NetworkManager,
   private val userRepository: UserRepository,
   private val errorResponse: ErrorResponse,
+  private val chatRepository: ChatRepository
 ) : ViewModel() {
 
   private val _allConnections: MutableLiveData<NetworkResult<AllConnections>> = MutableLiveData()
   val allConnections: LiveData<NetworkResult<AllConnections>> = _allConnections
+
+  private val _groupName: MutableLiveData<String> = MutableLiveData("")
+  val groupName: LiveData<String> = _groupName
+
+  private val _groupDescription: MutableLiveData<String> = MutableLiveData("")
+  val groupDescription: LiveData<String> = _groupDescription
 
   private val _selectedMembers: MutableLiveData<AllConnections> = MutableLiveData(
     AllConnections(
@@ -38,6 +48,10 @@ class GroupViewModel @Inject constructor(
     )
   )
   val selectedMembers: LiveData<AllConnections> = _selectedMembers
+
+  private val _createGroupResponse: MutableLiveData<NetworkResult<DefaultJSONResponse>> =
+    MutableLiveData()
+  val createGroupResponse: LiveData<NetworkResult<DefaultJSONResponse>> = _createGroupResponse
 
   fun getAllConnections(
     token: String,
@@ -113,5 +127,37 @@ class GroupViewModel @Inject constructor(
         status = _allConnections.value!!.data!!.status
       )
     )
+  }
+
+  fun saveGroupName(groupName: String) {
+    _groupName.value = groupName
+  }
+
+  fun saveGroupDescription(groupDesc: String) {
+    _groupDescription.value = groupDesc
+  }
+
+  fun createGroup(userId: String) {
+    val selectedMembers = mutableListOf<String>()
+    _selectedMembers.value?.data?.connections?.forEach {
+      if (it.from._id == userId) {
+        selectedMembers.add(it.to._id)
+      } else if(it.to._id == userId){
+        selectedMembers.add(it.from._id)
+      }
+    }
+    viewModelScope.launch {
+      _createGroupResponse.postValue(NetworkResult.Loading())
+      _createGroupResponse.postValue(
+        chatRepository.createChatGroup(
+          CreateNewGroupRequest(
+            groupName = groupName.value!!,
+            groupBio = if (groupDescription.value!!.isEmpty()) "" else groupDescription.value!!,
+            groupImage = "",
+            groupUsers = selectedMembers
+          )
+        )
+      )
+    }
   }
 }

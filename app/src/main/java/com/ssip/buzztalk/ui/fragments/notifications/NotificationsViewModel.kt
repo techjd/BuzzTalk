@@ -28,33 +28,33 @@ class NotificationsViewModel @Inject constructor(
   fun getUserNotifications(token: String) {
     viewModelScope.launch {
       _userNotifications.postValue(NetworkResult.Loading())
-      // val data = userRepository.getUserNotifications(token)
-      // Log.d("WHAT ", "getUserNotifications: ${data.body()}")
-      // try {
-      //   if (networkManager.hasInternetConnection()) {
-      //     val data = userRepository.getUserNotifications(token)
-      //     Log.d("BODY", "getUserNotifications: ${data.body()}")
-      //     if (data.isSuccessful) {
-      //       // Log.d("BODY", "getUserNotifications: ${data.body()}")
-      //       _userNotifications.postValue(NetworkResult.Success(data.body()!!))
-      //     } else {
-      //       Log.d("ERROR", "getUserInfo: Some Error Occurred")
-      //       val error = errorResponse.giveErrorResult(data.errorBody()!!)
-      //       _userNotifications.postValue(NetworkResult.Error(error.message))
-      //     }
-      //   } else {
-      //     _userNotifications.postValue(NetworkResult.Error("No Internet Connection"))
-      //   }
-      // } catch (t: Throwable) {
-      //   when (t) {
-      //     is IOException -> _userNotifications.postValue(NetworkResult.Error("Network Failure"))
-      //     else -> {
-      //       // val data = userRepository.getUserNotifications(token)
-      //       Log.d("ERR", "getUserNotifications: ${t}")
-      //       _userNotifications.postValue(NetworkResult.Error(t.message))
-      //     }
-      //   }
-      // }
+      val data = userRepository.getUserNotifications(token)
+      Log.d("WHAT ", "getUserNotifications: ${data.body()}")
+      try {
+        if (networkManager.hasInternetConnection()) {
+          val data = userRepository.getUserNotifications(token)
+          Log.d("BODY", "getUserNotifications: ${data.body()}")
+          if (data.isSuccessful) {
+            // Log.d("BODY", "getUserNotifications: ${data.body()}")
+            _userNotifications.postValue(NetworkResult.Success(data.body()!!))
+          } else {
+            Log.d("ERROR", "getUserInfo: Some Error Occurred")
+            val error = errorResponse.giveErrorResult(data.errorBody()!!)
+            _userNotifications.postValue(NetworkResult.Error(error.message))
+          }
+        } else {
+          _userNotifications.postValue(NetworkResult.Error("No Internet Connection"))
+        }
+      } catch (t: Throwable) {
+        when (t) {
+          is IOException -> _userNotifications.postValue(NetworkResult.Error("Network Failure"))
+          else -> {
+            // val data = userRepository.getUserNotifications(token)
+            Log.d("ERR", "getUserNotifications: ${t}")
+            _userNotifications.postValue(NetworkResult.Error(t.message))
+          }
+        }
+      }
     }
   }
 }
