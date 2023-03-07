@@ -10,13 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.RequestManager
-import com.ssip.buzztalk.R
-import com.ssip.buzztalk.databinding.FragmentChatsBinding
 import com.ssip.buzztalk.databinding.FragmentMyGroupsBinding
-import com.ssip.buzztalk.models.chat.response.conversations.Conversation
-import com.ssip.buzztalk.models.groupchat.response.AllGroup
+import com.ssip.buzztalk.models.groupchat.response.allgroups.AllGroup
 import com.ssip.buzztalk.ui.fragments.chat.conversations.ConversationViewModel
-import com.ssip.buzztalk.ui.fragments.chat.conversations.ConversationsAdapter
+import com.ssip.buzztalk.ui.fragments.chat.conversations.ConversationsFragmentDirections
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -86,6 +83,7 @@ class MyGroupsFragment : Fragment() {
   }
 
   private fun navigate(groupId: String) {
-
+    val action = ConversationsFragmentDirections.actionChatsFragmentToGroupMessagesFragment(groupId)
+    findNavController().navigate(action)
   }
 }

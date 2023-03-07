@@ -6,10 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.ssip.buzztalk.R
 import com.ssip.buzztalk.databinding.ItemConversationBinding
-import com.ssip.buzztalk.models.chat.response.conversations.Conversation
-import com.ssip.buzztalk.models.groupchat.response.AllGroup
-import com.ssip.buzztalk.ui.fragments.chat.conversations.ConversationsAdapter
-import com.ssip.buzztalk.ui.fragments.chat.conversations.ConversationsAdapter.ConversationsViewHolder
+import com.ssip.buzztalk.models.groupchat.response.allgroups.AllGroup
 
 class MyGroupsAdapter(
   private val glide: RequestManager,

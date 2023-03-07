@@ -105,6 +105,9 @@ class HomeFragment : Fragment() {
         binding.homeToolBar.topAppBar.setOnMenuItemClickListener { menuItem ->
             when(menuItem.itemId) {
                 R.id.messages -> {
+                    lifecycleScope.launch {
+                        socket.emit("grp", "make me online in groups")
+                    }
                     findNavController().navigate(R.id.action_homeFragment_to_chatsFragment)
                     true
                 }
@@ -131,7 +134,6 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             socket.on("connect") { response ->
-                socket.emit("grp", "make me online in groups")
                 Log.d(" CONNECTION AGAIN ", "onViewCreated: ${socket.id()}")
                 chatViewModel.makeMeOnline(MakeUserOnline(socket.id()))
             }

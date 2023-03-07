@@ -41,4 +41,8 @@ class ChatRepository @Inject constructor(private val chatAPI: ChatAPI): BaseRepo
     suspend fun createChatGroup(createNewGroupRequest: CreateNewGroupRequest) = safeApiCall {
         chatAPI.createGroup(createNewGroupRequest)
     }
+
+    suspend fun getGroupMessages(groupId: String) = safeApiCall {
+        chatAPI.getGroupMessages(groupId)
+    }
 }

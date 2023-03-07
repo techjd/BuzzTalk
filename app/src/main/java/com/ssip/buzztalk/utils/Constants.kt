@@ -1,7 +1,7 @@
 package com.ssip.buzztalk.utils
 
 object Constants {
-    const val IP = "192.168.0.95"
+    const val IP = "192.168.68.167"
     const val DEVELOPMENT_BASE_URL = "http://${IP}:5500/api/"
     const val PRODUCTION_BASE_URL = "" // Enter Deployed Server URL
     const val CHAT_SERVER_URL = "http://${IP}:5500/"
@@ -57,6 +57,8 @@ object Constants {
     // Group Chat
     const val CREATE_GROUP = "chat/createGroup"
     const val GET_GROUPS = "chat/getGroups"
+    const val SEND_GROUP_MESSAGE = "chat/groups/sendMessage/{groupId}"
+    const val GET_GROUP_MESSAGE = "chat/groups/getGroupMessages/{groupId}"
 
     // Image Upload
     const val IMAGE_UPLOAD = "post/uploadImage"

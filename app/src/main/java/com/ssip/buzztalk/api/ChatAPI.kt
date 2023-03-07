@@ -8,13 +8,16 @@ import com.ssip.buzztalk.models.chat.response.ChatAPIResponse
 import com.ssip.buzztalk.models.chat.response.conversations.Conversations
 import com.ssip.buzztalk.models.chat.response.messages.Messages
 import com.ssip.buzztalk.models.groupchat.request.CreateNewGroupRequest
-import com.ssip.buzztalk.models.groupchat.response.AllGroupsResponse
+import com.ssip.buzztalk.models.groupchat.request.SendMessageGroupRequest
+import com.ssip.buzztalk.models.groupchat.response.allgroups.AllGroupsResponse
+import com.ssip.buzztalk.models.groupchat.response.groupmessages.GroupMessages
 import com.ssip.buzztalk.utils.Constants
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ChatAPI {
     @POST(Constants.MAKE_ME_ONLINE)
@@ -40,4 +43,15 @@ interface ChatAPI {
 
     @GET(Constants.GET_GROUPS)
     suspend fun getGroups(): Response<AllGroupsResponse>
+
+    @POST(Constants.SEND_GROUP_MESSAGE)
+    suspend fun sendGroupMessage(
+        @Body sendMessageGroupRequest: SendMessageGroupRequest,
+        @Path("groupId") groupId: String
+    ): Response<DefaultJSONResponse>
+
+    @POST(Constants.GET_GROUP_MESSAGE)
+    suspend fun getGroupMessages(
+        @Path("groupId") groupId: String
+    ): Response<GroupMessages>
 }

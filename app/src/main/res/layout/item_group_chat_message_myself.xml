@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="3dp">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      >
+
+    <TextView
+        android:id="@+id/fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jaydeep"
+        android:fontFamily="@font/nunitosans_semibold"
+        android:textColor="#242424"
+        android:layout_gravity="end"
+        android:layout_marginEnd="25dp"
+      />
+
+
+    <LinearLayout
+        android:layout_marginTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/chat_background_ourself"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/ourMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+
+            android:fontFamily="@font/nunitosans_semibold"
+            android:gravity="start"
+            android:padding="5dp"
+            android:paddingEnd="9dp"
+            android:text="Hello There"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#242424"
+            android:textIsSelectable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</RelativeLayout>

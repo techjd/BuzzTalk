@@ -1,4 +1,4 @@
-package com.ssip.buzztalk.models.groupchat.response
+package com.ssip.buzztalk.models.groupchat.response.allgroups
 
 data class AllGroup(
     val __v: Int,
