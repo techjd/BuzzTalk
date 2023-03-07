@@ -131,6 +131,7 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             socket.on("connect") { response ->
+                socket.emit("grp", "make me online in groups")
                 Log.d(" CONNECTION AGAIN ", "onViewCreated: ${socket.id()}")
                 chatViewModel.makeMeOnline(MakeUserOnline(socket.id()))
             }

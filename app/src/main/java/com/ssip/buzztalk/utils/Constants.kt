@@ -1,7 +1,7 @@
 package com.ssip.buzztalk.utils
 
 object Constants {
-    const val IP = ""
+    const val IP = "192.168.0.95"
     const val DEVELOPMENT_BASE_URL = "http://${IP}:5500/api/"
     const val PRODUCTION_BASE_URL = "" // Enter Deployed Server URL
     const val CHAT_SERVER_URL = "http://${IP}:5500/"

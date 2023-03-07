@@ -48,5 +48,9 @@
         <item name="android:checkable">true</item>
     </style>
 
+    <style name="tab_text" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
 
 </resources>

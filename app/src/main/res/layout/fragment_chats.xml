@@ -15,11 +15,19 @@
       style="?android:attr/progressBarStyle"
       />
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/conversationRecyclerView"
+  <com.google.android.material.tabs.TabLayout
+      android:layout_below="@+id/conversationTopAppBar"
+      android:id="@+id/tabLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/tab_text"
+      />
+
+  <androidx.viewpager2.widget.ViewPager2
+      android:id="@+id/viewPager"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_below="@id/conversationTopAppBar"
+      android:layout_below="@id/tabLayout"
       />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
