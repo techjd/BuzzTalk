@@ -59,6 +59,7 @@ object Constants {
     const val GET_GROUPS = "chat/getGroups"
     const val SEND_GROUP_MESSAGE = "chat/groups/sendMessage/{groupId}"
     const val GET_GROUP_MESSAGE = "chat/groups/getGroupMessages/{groupId}"
+    const val GET_SINGLE_GROUP_INFO = "chat/groups/getSingleGroupInfo/{groupId}"
 
     // Image Upload
     const val IMAGE_UPLOAD = "post/uploadImage"

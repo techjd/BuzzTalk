@@ -11,6 +11,7 @@ import com.ssip.buzztalk.models.groupchat.request.CreateNewGroupRequest
 import com.ssip.buzztalk.models.groupchat.request.SendMessageGroupRequest
 import com.ssip.buzztalk.models.groupchat.response.allgroups.AllGroupsResponse
 import com.ssip.buzztalk.models.groupchat.response.groupmessages.GroupMessages
+import com.ssip.buzztalk.models.groupchat.response.singlegroupinfo.SingleGroupInfo
 import com.ssip.buzztalk.utils.Constants
 import retrofit2.Response
 import retrofit2.http.Body
@@ -54,4 +55,9 @@ interface ChatAPI {
     suspend fun getGroupMessages(
         @Path("groupId") groupId: String
     ): Response<GroupMessages>
+
+    @GET(Constants.GET_SINGLE_GROUP_INFO)
+    suspend fun getSingleGroupInfo(
+        @Path("groupId") groupId: String
+    ): Response<SingleGroupInfo>
 }

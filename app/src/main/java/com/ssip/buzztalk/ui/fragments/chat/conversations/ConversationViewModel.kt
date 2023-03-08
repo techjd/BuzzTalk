@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ssip.buzztalk.models.DefaultJSONResponse
 import com.ssip.buzztalk.models.chat.response.conversations.Conversations
+import com.ssip.buzztalk.models.groupchat.request.SendMessageGroupRequest
 import com.ssip.buzztalk.models.groupchat.response.allgroups.AllGroupsResponse
 import com.ssip.buzztalk.models.groupchat.response.groupmessages.GroupMessages
 import com.ssip.buzztalk.repository.ChatRepository
@@ -25,6 +27,9 @@ class ConversationViewModel @Inject constructor(private val chatRepository: Chat
     private val _allGroupConvo: MutableLiveData<NetworkResult<GroupMessages>> = MutableLiveData()
     val allGroupConvo: LiveData<NetworkResult<GroupMessages>> = _allGroupConvo
 
+    private val _sendGroupMessageResponse: MutableLiveData<NetworkResult<DefaultJSONResponse>> = MutableLiveData()
+    val sendGroupMessageResponse: LiveData<NetworkResult<DefaultJSONResponse>> = _sendGroupMessageResponse
+
     fun getAllConversations() {
         viewModelScope.launch {
             _allConversations.postValue(NetworkResult.Loading())
@@ -43,6 +48,13 @@ class ConversationViewModel @Inject constructor(private val chatRepository: Chat
         viewModelScope.launch {
             _allGroupConvo.postValue(NetworkResult.Loading())
             _allGroupConvo.postValue(chatRepository.getGroupMessages(groupId))
+        }
+    }
+
+    fun sendGroupMessage(sendMessageGroupRequest: SendMessageGroupRequest, groupId: String) {
+        viewModelScope.launch {
+            _sendGroupMessageResponse.postValue(NetworkResult.Loading())
+            _sendGroupMessageResponse.postValue(chatRepository.sendGroupMessage(sendMessageGroupRequest, groupId))
         }
     }
 }

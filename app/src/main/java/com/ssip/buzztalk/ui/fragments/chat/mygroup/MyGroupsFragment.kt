@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.RequestManager
@@ -17,6 +18,7 @@ import com.ssip.buzztalk.ui.fragments.chat.conversations.ConversationsFragmentDi
 import com.ssip.buzztalk.utils.DialogClass
 import com.ssip.buzztalk.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
+import io.socket.client.Socket
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -30,6 +32,9 @@ class MyGroupsFragment : Fragment() {
 
   @Inject
   lateinit var glide: RequestManager
+
+  @Inject
+  lateinit var socket: Socket
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -83,6 +88,7 @@ class MyGroupsFragment : Fragment() {
   }
 
   private fun navigate(groupId: String) {
+    socket.emit("grp", groupId)
     val action = ConversationsFragmentDirections.actionChatsFragmentToGroupMessagesFragment(groupId)
     findNavController().navigate(action)
   }

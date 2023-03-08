@@ -155,16 +155,16 @@ class HomeFragment : Fragment() {
             }
         }
 
-        lifecycleScope.launch{
-            if (tokenManager.getUserFirstTime()) {
-                homeViewModel.sendNoti(tokenManager.getTokenWithBearer()!!, NotificationBody(tokenManager.getNotificationTokenOnCreate()!!))
-                tokenManager.saveUserFirstTime(false)
-            } else {
-                if (tokenManager.getNotificationTokenOnCreate() != tokenManager.getNotificationTokenOnNewToken()) {
-                    homeViewModel.sendNoti(tokenManager.getTokenWithBearer()!!, NotificationBody(tokenManager.getNotificationTokenOnCreate()!!))
-                }
-            }
-        }
+        // lifecycleScope.launch{
+        //     if (tokenManager.getUserFirstTime()) {
+        //         homeViewModel.sendNoti(tokenManager.getTokenWithBearer()!!, NotificationBody(tokenManager.getNotificationTokenOnCreate()!!))
+        //         tokenManager.saveUserFirstTime(false)
+        //     } else {
+        //         if (tokenManager.getNotificationTokenOnCreate() != tokenManager.getNotificationTokenOnNewToken()) {
+        //             homeViewModel.sendNoti(tokenManager.getTokenWithBearer()!!, NotificationBody(tokenManager.getNotificationTokenOnCreate()!!))
+        //         }
+        //     }
+        // }
 
         postViewModel.filteredFeed.observe(viewLifecycleOwner) {
             // postsAdapter.posts = it.data.feed
